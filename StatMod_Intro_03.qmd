@@ -1,0 +1,405 @@
+---
+subtitle: "Dritter Termin"
+---
+
+# Einstieg
+
+## Zur Erinnerung
+
+-   :computer: Arbeiten Sie aktiv mit.
+
+-   :raising_hand: Stellen Sie Fragen.
+
+-   :muscle: <https://tweedback.de/xxx/>
+
+::: center
+{{< qrcode https://tweedback.de/xxx/quiz width=400 height=400 >}}
+:::
+
+## Tipps für den Vorlesungserfolg
+
+-   Kommen Sie zur Vorlesung!
+
+-   Vermeiden Sie Ablenkung.
+
+-   Arbeiten Sie die Vorlesung von Anfang an **vor** und nach. Nutzen Sie dafür das Dokument *Quantitative Datenanalyse -- Umsetzung mit R*.
+
+-   Stellen Sie Fragen.
+
+-   Unterstützen Sie sich gegenseitig.
+
+
+# Rückblick
+
+## Was beim letzten Mal geschah ...
+
+-   Sie können mit der Unsicherheit einer Schätzung umgehen.
+
+-   Sie wissen, dass das Bootstrap-Verfahren das Ziehen von Stichproben simuliert (durch Ziehen mit Zurücklegen).
+
+-   Sie kennen Punktschätzer, Standardfehler und Konfidenzintervall.
+
+-   Sie haben Null- und Alternativhypothesen aufgestellt.
+
+-   Sie wissen, was eine Permutationsverteilung ist und wie man diese simuliert.
+
+-   Sie wissen, wie die Verteilung unter der Nullhypothese simuliert und der p-Wert ermittelt werden kann.
+
+-   Sie kennen die Bedeutung des p-Werts.
+
+## Heutiges Thema 🏫
+
+-   Einstieg in die Bayessche Statistik
+
+## Was Sie lernen 👩‍🏫
+
+-   Sie lernen den theoretischen Hintergrund der Bayesschen Statistik kennen.
+
+-   Sie können zwischen epistemischer und aleatorischer Wahrscheinlichkeit unterscheiden.
+
+-   Sie wissen, was die Priori-Verteilung, die Likelihood und die Posteriori-Verteilung ist.
+
+-   Sie kennen das Beta-Binomial-Modell und dessen Parameter.
+
+-   Sie kennen die Beta-Verteilung und deren Momente.
+
+-   Die können die Binomialverteilung verwenden.
+
+## Ihre Meinung :coffee:
+
+Was schätzen Sie: Wie groß ist der Anteil derjenigen, die morgens Kaffee trinken?
+
+-   **A**: 0-20%
+
+-   **B**: 21-40%
+
+-   **C**: 41-60%
+
+-   **D**: 61-80%
+
+-   **E**: 81-100%
+
+## Ihre Sicherheit :coffee:
+
+Wie sicher sind Sie sich bei Ihrer Schätzung des Anteils der Kaffeetrinker:innen?
+
+-   **A**: Sehr sicher.
+
+-   **B**: Eher sicher.
+
+-   **C**: Eher unsicher.
+
+-   **D**: Sehr unsicher.
+
+## Ihre Daten :coffee:
+
+Trinken **Sie** morgens Kaffee?
+
+-   **Ja**
+
+-   **Nein**
+
+## :studio_microphone: Good Bayesian
+
+> One way to understand rational, scientific thinking is via “Bayesian reasoning” which estimates the statistical probability of something being true and then updates that probability as new evidence appears, approaching the truth without achieving absolute certainty.
+
+Quelle: <https://bababrinkman.bandcamp.com/track/good-bayesian-feat-mc-lars-and-mega-ran>
+
+## Bayessches Denken (I/II)
+
+-   Seien Sie offen für [neue Erkenntnisse]{.green}:
+
+    -   Wissenschaftliche Erkenntnisse sind immer mit einer gewissen Unsicherheit verbunden, und Vorannahmen, die absolute Gewissheit (oder Unmöglichkeit) bedeuten, verhindern wissenschaftlichen Fortschritt.
+
+    -   Dieser Grundsatz ist Ausdruck der Bayes'schen Erkenntnistheorie und verdeutlicht, dass wissenschaftliche Erkenntnisse vorläufig sind und dass Wissenschaftler:innen keine absoluten oder sicheren Aussagen aufstellen sollten.
+
+-   Berücksichtigen Sie, was [bereits bekannt]{.green} ist:
+
+    -   Bewerten Sie neue Erkenntnisse im Lichte früherer Informationen.
+
+    -   Dies unterstreicht, dass wissenschaftliches Wissen nicht isoliert entsteht, sondern auf früheren Informationen und Erkenntnissen aufbaut.
+
+::: footnote
+Übersetzung aus: Rosenberg, J.M., Kubsch, M., Wagenmakers, E-J., Dogucu, M. Making Sense of Uncertainty in the Science Classroom. *Sci & Educ* **31**, 1239–1262 (2022). <https://doi.org/10.1007/s11191-022-00341-3>
+:::
+
+## Bayessches Denken (II/II)
+
+-   [Alternative Erklärungen]{.green} in Betracht ziehen:
+
+    -   Betrachten Sie die Erkenntnisse im Hinblick auf die Vereinbarkeit mit allen möglichen Ergebnissen; mit anderen Worten: Berücksichtigen Sie kontrafaktische Szenarien.
+    -   Dies drückt aus, was in der Bayes'schen Philosophie als das einfache Prinzip der Konditionalisierung bezeichnet wird: Wenn wir Erkenntnisse abwägen, müssen wir berücksichtigen, inwieweit sie die Bandbreite möglicher Erklärungen für die Daten unterstützt.
+
+::: footnote
+Übersetzung aus: Rosenberg, J.M., Kubsch, M., Wagenmakers, E-J., Dogucu, M. Making Sense of Uncertainty in the Science Classroom. *Sci & Educ* **31**, 1239–1262 (2022). <https://doi.org/10.1007/s11191-022-00341-3>
+:::
+
+# Theoretischer Hintergrund
+
+## Beispiel Anteilswert
+
+-   Den Anteilswert $\color{blue}\pi$, den [Wert des Parameters]{.blue} in der **(Ziel-)Population**, kennen wir nicht. Wir sind *unsicher*, welchen Wert $\color{blue}\pi$ hat.
+
+-   Unter gewissen Bedingungen können wir berechnen, wie wahrscheinlich ein Wert $\color{green}p$ in der Stichprobe ist, wenn in der Population $\color{blue}\pi$ gelten würde.
+
+-   Den Anteilswert $\color{green}p$, den [Wert der Statistik]{.green}, unserer **Stichprobe** kennen wir, nachdem wir Daten erhoben haben.
+
+-   Wir aktualisieren unsere Unsicherheit über $\color{blue}\pi$ auf Grundlage von $\color{green}p$.
+
+## Was ist was? :muscle:
+
+Was ist $\color{blue}\pi$ im Kaffeebeispiel?
+
+-   **A**: Der Anteil der Kaffeetrinker:innen in der Population.
+
+-   **B**: Der Anteil der Kaffeetrinker:innen in der Stichprobe.
+
+## Bayessche Erkenntnis
+
+::: columns
+::: {.column width="50%"}
+-   Wenn Sie denken wir kennen $\color{blue}\pi$, dann irren Sie sich.
+
+<br>
+
+-   Sie irren sich auch, wenn Sie denken wir wissen nichts über $\color{blue}\pi$.
+
+<br>
+
+-   Wir wissen, wie $\color{green}p$ sich verteilt.
+
+<br>
+
+-   Wir nutzen dies, um unsere Unsicherheit über $\color{blue}\pi$ anzupassen.
+:::
+
+::: {.column width="50%"}
+::: center
+![](img/Memes/Meme_Sicherheit.jpg){width="65%"}
+:::
+:::
+:::
+
+## Zwei Wahrscheinlichkeiten
+
+-   **Bayes Statistik**: Um auf Basis von [Statistiken]{.green} Aussagen über die Wahrscheinlichkeiten von [Parametern]{.blue} tätigen zu können, brauchen wir zusätzlich eine *Priori* Wahrscheinlichkeit $Pr({\color{blue}{\pi}})$:
+
+$$\overbrace{Pr({\color{blue}{\pi}} | {\color{green}{p}} )}^{\text{Epistemisch}} = Pr( {\color{blue}{\pi}} ) \frac{\overbrace{Pr({\color{green}{p}} | {\color{blue}{\pi}})}^{\text{Aleatorisch}}} {Pr({\color{green}{p}})}$$
+
+-   **Epistemische Wahrscheinlichkeit**: Gibt die relative Plausibilität eines Ereignisses an. Hier die Wahrscheinlichkeit, dass im datengeneriereden Prozess ${\color{blue}{\pi}}$ gilt, wenn die Statistik der vorliegenden Daten ${\color{green}{p}}$ ist.
+
+-   **Aleatorische Wahrscheinlichkeit**: Gibt die langfristige relative Häufigkeit eines wiederholbaren Ereignisses an. Hier die Wahrscheinlichkeit, dass die Statistik der vorliegenden Daten ${\color{green}{p}}$ ist, wenn im datengeneriereden Prozess ${\color{blue}{\pi}}$ gilt. Dies ist die klassisch-frequentistische Sicht.
+
+## Prior, Likelihood, Posterior
+
+$$\overbrace{Pr{(\color{blue}{\pi}} | {\color{green}{p}})}^{\text{Posterior}} \propto \overbrace{Pr({\color{blue}{\pi}})}^{\text{Prior}} \cdot {\overbrace{Pr({\color{green}{p}} | {\color{blue}{\pi}})}^{\text{Likelihood}}}$$
+
+-   **Prior-Verteilung** $Pr({\color{blue}{\pi}})$: Wahrscheinlichkeitsverteilung von $\color{blue}{\pi}$, *bevor* wir unsere Daten haben.
+
+-   **Likelihood** $Pr({\color{green}{p}}|{\color{blue}{\pi}})$: *Mutmaßlichkeit* von $\color{green}{p}$ bei gegebenem $\color{blue}{\pi}$.
+
+-   **Posterior-Verteilung** $Pr({\color{blue}{\pi}}|{\color{green}{p}})$: Wahrscheinlichkeitsverteilung von $\color{blue}{\pi}$ *nachdem* wir unsere Daten haben.
+
+::: callout-note
+## Hinweis
+
+Die Überlegungen der Bayes Statistik sind universell und nicht auf Anteilswerte beschränkt.
+:::
+
+## Beta-Binomial-Model
+
+-   **Prior-Verteilung**: Grundlage Beta-Verteilung mit Parametern: $\alpha_{prior}, \beta_{prior}$: $$\pi \sim Beta(\alpha_{prior}, \beta_{prior})$$
+
+-   **Likelihood**: Grundlage Binomialverteilung mit Parametern $n$ und $\pi$: $$Y \sim Bin(n, \pi)$$
+
+-   **Posterior-Verteilung**: Beta-Verteilung mit Parametern: $\alpha_{post}, \beta_{post}$: $$\pi|(Y=y) \sim Beta(\alpha_{post}, \beta_{post})$$ mit $$\alpha_{post} = \alpha_{prior} + y, \quad \beta_{post} = \beta_{prior} + n - y$$
+
+## Beta-Verteilung
+
+Dichtefunktion $\pi \sim Beta(\alpha, \beta)$:
+
+$$f(\pi) \propto \pi^{\alpha-1} \cdot (1-\pi)^{\beta-1}, \text{ für } \pi \in [0,1]$$
+
+-   $\alpha > 0, \beta >0$ bestimmen die Form der Verteilung.
+
+-   Erwartungswert (*Mittelwert* der Verteilung): $E(\pi)=\frac{\alpha}{\alpha+\beta}$
+
+-   Modus: $Modus(\pi)=\frac{\alpha-1}{\alpha+\beta-2}, \text{ für } \alpha, \beta > 1$
+
+-   Varianz: $Var(\pi)=\frac{\alpha \cdot \beta}{(\alpha+\beta)^2 \cdot (\alpha+\beta+1)}$
+
+-   {{< fa brands r-project >}} Befehle für Dichte-, Verteilungs- und Quantilsfunktion: `dbeta(); pbeta(); qbeta()` mit den Argumenten `shape1` $= \alpha$ und `shape2` $= \beta$
+
+## Beta-Verteilung in R
+
+```{webr-r}
+# Paket mosaic aktivieren
+library(mosaic)
+# Vektor für pi unter dem Namen ppi bereitstellen
+ppi <- seq(from = 0, to = 1, by = 1/1000)
+# alpha und beta spezifizieren
+a <- 1
+b <- 1
+# Dichtevektor
+dppi <- dbeta(ppi, shape1 = a, shape2 = b)
+# zeichnen 
+gf_line(dppi ~ ppi) |>
+  gf_labs(x = expression(pi), y = expression(f(pi)), title = paste0("Beta(", a, ", " , b, ")"))
+```
+
+## Binomialverteilung
+
+Wahrscheinlichkeitsfunktion $Y \sim Bin(n, \pi)$:
+
+$$f(y) = Pr(Y=y) = \binom{n}{y} \cdot \pi^y \cdot (1-\pi)^{n-y}, \text{ für } y \in \{0,1, \ldots, n\}$$
+
+-   $\pi \in [0,1]$ bestimmt die Form der Verteilung.
+
+-   Erwartungswert (*Mittelwert* der Verteilung): $E(Y)=n \cdot \pi$
+
+-   Varianz: $Var(Y)=n \cdot \pi \cdot (1-\pi)$
+
+-   Die Likelihood-Funktion ist die Wahrscheinlichkeitsfunktion als Funktion von $\pi$ bei gegebenem $y$. Diese ist maximal an der Stelle $p=\frac{y}{n}$.
+
+-   {{< fa brands r-project >}} Befehle für Dichte-, Verteilungs- und Quantilsfunktion: `dbinom(); pbinom(); qbinom()` mit den Argumenten `size` $= n$ und `prob` $= \pi$
+
+## Biomialverteilung in R
+
+```{webr-r}
+# n und pi spezifizieren
+n <- 8
+p <- 0.5
+# Vektor für y bereitstellen
+y <- seq(from = 0, to = n, by = 1)
+# Wahrscheinlichkeitsvektor
+dy <- dbinom(y, size = n, prob = p)
+# zeichnen 
+gf_point(dy ~ y) |>
+  gf_labs(x = "y", y = expression(f(y)), title = paste0("Binom(", n, ", " , p, ")"))
+```
+
+## Likelihood-Verteilung in R
+
+```{webr-r}
+# Vektor für pi unter dem Namen ppi bereitstellen
+ppi <- seq(from = 0, to = 1, by = 1/1000)
+# n und y angeben
+n <- 8
+y <- 4
+# Likelihood
+like <- dbinom(y, size = n, prob = ppi)
+# zeichnen 
+gf_line(like ~ ppi) |>
+  gf_labs(x = expression(pi), y = expression(L(pi)), title = paste0("Likelihood bei n=", n, " und y=" , y))
+```
+
+## Prior-Verteilung: $\alpha_{prior}$ und $\beta_{prior}$ :thinking:
+
+**Prior-Verteilung** $Pr({\color{blue}{\pi}})$:
+
+::: center
+Wahrscheinlichkeitsverteilung $\pi \sim Beta(\alpha_{prior}, \beta_{prior})$
+:::
+
+<br>
+
+-   Lage und Streuung hängen ab von $\alpha_{prior}$ und $\beta_{prior}$.
+
+-   Je größer $\alpha_{prior}$ im Vergleich zu $\beta_{prior}$ ist, desto größer ist der erwartete Anteil -- und umgekehrt.
+
+-   Je größer $\alpha_{prior}+\beta_{prior}$ desto geringer ist die Streuung (für $\alpha_{prior},\beta_{prior}>1$).
+
+-   Wenn Sie also einen hohen Anteil erwarten: $\alpha_{prior}>\beta_{prior}$, ansonsten umgekehrt.
+
+-   Wenn Sie sich (sehr) sicher sind: $\alpha_{prior}+\beta_{prior}$ groß, ansonsten klein.
+
+-   Bei $\alpha_{prior}=\beta_{prior}=1$ liegt eine Gleichverteilung für $\pi \in [0,1]$ vor.
+
+## Was bewirkt was? :muscle:
+
+Angenommen, Sie sind sich sehr sicher, dass $\pi$ bei $0.9$ liegt. Welcher Parametrisierung entspricht dies am ehesten?
+
+-   **A**: $\alpha_{prior}=1, \beta_{prior}=9$
+
+-   **B**: $\alpha_{prior}=10, \beta_{prior}=90$
+
+-   **C**: $\alpha_{prior}=9, \beta_{prior}=1$
+
+-   **D**: $\alpha_{prior}=90, \beta_{prior}=10$
+
+## Bedingungen Binomialverteilung
+
+-   Die Zufallsvariable $Y$ misst die Anzahl der Erfolge bei einer festen Anzahl von $n$ Versuchen.
+
+-   Die Versuche sind unabhängig voneinander.
+
+-   Jeder Versuch hat die gleiche Erfolgswahrscheinlichkeit $\pi$.
+
+## Von der Prior- zur Posterior-Verteilung: $\alpha_{post}$ und $\beta_{post}$ :thinking:
+
+**Posterior-Verteilung** $Pr({\color{blue}{\pi}}|{\color{green}{y}})$:
+
+::: {.center}
+Wahrscheinlichkeitsverteilung $\pi|(Y=y) \sim Beta(\alpha_{post}, \beta_{post})$ mit
+:::
+
+<br>
+
+$$
+\alpha_{post} = \alpha_{prior} + y
+$$ 
+$$
+\quad \beta_{post} = \beta_{prior} + n - y.
+$$
+
+unter der Bedingung $Y \sim Bin(n, \pi)$.
+
+::: callout-note
+## Hinweis
+
+Mit Hilfe der Posterior-Verteilung können Sie Punkt- und Intervallschätzer berechnen.
+:::
+
+## Was bewirkt was? :muscle:
+
+Was passiert, wenn Sie mehr Beobachtungen $n$ erheben?
+
+-   **A**: Die Streuung der Posterior-Verteilung wird kleiner.
+
+-   **B**: Die Streuung der Posterior-Verteilung wird größer.
+
+-   **C**: Die Streuung der Posterior-Verteilung ändert sich nicht.
+
+## Shiny App
+
+::: center
+<iframe src="https://fomshinyapps.shinyapps.io/BaBeBi/" title width="90%" height="750" style="border:none;">
+
+</iframe>
+
+::: footnote
+<https://fomshinyapps.shinyapps.io/BaBeBi/>
+:::
+:::
+
+## Fallstudie 💻
+
+::: columns
+::: {.column width="50%"}
+-   posit Cloud: In **Ihr** Projekt einloggen.
+
+::: center
+![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
+:::
+:::
+
+::: {.column width="50%"}
+-   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
+
+::: center
+![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
+:::
+:::
+:::
+
+Öffnen Sie die Datei `Früherkennung-Bayes.qmd` im Ordner `fallstudien`.

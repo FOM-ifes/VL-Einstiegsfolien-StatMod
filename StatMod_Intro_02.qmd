@@ -1,0 +1,362 @@
+---
+subtitle: "Zweiter Termin"
+---
+
+# Einstieg
+
+## Zur Erinnerung
+
+-   :computer: Arbeiten Sie aktiv mit.
+
+-   :raising_hand: Stellen Sie Fragen.
+
+-   :muscle: <https://tweedback.de/xxx/>
+
+::: center
+{{< qrcode https://tweedback.de/xxx/quiz width=400 height=400 >}}
+:::
+
+## Erinnerung
+
+Lernen ist kein Zuschauersport!
+
+::: center
+<iframe src="https://giphy.com/embed/3o6Zt90p6NgiyoN4Mo" width="1060" height="607" frameBorder="0" class="giphy-embed" allowFullScreen>
+
+</iframe>
+
+::: footnote
+[via GIPHY](https://media.giphy.com/media/3o6Zt90p6NgiyoN4Mo/giphy.gif)
+:::
+:::
+
+## Tipps für den Vorlesungserfolg
+
+-   Besuchen Sie die Veranstaltungen!
+
+-   Vermeiden Sie Ablenkung.
+
+-   Arbeiten Sie die Vorlesung von Anfang an **vor** und nach. Nutzen Sie dafür das Dokument *Quantitative Datenanalyse -- Umsetzung mit R*. 
+
+-   Stellen Sie Fragen.
+
+-   Unterstützen Sie sich gegenseitig.
+
+# Rückblick
+
+## Was bisher geschah ...
+
+**Grundlagen**
+
+-   **Messung:**\
+    Beobachteter Wert = Wahrer Wert + Verzerrung + Rauschen
+
+-   **Gütekriterien der Messung:**\
+    Genauigkeit, Objektivität, Reliabilität, Validität
+
+-   **Skalenniveaus:**
+
+    [**kategorial:**]{.green} nominal, ordinal
+
+    [**metrisch:**]{.green} intervallskaliert, verhältnisskaliert. Zusätzliche Unterscheidung: stetig, diskret
+
+-   **Variablentypen:** Abhängige Variable, unabhängige Variable, Kovariable
+
+## ... und ...
+
+-   **Population:** Menge von Interesse, der interessierende Wert ist der Parameter
+
+-   **Stichprobe:** Teilmenge der Population, der daraus bestimmte Wert ist die Statistik
+
+-   **Stichprobenverfahren:** Zufallsstichprobe, Gelegenheitsstichprobe, *Ergänzung:* geschichtete Stichprobe
+
+-   **Beobachtungsstudie:** In die Entstehung der Daten wird nicht eingegriffen.
+
+-   **Experiment:** Die unabhängige Variable $X$ wird manipuliert, dadurch sind direkt Kausalaussagen möglich.
+
+## Und was gab es noch ... {.smaller}
+
+**EDA-kategorial**
+
+-   **Säulendiagramm / Balkendiagramm:** Häufigkeiten von kategorialen oder metrisch diskreten Merkmalen werden als Säulen (vertikal) / Balken (horizontal) dargestellt
+
+-   **Mosaikplot:** Zusammenhang zweier kategorialer Variablen (y-Achse: abhängige Variable, x-Achse: unabhängige Variable)
+
+-   **Häufigkeiten:** absolute und relative Häufigkeiten (Anteile)
+
+-   **Kreuztabelle:** Darstellung von in der Regel gruppierten (relativen) Häufigkeiten
+
+-   **Bedingte Wahrscheinlichkeit:** [$Pr(A|B)$]{.small}
+
+-   **Totale Wahrscheinlichkeit:**\
+    [$Pr(A) = Pr(A|B) \cdot Pr(B) + Pr(A|!B) \cdot Pr(!B)$]{.small}
+
+-   **Satz von Bayes:**\
+    [$Pr(B|A) = \frac{Pr(A|B) \cdot Pr(B)}{Pr(A)}$]{.small}
+
+## Außerdem gab es noch ... {.smaller}
+
+**EDA-metrisch**
+
+-   Sie können ein **Histogramm** erstellen und interpretieren.
+
+-   Sie wissen, was eine **Dichte-** und was eine (empirische) **Verteilungsfunktion** ist.
+
+-   Sie kennen die wichtigsten Lagemaße:
+
+    -   [**arithmetisches Mittel** (*mean*) $\bar x$,]{.small}
+    -   [**Median** (auch Zentralwert) $\bar x_Z$,]{.small}
+    -   [**Modus** (oder Modalwert),]{.small}
+    -   [**Minimum, Maximum**,]{.small}
+    -   [**Quantile** und **Quartile**]{.small}
+
+-   ... und Streumaße:
+
+    -   [**Varianz** (mittlere quadratische Abweichung) $s^2$,]{.small}
+    -   [**Standardabweichung** (*standard deviation, sd*), Wurzel der Varianz,]{.small}
+    -   [**Interquartilsabstand** (*interquartile range, iqr*), Spannweite zwischen Q~1~ und Q~3~,]{.small}
+    -   [**Spannweite** (*range*), Spannweite zwischen Minimum (0%-Quantil) und Maximum (100%-Quantil).]{.small}
+
+## ... und ...
+
+-   Sie haben den Boxplot kennengelernt.
+
+::: center
+![](img/Memes/Meme_Boxplot.jpg){width="35%"}
+:::
+
+## Heutiges Thema 🏫
+
+-   Wiederholung Inferenzstatistik: Statistisches Schätzen und statistisches Testen
+
+# Statistisches Schätzen
+
+## Was Sie lernen 👩‍🏫
+
+-   Wir wollen und können über die Daten hinaus gehen -- dabei müssen wir aber Unsicherheit berücksichtigen.
+
+-   Sie wissen was ein Punktschätzer ist.
+
+-   Sie wissen, was ein Standardfehler angibt und was Konfidenzintervalle (nicht) sind.
+
+::: center
+<iframe src="https://giphy.com/embed/MRsWGk355jTJXeQfvf" width="320" height="180" frameBorder="0" class="giphy-embed" allowFullScreen>
+
+</iframe>
+
+::: footnote
+[via GIPHY](https://giphy.com/gifs/abcnetwork-MRsWGk355jTJXeQfvf)
+:::
+:::
+
+Einstieg: <https://fomshinyapps.shinyapps.io/Sampling/>
+
+
+## Wiedereinstieg Inferenz
+
+-   Der uns interessierende Wert in der **(Ziel-)Population** wird [(wahrer) Wert des Parameter]{.blue} genannt: $\color{blue}{\beta, \mu, \pi, \ldots}$
+
+-   Der auf Basis einer **Stichprobe** berechnete Wert wird [Schätzwert]{.green} genannt. $\color{green}{\hat{\beta}, \hat{\mu}=\bar{y}, \hat{\pi}=p,\ldots}$
+
+$$\color{green}{Schätzwert} = \color{blue}{Wert\,Parameter} + Verzerrung + Rauschen$$
+
+::: footnote
+Quelle: [Bueno de Mesquita und Fowler (2021)](https://press.princeton.edu/books/paperback/9780691214351/thinking-clearly-with-data): Estimate = Estimand + Bias + Noise
+:::
+
+## Punktschätzung -- Unverzerrt
+
+::: columns
+::: {.column width="50%"}
+![](img/Memes/Meme_Unsicherheit.jpg){fig-align="center" width="75%"}
+:::
+
+::: {.column width="50%"}
+![](img/Animationen/Estimate.gif){fig-align="center" width="100%"}
+:::
+:::
+
+## Punktschätzung -- Verzerrt
+
+::: columns
+::: {.column width="50%"}
+<br> ![](img/Memes/Meme_Bias.jpg){fig-align="center" width="95%"}
+:::
+
+::: {.column width="50%"}
+![](img/Animationen/Estimate-Biased.gif){fig-align="center" width="100%"}
+:::
+:::
+
+## Bootstrapping
+
+::: center
+![](img/Sonstige/Schema_Bootstrap.png){fig-align="center" width="80%"}
+
+::: footnote
+Quelle: [Allen Downey: tinyurl.com/inference3](https://tinyurl.com/inference3)
+:::
+:::
+
+## Konfidenzintervall
+
+::: columns
+::: {.column width="50%"}
+![](img/Memes/Meme_Konfidenzintervall.jpg){fig-align="center" width="75%"}
+:::
+
+::: {.column width="50%"}
+![](img/Animationen/Confidence.gif){fig-align="center" width="100%"}
+:::
+:::
+
+## Fallstudie 💻
+
+::: columns
+::: {.column width="50%"}
+-   posit Cloud: In **Ihr** Projekt einloggen.
+
+::: center
+![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
+:::
+:::
+
+::: {.column width="50%"}
+-   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
+
+::: center
+![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
+:::
+:::
+:::
+
+Öffnen Sie die Datei `Früherkennung-Inferenz.qmd` im Ordner `fallstudien`.
+
+## 🎤 Konfidenzintervall
+
+::: center
+<iframe src="https://www.causeweb.org/cause/resources/fun/songs/call-it-maybe" title width="100%" height="500" style="border:none;">
+</iframe>
+
+::: {.footnote}
+Quelle: <https://www.causeweb.org/cause/resources/fun/songs/call-it-maybe>
+:::
+:::
+
+# Statistisches Testen
+
+## Was Sie lernen 👩‍🏫
+
+- Sie stellen Null- und Alternativhypothesen auf.
+
+- Sie simulieren die Verteilung unter der Nullhypothese und ermitteln den p-Wert.
+
+- Sie lernen die Fehlermöglichkeiten beim statistischen Testen kennen.
+
+
+## Simulation $H_0$
+
+::: center
+![](img/Sonstige/Schema_Simulation.png){fig-align="center" width="80%"}
+
+::: {.footnote}
+Quelle: [Allen Downey: tinyurl.com/inference3](https://tinyurl.com/inference3)
+:::
+:::
+
+## p-Wert (I/II)
+
+::: {.columns}
+
+:::: {.column width="50%"}
+<br>
+![](img/Memes/Meme_pWert.jpg){fig-align="center" width="75%"}
+::::
+
+:::: {.column width="50%"}
+![](img/Animationen/P0.gif){fig-align="center" width="100%"}
+::::
+:::
+
+## p-Wert (II/II)
+
+::: {.columns}
+
+:::: {.column width="50%"}
+![](img/Memes/Meme_H0verwerfen.jpg){fig-align="center" width="75%"}
+::::
+
+:::: {.column width="50%"}
+![](img/Animationen/P1.gif){fig-align="center" width="100%"}
+::::
+:::
+
+## Fehlerarten (I/II)
+
+::: {.columns}
+
+:::: {.column width="50%"}
+![](img/Memes/Meme_Fehlerarten.jpg){fig-align="center" width="60%"}
+::::
+
+:::: {.column width="50%"}
+![](img/Memes/Meme_H0akzeptieren.jpg){fig-align="center" width="70%"}
+::::
+:::
+
+## Fehlerarten (II/II)
+
+Beim statistischen Testen können wir Fehler machen:
+
+- $\alpha$-Fehler oder Fehler 1. Art:  
+  Wir verwerfen die $H_0$, obwohl sie zutrifft.
+  
+  - Dieser Fehler wird durch das Signifikanzniveau $\alpha$ begrenzt.
+  
+- $\beta$-Fehler oder Fehler 2. Art:  
+  Wir verwerfen die $H_0$ nicht, obwohl sie nicht zutrifft.
+  
+  - Dieser Fehler kann nicht im vorhinein begrenzt werden. Es kann aber vorab eine sogenannte *Poweranalyse* (Power = *Trennschärfe* eines Tests) durchgeführt werden.
+
+## Fallstudie 💻
+
+::: columns
+::: {.column width="50%"}
+-   posit Cloud: In **Ihr** Projekt einloggen.
+
+::: center
+![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
+:::
+:::
+
+::: {.column width="50%"}
+-   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
+
+::: center
+![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
+:::
+:::
+:::
+
+Öffnen Sie die Datei `Impfung.qmd` im Ordner `fallstudien`.
+
+## Hypothesenprüfung (I/II)
+
+- Hypothesen können einseitig (gerichtet) oder zweiseitig (ungerichtet) sein.
+- Bisher haben wir mit **ungerichteten** Hypothesen gearbeitet, wie z. B.:  
+  $H_0:\beta_1 = 0 \qquad H_A:\beta_1\neq 0$
+- **Gerichtete** Hypothesen, wie z. B.: Sie sind ein Glückspilz (das ist die $H_A$) und gewinnen häufiger im Lotto als die Wahrscheinlichkeit $\pi_0\approx 0.0186$, mindestens drei Richtige zu haben   
+  $H_0:\pi\leq\pi_0 \qquad H_A:\pi > \pi_0$
+- oder doch der Pechvogel  
+  $H_0:\pi\geq\pi_0 \qquad H_A:\pi < \pi_0$
+
+## Test Hypothesenprüfung
+
+::: {.center}
+<iframe width="1120" height="630" src="https://www.youtube.com/embed/HTdo6xjfFHI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+::: {.footnote}
+Quelle: [The Raf: Summary Song #4 - SOS P-value (Stats Parody - Avicii S.O.S.)
+](https://youtu.be/HTdo6xjfFHI)
+:::
+:::

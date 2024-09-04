@@ -1,0 +1,497 @@
+---
+subtitle: "Erster Termin"
+---
+
+# Einstieg
+
+## Herzlich Wilkommen!
+
+Aus der [Data-Literacy-Charta](https://www.stifterverband.org/charta-data-literacy):
+
+> Data Literacy umfasst die Datenkompetenzen, die für alle Menschen in einer durch Digitalisierung geprägten Welt wichtig sind. Sie ist unverzichtbarer Bestandteil der Allgemeinbildung.
+
+<br>
+
+Gehen wir es an ...
+
+<!-- Wichtig!!! Einmalig im Verzeichnis vorher im Terminal laufen lassen! -->
+<!-- Dazu ins Verzeichnis der Intro-Folien wechseln! -->
+<!-- quarto install extension quarto-ext/fontawesome -->
+<!-- quarto install extension jmbuhr/quarto-qrcode -->
+<!-- quarto add coatless/quarto-webr  -->
+
+## Vorstellung Prof. Dr. N.N.
+
+**Kurzvita**
+
+-   Station 1
+
+-   Station 2
+
+-   Station 3
+
+-   Forschungsschwerpunkt 1
+
+-   Forschungsschwerpunkt 2
+
+-   Forschungsschwerpunkt 3
+
+{{< fa envelope >}}: vorname.nachname\@fom.de
+
+{{< fa globe >}}: http://www.fom.de
+
+## Wünsche von mir
+
+Meine Wünsche für diese Veranstaltung :pray:
+
+-   :video_camera: Schalten Sie Ihre Kamera ein.
+
+-   :computer: Arbeiten Sie aktiv mit.
+
+-   :raising_hand: Stellen Sie Fragen.
+
+-   :muscle: <https://tweedback.de/xxx/>
+
+::: center
+{{< qrcode https://tweedback.de/xxx/quiz width=400 height=400 >}}
+:::
+
+## Erinnerung
+
+Lernen ist kein Zuschauersport!
+
+::: center
+<iframe src="https://giphy.com/embed/3o6Zt90p6NgiyoN4Mo" width="1060" height="607" frameBorder="0" class="giphy-embed" allowFullScreen>
+</iframe>
+
+::: footnote
+[via GIPHY](https://media.giphy.com/media/3o6Zt90p6NgiyoN4Mo/giphy.gif)
+:::
+:::
+
+## Tipps für den Vorlesungserfolg
+
+-   Besuchen Sie die Veranstaltungen!
+
+-   Vermeiden Sie Ablenkung.
+
+-   Arbeiten Sie die Vorlesung von Anfang an **vor** und nach. Nutzen Sie dafür das Dokument *Quantitative Datenanalyse -- Umsetzung mit R*. 
+
+-   Stellen Sie Fragen.
+
+-   Unterstützen Sie sich gegenseitig.
+
+## Didaktische Hinweise
+
+-   An den Präsenzterminen werden wir zusammen interaktiv an Fallstudien arbeiten.
+
+-   Wir werden [tweedback.de](https://tweedback.de/) als Classroom Response System nutzen.
+
+-   Jede Vorlesung wird mit einer Wiederholung beginnen.
+
+-   Achtung, ich nehme Studierende dran, ohne dass sie sich melden.😲\
+    (Es gibt wissenschaftliche Belege, dass dies sich positiv auf den Lernerfolg auswirkt 🙂!)
+
+## Lernergebnisse
+
+Die Studierenden können nach erfolgreichem Abschluss des Moduls:
+
+-   die Grundlagen und Grundbegriffe quantitativer Datenanalyse verwenden,
+
+-   die Möglichkeiten und Grenzen der Inferenzstatistik erkennen,
+
+-   lineare und nichtlineare Modellierungen durchführen,
+
+-   Bayes Statistik in ihren Grundzügen anwenden,
+
+-   Kausale Modellierungen vornehmen,
+
+-   Auswertungen mit R durchführen.
+
+## Workload und Prüfungsleistung
+
+**Workload**
+
+-   Präsenzstunden: 44,0 UE
+
+-   Strukturiertes Eigenstudium 92,0 ZStd
+
+-   Workload gesamt: **125,0 ZStd**
+
+-   ECTS-Credit Punkte: 5
+
+**Prüfungsleistung**
+
+-   Klausur, 90 Minuten
+
+Beachten Sie die im OC hinterlegten Fristen!
+
+## Heutige Themen 🏫
+
+-   Organisatorisches
+-   Erste Daten -- Erstkontakt R
+-   Wiederholung Grundlagen Quantitative Datenanalyse
+-   Wiederholung Explorative Datenanalyse (EDA)
+
+## Was Sie lernen (I/II) 👩‍🏫
+
+-   Sie kennen Grundbegriffe der quantitativen Datenanalyse (wie unabhängige und abhängige Variable, Skalenniveaus) und können Probleme erklären, die aufgrund der Nichtberücksichtigung von Drittvariablen auftreten können.
+
+-   Sie können zentrale Begriffe um Stichproben(arten) und Populationen erläutern.
+
+-   Sie wissen um die Unterschiede hinsichtlich Zufall und Kausalität bei Beobachtungs- vs. Experimentalstudien.
+
+-   Sie kennen zentrale Statistiken (Anteile) und Visualisierungen (Säulendiagramme) für kategoriale Variablen und können diese anwenden.
+
+-   Sie können den Zusammenhang zwischen zwei kategorialen Merkmalen analysieren und interpretieren.
+
+
+## Was Sie lernen (II/II) 👩‍🏫
+
+-   Sie kennen zentrale Statistiken (Lage- und Streumaße) und Visualisierungen für metrische Variablen und können diese anwenden.
+
+-   Sie können Verteilungsformen charakterisieren und unterscheiden.
+
+-   Sie können den Zusammenhang zwischen zwei metrischen Merkmalen visualisieren und interpretieren.
+
+# So kommen Sie zum eRfolg!
+
+::: center
+![Quelle: [\@allisonhorst](https://github.com/allisonhorst/stats-illustrations)](https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/r_first_then.png){width="30%"}
+:::
+
+## Reproduzierbarkeit durch Quarto
+
+::: center
+![Quarto ist der Nachfolger von R Markdown, daher zeigen die Bilder noch "R Markdown". Quelle: [\@allisonhorst](https://github.com/allisonhorst/stats-illustrations)](https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/reproducibility_court.png){width="50%"}
+:::
+
+## Fallstudie 💻
+
+::: columns
+::: {.column width="50%"}
+-   posit Cloud: In **Ihr** Projekt einloggen.
+
+::: center
+![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
+:::
+:::
+
+::: {.column width="50%"}
+-   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
+
+::: center
+![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
+:::
+:::
+:::
+
+Öffnen Sie die Datei `Gemeinden.qmd` im Ordner `fallstudien`.
+
+
+## Arbeiten in R Studio / posit
+
+::: center
+![](img/Sonstige/Kochen_mit_RStudio.png){width="80%"}
+:::
+
+## Einige Einstellungen (I/V)
+
+Klicken Sie auf das Zahnrädchen und aktivieren *Preview in Viewer Pane* und *Chunk Output to Console*.
+
+::: center
+![](img/Software/OptionsRender.png){width="25%"}
+:::
+
+## Einige Einstellungen (II/V)
+
+Wählen Sie *Tools -- Global Options* ...
+
+::: center
+![](img/Software/GlobalOptions.png){width="25%"}
+:::
+
+## Einige Einstellungen (III/V)
+
+... und deaktivieren *Restore .RData ...*.
+
+::: center
+![](img/Software/OptionsRestore.png){width="30%"}
+:::
+
+## Einige Einstellungen (IV/V)
+
+Auf dem Tab *Code* aktivieren Sie *Use native pipe operator* und *Soft-wrap R source files*.
+
+::: center
+![](img/Software/OptionsSoftWrapPipe.png){width="30%"}
+:::
+
+## Einige Einstellungen (V/V)
+
+Auf dem Tab *Python* deaktivieren Sie *Automatically activate project-local Python environment*.
+
+::: center
+![](img/Software/OptionsPython.png){width="35%"}
+:::
+
+## YAML Header
+
+Im *YAML Header* stehen Informationen über unser Dokument.
+
+::: center
+![](img/Software/YAML-Gemeinden.png){width="50%"}
+:::
+
+## Code Chunks
+
+In den *Code Chunks* stehen die R-Befehle:
+
+::: center
+![](img/Software/Chunk-Gemeinden.png){width="70%"}
+:::
+
+## Dokument erzeugen
+
+Text, Code und Ausgabe werden über `Render` zusammengebracht und in einem Dokument wiedergegeben (html oder pdf).
+
+::: center
+![](img/Software/Render.png){width="15%"}
+:::
+
+## eRfolg?
+
+::: center
+![](img/Software/eRfolg-Gemeinden.png){width="85%"}
+:::
+
+## Transparenz
+
+Wir sind es dem datenbasierten Entscheiden schuldig!
+
+::: center
+![Quelle: [\@allisonhorst](https://github.com/allisonhorst/stats-illustrations)](https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/rmarkdown_wizards.png){width="55%"}
+:::
+
+# Grundlagen
+
+## Skalenniveaus
+
+::: center
+<iframe src="https://www.causeweb.org/cause/resources/fun/songs/levels-measurement" title width="100%" height="900" style="border:none;">
+
+</iframe>
+
+::: footnote
+Quelle: <https://www.causeweb.org/cause/resources/fun/songs/levels-measurement>
+:::
+:::
+
+## Eine wichtige Gleichung
+
+::: box
+[Beobachteter Wert]{.gray} = [Wahrer Wert]{.blue} + [Verzerrung]{.purple} + [Rauschen]{.orange}
+:::
+
+-   [Beobachteter Wert]{.gray}: Wert, den wir auf Basis unser **Stichprobe** berechnen, häufig eine **Statistik**.
+
+-   [Wahrer Wert]{.blue}: Wert, an dem wir interessiert sind. Häufig ein **Parameter** der **Population**.
+
+-   [Verzerrung]{.purple}: Systematische Abweichungen zwischen [Beobachteter Wert]{.gray} und [Wahrer Wert]{.blue}, z. B. aufgrund nicht-repräsentativer Stichprobe oder Störfaktoren.
+
+-   [Rauschen]{.orange}: Zufällige Schwankungen aufgrund der Stichprobe.
+
+::: footnote
+[de Mesquita and Fowler (2021)](https://press.princeton.edu/books/paperback/9780691214351/thinking-clearly-with-data)
+:::
+
+## Stichprobenarten (I/II)
+
+👩‍🏫 möchte wissen, wie gut die Studierenden die Inhalte verstanden haben.
+
+-   **Gelegenheitsstichprobe**: 👩‍🏫 nimmt eine Studierende dran, die sich meldet.
+
+-   **Zufällige Stichprobe**: 👩‍🏫 wählt zufällig eine Studierende aus.
+
+## Stichprobenarten (II/II)
+
+```{r}
+#| layout-ncol: 2
+#| column: page
+
+library(ggplot2)
+library(ggdag)
+
+co <- data.frame(x = c(0.5,0,1), y = c(1,0,0), name = c("Z", "S", "X")) 
+
+dag_s1<-dagify(S ~ Z,
+               X ~ Z,
+               coords = co) %>% 
+  ggdag(node_size = 20, text_size = 8, text = TRUE, text_col = "lightgray") + theme_dag_blank() +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed"))  + 
+  geom_text(label = "Z - Verstehen\nS - Stichprobe\nX - Antwort", 
+            hjust = 0, vjust = 0,
+            x = 0.15, y = 0, size = 7, color = "darkgrey") +
+  labs(title = "Gelegenheitsstichprobe")
+
+co <- data.frame(x = c(0.5,0,1,-1), y = c(1,0,0,0), name = c("Z", "S", "X", "R")) 
+
+dag_s2<-dagify(X ~ Z,
+               S ~ Z,
+               S ~ R, coords = co) %>% 
+  ggdag(node_size = 20, text_size = 8, text = TRUE, text_col = "lightgray") + theme_dag_blank() +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed"))  + 
+  geom_segment(aes(x = .15, y = .475, xend = .35, yend = .575), color = "red") +
+  geom_segment(aes(x = .15, y = .425, xend = .35, yend = .525), color = "red") +
+  geom_text(label = "Z - Verstehen\nS - Stichprobe\nX - Antwort\nR - Dozent:in", 
+            hjust = 0, vjust = 1,
+            x = -1.1, y = 0.75, size = 7, color = "darkgrey") + 
+  labs(title = "Zufällige Stichprobe")
+
+dag_s1
+dag_s2
+```
+
+Der Zufall [eliminert]{.red} die Abhängigkeit von möglichen [Verzerrungen]{.purple} der Stichprobe (hier durch Verstehen). [Beobachteter Wert]{.gray} kann [Wahrer Wert]{.blue} unverzerrt schätzen. Es gibt aber noch [zufällige Schwankungen]{.orange}.
+
+## Studienarten (I/II)
+
+👩‍🏫 möchte wissen, wie Lernzeit und Klausurergebnis zusammenhängen.
+
+-   **Beobachtungsstudie**: 👩‍🏫 beobachtet Lernzeit und resultierende Klausurpunkte.
+
+-   **Randomisierte Studie**: 👩‍🏫 manipuliert Lernzeit zufällig und beobachtet resultierende Klausurpunkte.
+
+## Studienarten (II/II)
+
+```{r}
+#| layout-ncol: 2
+#| column: page
+
+co <- data.frame(x = c(0,0,1), y = c(1,0,0), name = c("Z", "X", "Y")) 
+
+dag_e1<-dagify(Y ~ X,
+               X ~ Z,
+               Y ~ Z, coords = co) %>% 
+  ggdag(node_size = 20, text_size = 8, text = TRUE, text_col = "lightgray") + theme_dag_blank() +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed"))  + 
+  geom_text(label = "Z - Vorwissen\nX - Lernzeit\nY - Klausurpunkte", 
+            hjust = 1, vjust = 1,
+            x = 1, y = 1, size = 7, color = "darkgrey") +
+  labs(title = "Beobachtungsstudie")
+
+co <- data.frame(x = c(0,0,1,-1), y = c(1,0,0,0), name = c("Z", "X", "Y", "R")) 
+
+dag_e2<-dagify(Y ~ X,
+               X ~ Z,
+               X ~ R,
+               Y ~ Z, coords = co) %>% 
+  ggdag(node_size = 20, text_size = 8, text = TRUE, text_col = "lightgray") + theme_dag_blank() +
+  geom_dag_edges(arrow_directed = grid::arrow(length = grid::unit(15, "pt"), type = "closed"))  + 
+  geom_segment(aes(x = -.1, y = .475, xend = .1, yend = .575), color = "red") +
+  geom_segment(aes(x = -.1, y = .425, xend = .1, yend = .525), color = "red") +
+  geom_text(label = "Z - Vorwissen\nX - Lernzeit\nY - Klausurpunkte\nR - Dozent:in", 
+            hjust = 0, vjust = 1,
+            x = -1.15, y = 0.85, size = 7, color = "darkgrey") +
+  labs(title = "Randomisiertes Experiment")
+
+dag_e1
+dag_e2
+```
+
+Der Zufall [eliminert]{.red} die Abhängigkeit von [Verzerrungen]{.purple} des Zusammenhangs (hier durch Vorwissen). [Beobachteter Wert]{.gray} kann [Wahrer Wert]{.blue} unverzerrt schätzen. Es gibt aber noch [zufällige Schwankungen]{.orange}.
+
+# EDA: Kategoriale Daten
+
+## Datentabelle
+
+::: center
+![Quelle: [\@allisonhorst](https://github.com/allisonhorst/stats-illustrations)](https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/tidydata_1.jpg){width="70%"}
+:::
+
+## Übung 💪
+
+::: right
+![](https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/tidydata_1.jpg){width="25%"}
+:::
+
+Was ist bei einer Datentabelle der Klausurergebnisse eine Beobachtung (engl.: observation?)
+
+**A**: Die erreichte Punktzahl.
+
+**B**: Die Teilnehmerin Susi.
+
+**C**: Die erreichte Punktzahl von 60 Punkten von Susi.
+
+## Quarto rockt!
+
+::: center
+![Quelle: [\@allisonhorst](https://github.com/allisonhorst/stats-illustrations)](https://github.com/allisonhorst/stats-illustrations/raw/main/rstats-artwork/rmarkdown_rockstar.png){width="50%"}
+:::
+
+## Fallstudie 💻
+
+::: columns
+::: {.column width="50%"}
+-   posit Cloud: In **Ihr** Projekt einloggen.
+
+::: center
+![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
+:::
+:::
+
+::: {.column width="50%"}
+-   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
+
+::: center
+![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
+:::
+:::
+:::
+
+Öffnen Sie die Datei `Schlaganfallrisiko.qmd` im Ordner `fallstudien`.
+
+# EDA: Metrische Daten
+
+## Exploring Histograms
+
+::: {.center}
+<iframe src="http://tinlizzie.org/histograms/" width="1400" height="700"></iframe>
+:::: footnote
+[http://tinlizzie.org/histograms/](http://tinlizzie.org/histograms/)
+::::
+:::
+
+
+## Verteilungsformen
+
+::: center
+<iframe width="1000" height="700" src="https://www.youtube-nocookie.com/embed/2eFFzErlU4c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+:::: footnote
+[https://youtu.be/2eFFzErlU4c](https://youtu.be/2eFFzErlU4c)
+::::
+:::
+
+## Fallstudie 💻
+
+::: {.columns}
+:::: {.column width="50%"}
+
+- posit Cloud: In **Ihr** Projekt einloggen.
+
+::::: center
+![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
+:::::
+::::
+:::: {.column width="50%"}
+
+- Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
+
+::::: center
+![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
+:::::
+::::
+:::
+
+Öffnen Sie die Datei `Körperfettanteil.qmd` im Ordner `fallstudien`.
+
