@@ -111,7 +111,7 @@ Quelle: <https://bababrinkman.bandcamp.com/track/good-bayesian-feat-mc-lars-and-
 
     -   Wissenschaftliche Erkenntnisse sind immer mit einer gewissen Unsicherheit verbunden, und Vorannahmen, die absolute Gewissheit (oder Unmöglichkeit) bedeuten, verhindern wissenschaftlichen Fortschritt.
 
-    -   Dieser Grundsatz ist Ausdruck der Bayes'schen Erkenntnistheorie und verdeutlicht, dass wissenschaftliche Erkenntnisse vorläufig sind und dass Wissenschaftler:innen keine absoluten oder sicheren Aussagen aufstellen sollten.
+    -   Dieser Grundsatz ist Ausdruck der Bayesschen Erkenntnistheorie und verdeutlicht, dass wissenschaftliche Erkenntnisse vorläufig sind und dass Wissenschaftler:innen keine absoluten oder sicheren Aussagen aufstellen sollten.
 
 -   Berücksichtigen Sie, was [bereits bekannt]{.green} ist:
 
@@ -128,7 +128,7 @@ Quelle: <https://bababrinkman.bandcamp.com/track/good-bayesian-feat-mc-lars-and-
 -   [Alternative Erklärungen]{.green} in Betracht ziehen:
 
     -   Betrachten Sie die Erkenntnisse im Hinblick auf die Vereinbarkeit mit allen möglichen Ergebnissen; mit anderen Worten: Berücksichtigen Sie kontrafaktische Szenarien.
-    -   Dies drückt aus, was in der Bayes'schen Philosophie als das einfache Prinzip der Konditionalisierung bezeichnet wird: Wenn wir Erkenntnisse abwägen, müssen wir berücksichtigen, inwieweit sie die Bandbreite möglicher Erklärungen für die Daten unterstützt.
+    -   Dies drückt aus, was in der Bayesschen Philosophie als das einfache Prinzip der Konditionalisierung bezeichnet wird: Wenn wir Erkenntnisse abwägen, müssen wir berücksichtigen, inwieweit sie die Bandbreite möglicher Erklärungen für die Daten unterstützt.
 
 ::: footnote
 Übersetzung aus: Rosenberg, J.M., Kubsch, M., Wagenmakers, E-J., Dogucu, M. Making Sense of Uncertainty in the Science Classroom. *Sci & Educ* **31**, 1239–1262 (2022). <https://doi.org/10.1007/s11191-022-00341-3>
