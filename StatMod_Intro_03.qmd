@@ -49,11 +49,11 @@ subtitle: "Dritter Termin"
 
 ## Heutiges Thema 🏫
 
--   Einstieg in die Bayessche Statistik
+-   Einstieg in die Bayes'sche Statistik
 
 ## Was Sie lernen 👩‍🏫
 
--   Sie lernen den theoretischen Hintergrund der Bayesschen Statistik kennen.
+-   Sie lernen den theoretischen Hintergrund der Bayes'schen Statistik kennen.
 
 -   Sie können zwischen epistemischer und aleatorischer Wahrscheinlichkeit unterscheiden.
 
@@ -63,7 +63,7 @@ subtitle: "Dritter Termin"
 
 -   Sie kennen die Beta-Verteilung und deren Momente.
 
--   Die können die Binomialverteilung verwenden.
+-   Sie können die Binomialverteilung verwenden.
 
 ## Ihre Meinung :coffee:
 
@@ -105,13 +105,13 @@ Trinken **Sie** morgens Kaffee?
 
 Quelle: <https://bababrinkman.bandcamp.com/track/good-bayesian-feat-mc-lars-and-mega-ran>
 
-## Bayessches Denken (I/II)
+## Bayes'sches Denken (I/II)
 
 -   Seien Sie offen für [neue Erkenntnisse]{.green}:
 
     -   Wissenschaftliche Erkenntnisse sind immer mit einer gewissen Unsicherheit verbunden, und Vorannahmen, die absolute Gewissheit (oder Unmöglichkeit) bedeuten, verhindern wissenschaftlichen Fortschritt.
 
-    -   Dieser Grundsatz ist Ausdruck der Bayesschen Erkenntnistheorie und verdeutlicht, dass wissenschaftliche Erkenntnisse vorläufig sind und dass Wissenschaftler:innen keine absoluten oder sicheren Aussagen aufstellen sollten.
+    -   Dieser Grundsatz ist Ausdruck der Bayes'schen Erkenntnistheorie und verdeutlicht, dass wissenschaftliche Erkenntnisse vorläufig sind und dass Wissenschaftler:innen keine absoluten oder sicheren Aussagen aufstellen sollten.
 
 -   Berücksichtigen Sie, was [bereits bekannt]{.green} ist:
 
@@ -123,12 +123,12 @@ Quelle: <https://bababrinkman.bandcamp.com/track/good-bayesian-feat-mc-lars-and-
 Übersetzung aus: Rosenberg, J.M., Kubsch, M., Wagenmakers, E-J., Dogucu, M. Making Sense of Uncertainty in the Science Classroom. *Sci & Educ* **31**, 1239–1262 (2022). <https://doi.org/10.1007/s11191-022-00341-3>
 :::
 
-## Bayessches Denken (II/II)
+## Bayes'sches Denken (II/II)
 
 -   [Alternative Erklärungen]{.green} in Betracht ziehen:
 
     -   Betrachten Sie die Erkenntnisse im Hinblick auf die Vereinbarkeit mit allen möglichen Ergebnissen; mit anderen Worten: Berücksichtigen Sie kontrafaktische Szenarien.
-    -   Dies drückt aus, was in der Bayesschen Philosophie als das einfache Prinzip der Konditionalisierung bezeichnet wird: Wenn wir Erkenntnisse abwägen, müssen wir berücksichtigen, inwieweit sie die Bandbreite möglicher Erklärungen für die Daten unterstützt.
+    -   Dies drückt aus, was in der Bayes'schen Philosophie als das einfache Prinzip der Konditionalisierung bezeichnet wird: Wenn wir Erkenntnisse abwägen, müssen wir berücksichtigen, inwieweit sie die Bandbreite möglicher Erklärungen für die Daten unterstützt.
 
 ::: footnote
 Übersetzung aus: Rosenberg, J.M., Kubsch, M., Wagenmakers, E-J., Dogucu, M. Making Sense of Uncertainty in the Science Classroom. *Sci & Educ* **31**, 1239–1262 (2022). <https://doi.org/10.1007/s11191-022-00341-3>
@@ -154,7 +154,7 @@ Was ist $\color{blue}\pi$ im Kaffeebeispiel?
 
 -   **B**: Der Anteil der Kaffeetrinker:innen in der Stichprobe.
 
-## Bayessche Erkenntnis
+## Bayes'sche Erkenntnis
 
 ::: columns
 ::: {.column width="50%"}
@@ -182,7 +182,7 @@ Was ist $\color{blue}\pi$ im Kaffeebeispiel?
 
 ## Zwei Wahrscheinlichkeiten
 
--   **Bayes Statistik**: Um auf Basis von [Statistiken]{.green} Aussagen über die Wahrscheinlichkeiten von [Parametern]{.blue} tätigen zu können, brauchen wir zusätzlich eine *Priori*-Wahrscheinlichkeit $Pr({\color{blue}{\pi}})$:
+-   **Bayes-Statistik**: Um auf Basis von [Statistiken]{.green} Aussagen über die Wahrscheinlichkeiten von [Parametern]{.blue} tätigen zu können, brauchen wir zusätzlich eine *Priori*-Wahrscheinlichkeit $Pr({\color{blue}{\pi}})$:
 
 $$\overbrace{Pr({\color{blue}{\pi}} | {\color{green}{p}} )}^{\text{Epistemisch}} = Pr( {\color{blue}{\pi}} ) \frac{\overbrace{Pr({\color{green}{p}} | {\color{blue}{\pi}})}^{\text{Aleatorisch}}} {Pr({\color{green}{p}})}$$
 
@@ -203,7 +203,7 @@ $$\overbrace{Pr{(\color{blue}{\pi}} | {\color{green}{p}})}^{\text{Posterior}} \p
 ::: callout-note
 ## Hinweis
 
-Die Überlegungen der Bayes Statistik sind universell und nicht auf Anteilswerte beschränkt.
+Die Überlegungen der Bayes-Statistik sind universell und nicht auf Anteilswerte beschränkt.
 :::
 
 ## Beta-Binomial-Model
