@@ -57,7 +57,7 @@ subtitle: "Dritter Termin"
 
 -   Sie können zwischen epistemischer und aleatorischer Wahrscheinlichkeit unterscheiden.
 
--   Sie wissen, was die Priori-Verteilung, die Likelihood und die Posteriori-Verteilung ist.
+-   Sie wissen, was die Priori-Verteilung, die Likelihood und die Posteriori-Verteilung sind.
 
 -   Sie kennen das Beta-Binomial-Modell und dessen Parameter.
 
@@ -69,15 +69,15 @@ subtitle: "Dritter Termin"
 
 Was schätzen Sie: Wie groß ist der Anteil derjenigen, die morgens Kaffee trinken?
 
--   **A**: 0-20%
+-   **A**: 0--20%
 
--   **B**: 21-40%
+-   **B**: 21--40%
 
--   **C**: 41-60%
+-   **C**: 41--60%
 
--   **D**: 61-80%
+-   **D**: 61--80%
 
--   **E**: 81-100%
+-   **E**: 81--100%
 
 ## Ihre Sicherheit :coffee:
 
@@ -158,11 +158,11 @@ Was ist $\color{blue}\pi$ im Kaffeebeispiel?
 
 ::: columns
 ::: {.column width="50%"}
--   Wenn Sie denken wir kennen $\color{blue}\pi$, dann irren Sie sich.
+-   Wenn Sie denken, wir kennen $\color{blue}\pi$, dann irren Sie sich.
 
 <br>
 
--   Sie irren sich auch, wenn Sie denken wir wissen nichts über $\color{blue}\pi$.
+-   Sie irren sich auch, wenn Sie denken, wir wissen nichts über $\color{blue}\pi$.
 
 <br>
 
@@ -182,7 +182,7 @@ Was ist $\color{blue}\pi$ im Kaffeebeispiel?
 
 ## Zwei Wahrscheinlichkeiten
 
--   **Bayes Statistik**: Um auf Basis von [Statistiken]{.green} Aussagen über die Wahrscheinlichkeiten von [Parametern]{.blue} tätigen zu können, brauchen wir zusätzlich eine *Priori* Wahrscheinlichkeit $Pr({\color{blue}{\pi}})$:
+-   **Bayes Statistik**: Um auf Basis von [Statistiken]{.green} Aussagen über die Wahrscheinlichkeiten von [Parametern]{.blue} tätigen zu können, brauchen wir zusätzlich eine *Priori*-Wahrscheinlichkeit $Pr({\color{blue}{\pi}})$:
 
 $$\overbrace{Pr({\color{blue}{\pi}} | {\color{green}{p}} )}^{\text{Epistemisch}} = Pr( {\color{blue}{\pi}} ) \frac{\overbrace{Pr({\color{green}{p}} | {\color{blue}{\pi}})}^{\text{Aleatorisch}}} {Pr({\color{green}{p}})}$$
 
@@ -194,11 +194,11 @@ $$\overbrace{Pr({\color{blue}{\pi}} | {\color{green}{p}} )}^{\text{Epistemisch}}
 
 $$\overbrace{Pr{(\color{blue}{\pi}} | {\color{green}{p}})}^{\text{Posterior}} \propto \overbrace{Pr({\color{blue}{\pi}})}^{\text{Prior}} \cdot {\overbrace{Pr({\color{green}{p}} | {\color{blue}{\pi}})}^{\text{Likelihood}}}$$
 
--   **Prior-Verteilung** $Pr({\color{blue}{\pi}})$: Wahrscheinlichkeitsverteilung von $\color{blue}{\pi}$, *bevor* wir unsere Daten haben.
+-   **Priori-Verteilung** $Pr({\color{blue}{\pi}})$: Wahrscheinlichkeitsverteilung von $\color{blue}{\pi}$, *bevor* wir unsere Daten haben.
 
 -   **Likelihood** $Pr({\color{green}{p}}|{\color{blue}{\pi}})$: *Mutmaßlichkeit* von $\color{green}{p}$ bei gegebenem $\color{blue}{\pi}$.
 
--   **Posterior-Verteilung** $Pr({\color{blue}{\pi}}|{\color{green}{p}})$: Wahrscheinlichkeitsverteilung von $\color{blue}{\pi}$ *nachdem* wir unsere Daten haben.
+-   **Posteriori-Verteilung** $Pr({\color{blue}{\pi}}|{\color{green}{p}})$: Wahrscheinlichkeitsverteilung von $\color{blue}{\pi}$, *nachdem* wir unsere Daten haben.
 
 ::: callout-note
 ## Hinweis
@@ -208,11 +208,11 @@ Die Überlegungen der Bayes Statistik sind universell und nicht auf Anteilswerte
 
 ## Beta-Binomial-Model
 
--   **Prior-Verteilung**: Grundlage Beta-Verteilung mit Parametern: $\alpha_{prior}, \beta_{prior}$: $$\pi \sim Beta(\alpha_{prior}, \beta_{prior})$$
+-   **Priori-Verteilung**: Grundlage Beta-Verteilung mit Parametern: $\alpha_{prior}, \beta_{prior}$: $$\pi \sim Beta(\alpha_{prior}, \beta_{prior})$$
 
 -   **Likelihood**: Grundlage Binomialverteilung mit Parametern $n$ und $\pi$: $$Y \sim Bin(n, \pi)$$
 
--   **Posterior-Verteilung**: Beta-Verteilung mit Parametern: $\alpha_{post}, \beta_{post}$: $$\pi|(Y=y) \sim Beta(\alpha_{post}, \beta_{post})$$ mit $$\alpha_{post} = \alpha_{prior} + y, \quad \beta_{post} = \beta_{prior} + n - y$$
+-   **Posteriori-Verteilung**: Beta-Verteilung mit Parametern: $\alpha_{post}, \beta_{post}$: $$\pi|(Y=y) \sim Beta(\alpha_{post}, \beta_{post})$$ mit $$\alpha_{post} = \alpha_{prior} + y, \quad \beta_{post} = \beta_{prior} + n - y$$
 
 ## Beta-Verteilung
 
@@ -228,7 +228,7 @@ $$f(\pi) \propto \pi^{\alpha-1} \cdot (1-\pi)^{\beta-1}, \text{ für } \pi \in [
 
 -   Varianz: $Var(\pi)=\frac{\alpha \cdot \beta}{(\alpha+\beta)^2 \cdot (\alpha+\beta+1)}$
 
--   {{< fa brands r-project >}} Befehle für Dichte-, Verteilungs- und Quantilsfunktion: `dbeta(); pbeta(); qbeta()` mit den Argumenten `shape1` $= \alpha$ und `shape2` $= \beta$
+-   {{< fa brands r-project >}}-Befehle für Dichte-, Verteilungs- und Quantilsfunktion: `dbeta(); pbeta(); qbeta()` mit den Argumenten `shape1` $= \alpha$ und `shape2` $= \beta$
 
 ## Beta-Verteilung in R
 
@@ -261,7 +261,7 @@ $$f(y) = Pr(Y=y) = \binom{n}{y} \cdot \pi^y \cdot (1-\pi)^{n-y}, \text{ für } y
 
 -   Die Likelihood-Funktion ist die Wahrscheinlichkeitsfunktion als Funktion von $\pi$ bei gegebenem $y$. Diese ist maximal an der Stelle $p=\frac{y}{n}$.
 
--   {{< fa brands r-project >}} Befehle für Dichte-, Verteilungs- und Quantilsfunktion: `dbinom(); pbinom(); qbinom()` mit den Argumenten `size` $= n$ und `prob` $= \pi$
+-   {{< fa brands r-project >}}-Befehle für Dichte-, Verteilungs- und Quantilsfunktion: `dbinom(); pbinom(); qbinom()` mit den Argumenten `size` $= n$ und `prob` $= \pi$
 
 ## Biomialverteilung in R
 
@@ -293,9 +293,9 @@ gf_line(like ~ ppi) |>
   gf_labs(x = expression(pi), y = expression(L(pi)), title = paste0("Likelihood bei n=", n, " und y=" , y))
 ```
 
-## Prior-Verteilung: $\alpha_{prior}$ und $\beta_{prior}$ :thinking:
+## Priori-Verteilung: $\alpha_{prior}$ und $\beta_{prior}$ :thinking:
 
-**Prior-Verteilung** $Pr({\color{blue}{\pi}})$:
+**Priori-Verteilung** $Pr({\color{blue}{\pi}})$:
 
 ::: center
 Wahrscheinlichkeitsverteilung $\pi \sim Beta(\alpha_{prior}, \beta_{prior})$
@@ -307,7 +307,7 @@ Wahrscheinlichkeitsverteilung $\pi \sim Beta(\alpha_{prior}, \beta_{prior})$
 
 -   Je größer $\alpha_{prior}$ im Vergleich zu $\beta_{prior}$ ist, desto größer ist der erwartete Anteil -- und umgekehrt.
 
--   Je größer $\alpha_{prior}+\beta_{prior}$ desto geringer ist die Streuung (für $\alpha_{prior},\beta_{prior}>1$).
+-   Je größer $\alpha_{prior}+\beta_{prior}$, desto geringer ist die Streuung (für $\alpha_{prior},\beta_{prior}>1$).
 
 -   Wenn Sie also einen hohen Anteil erwarten: $\alpha_{prior}>\beta_{prior}$, ansonsten umgekehrt.
 
@@ -335,9 +335,9 @@ Angenommen, Sie sind sich sehr sicher, dass $\pi$ bei $0.9$ liegt. Welcher Param
 
 -   Jeder Versuch hat die gleiche Erfolgswahrscheinlichkeit $\pi$.
 
-## Von der Prior- zur Posterior-Verteilung: $\alpha_{post}$ und $\beta_{post}$ :thinking:
+## Von der Priori- zur Posteriori-Verteilung: $\alpha_{post}$ und $\beta_{post}$ :thinking:
 
-**Posterior-Verteilung** $Pr({\color{blue}{\pi}}|{\color{green}{y}})$:
+**Posteriori-Verteilung** $Pr({\color{blue}{\pi}}|{\color{green}{y}})$:
 
 ::: {.center}
 Wahrscheinlichkeitsverteilung $\pi|(Y=y) \sim Beta(\alpha_{post}, \beta_{post})$ mit
@@ -357,18 +357,18 @@ unter der Bedingung $Y \sim Bin(n, \pi)$.
 ::: callout-note
 ## Hinweis
 
-Mit Hilfe der Posterior-Verteilung können Sie Punkt- und Intervallschätzer berechnen.
+Mit Hilfe der Posteriori-Verteilung können Sie Punkt- und Intervallschätzer berechnen.
 :::
 
 ## Was bewirkt was? :muscle:
 
 Was passiert, wenn Sie mehr Beobachtungen $n$ erheben?
 
--   **A**: Die Streuung der Posterior-Verteilung wird kleiner.
+-   **A**: Die Streuung der Posteriori-Verteilung wird kleiner.
 
--   **B**: Die Streuung der Posterior-Verteilung wird größer.
+-   **B**: Die Streuung der Posteriori-Verteilung wird größer.
 
--   **C**: Die Streuung der Posterior-Verteilung ändert sich nicht.
+-   **C**: Die Streuung der Posteriori-Verteilung ändert sich nicht.
 
 ## Shiny App
 
