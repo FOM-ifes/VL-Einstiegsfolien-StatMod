@@ -55,3 +55,6 @@ rsconnect/
 # Quarto
 .quarto
 /.quarto/
+
+# PDF
+*.pdf
