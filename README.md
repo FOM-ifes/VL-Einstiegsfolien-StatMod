@@ -1,4 +1,5 @@
 # VL-Einstiegsfolien
+
 Einstiegsfolien mit neuem Layout
 
 # Einstiegsfolien für die Vorlesungstermine mit Fallstudien im Modul Statistische Modellierung
@@ -12,11 +13,11 @@ In der Datei `_quarto.yaml` können Sie die Einstiegsfolien personalisieren (Nam
 Bevor die Folien erzeugt werden, müssen einmalig folgende Schritte ausgeführt werden:
 
 -   Öffnen Sie RStudio.
--   Prüfen Sie, ob die neueste Version von quarto vorhanden ist (in der Console über `quarto::quarto_version()`), sonst ggf. installieren oder auf die aktuelle Version uodaten.
+-   Prüfen Sie, ob die neueste Version von quarto vorhanden ist (in der Console über `quarto::quarto_version()`), sonst ggf. installieren oder auf die aktuelle Version updaten.
 -   Wählen Sie unten den Reiter Terminal aus.
 -   Wechseln Sie dort ins Verzeichnis, in dem Sie die Intro-Folien abgelegt haben.
 -   Führen Sie dann nacheinander folgende Befehle im Terminal aus:
-   ```
+```         
 > quarto install extension quarto-ext/fontawesome
 > quarto install extension jmbuhr/quarto-qrcode
 > quarto add coatless/quarto-webr
