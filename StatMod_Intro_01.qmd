@@ -102,7 +102,7 @@ Die Studierenden können nach erfolgreichem Abschluss des Moduls:
 
 -   lineare und nichtlineare Modellierungen durchführen,
 
--   Bayes Statistik in ihren Grundzügen anwenden,
+-   Bayes-Statistik in ihren Grundzügen anwenden,
 
 -   Kausale Modellierungen vornehmen,
 
