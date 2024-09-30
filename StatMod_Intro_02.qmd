@@ -152,11 +152,11 @@ Lernen ist kein Zuschauersport!
 Einstieg: <https://fomshinyapps.shinyapps.io/Sampling/>
 
 
-## Wiedereinstieg Inferenz
+## Wiederholung Inferenz
 
 -   Der uns interessierende Wert in der **(Ziel-)Population** wird [(wahrer) Wert des Parameter]{.blue} genannt: $\color{blue}{\beta, \mu, \pi, \ldots}$
 
--   Der auf Basis einer **Stichprobe** berechnete Wert wird [Schätzwert]{.green} genannt. $\color{green}{\hat{\beta}, \hat{\mu}=\bar{y}, \hat{\pi}=p,\ldots}$
+-   Der auf Basis einer **Stichprobe** berechnete Wert wird [Schätzwert]{.green} genannt. $\color{green}{\hat{\beta}=b, \hat{\mu}=\bar{y}, \hat{\pi}=p,\ldots}$
 
 $$\color{green}{Schätzwert} = \color{blue}{Wert\,Parameter} + Verzerrung + Rauschen$$
 
