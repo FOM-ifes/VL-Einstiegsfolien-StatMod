@@ -58,3 +58,6 @@ rsconnect/
 
 # PDF
 *.pdf
+
+# Zip
+*.zip
