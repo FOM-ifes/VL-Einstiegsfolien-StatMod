@@ -191,7 +191,7 @@ $$\overbrace{Pr({\color{blue}{\pi}} | {\color{green}{p}} )}^{\text{Epistemisch}}
 
 -   **Aleatorische Wahrscheinlichkeit**: Gibt die langfristige relative Häufigkeit eines wiederholbaren Ereignisses an. Hier die Wahrscheinlichkeit, dass die Statistik der vorliegenden Daten ${\color{green}{p}}$ ist, wenn im datengeneriereden Prozess ${\color{blue}{\pi}}$ gilt. Dies ist die klassisch-frequentistische Sicht.
 
-## Prior, Likelihood, Posterior
+## Priori, Likelihood, Posteriori
 
 $$\overbrace{Pr{(\color{blue}{\pi}} | {\color{green}{p}})}^{\text{Posterior}} \propto \overbrace{Pr({\color{blue}{\pi}})}^{\text{Prior}} \cdot {\overbrace{Pr({\color{green}{p}} | {\color{blue}{\pi}})}^{\text{Likelihood}}}$$
 
