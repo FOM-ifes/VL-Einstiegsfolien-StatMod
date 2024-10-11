@@ -1,0 +1,136 @@
+---
+subtitle: "Fünfter Termin"
+---
+
+# Einstieg
+
+## Zur Erinnerung
+
+-   :computer: Arbeiten Sie aktiv mit.
+
+-   :raising_hand: Stellen Sie Fragen.
+
+-   :muscle: <https://tweedback.de/xxx/>
+
+::: center
+{{< qrcode https://tweedback.de/xxx/quiz width=400 height=400 >}}
+:::
+
+## Tipps für den Vorlesungserfolg
+
+-   Kommen Sie zur Vorlesung!
+
+-   Vermeiden Sie Ablenkung.
+
+-   Arbeiten Sie die Vorlesung von Anfang an **vor** und nach. Nutzen Sie dafür das Dokument *Quantitative Datenanalyse -- Umsetzung mit R*.
+
+-   Stellen Sie Fragen.
+
+-   Unterstützen Sie sich gegenseitig.
+
+# Rückblick
+
+## Was beim letzten Mal geschah ...
+
+-   Sie haben die Bayes'sche Denkweise kennengelernt.
+
+-   Sie können zwei Wahrscheinlichkeiten unterscheiden: epistemische und aleatorische Wahrscheinlichkeit.
+
+-   Sie kennen den Satz von Bayes.
+
+-   Sie wissen, was die Priori-Verteilung ist - die Wahrscheinlichkeitsverteilung von $\pi$, bevor wir unsere Daten haben.
+
+-   Sie wissen, was die Likelihood ist - die Mutmaßlichkeit von $p$ bei gegebenem $\pi$.
+
+-   Sie wissen, was die Posteriori-Verteilung ist - die Wahrscheinlichkeitsverteilung von $\pi$, nachdem wir unsere Daten haben.
+
+-   Sie können die Priori-Verteilung, die Likelihood und damit die Posteriori-Verteilung bestimmen.
+
+## ... und ...
+
+-   Sie wissen, dass die Beta-Verteilung die Grundlage für die Priori- und die Posteriori-Verteilung ist.
+
+-   Sie können $\alpha$ und $\beta$ als Parameter der Beta-Verteilung bestimmen.
+
+-   Sie können den Erwartungswert und die Varianz der Beta-Verteilung berechnen und visualisieren.
+
+-   Sie wissen, dass die Binomialverteilung mit den Parametern $n$ und $\pi$ die Grundlage der Likelihood ist.
+
+-   Sie können die Verteilung der Likelihood bestimmen.
+
+## Heutiges Thema 🏫
+
+-   Wiederholung Regression
+
+## Was Sie lernen 👩‍🏫
+
+-   Sie wenden die lineare Regression mit einer oder mehreren unabhängigen Variablen an (univariate vs. multivariate Regressionsmodelle).
+
+-   Sie können die Koeffizienten zu unterschiedlich skalierten unabhängigen Variablen interpretieren.
+
+-   Sie können das Bestimmtheitsmaß $R^2$ interpretieren.
+
+-   Sie können zwischen verschiedenen Regressionsmodellen auswählen.
+
+## Schlagen Sie die 🤖?
+
+Mission Vorhersage 👉 <https://fomshinyapps.shinyapps.io/Regressioncontest/>
+
+<!-- Ggf. bit.ly-Link und -QR-Code -->
+
+::: center
+![](img/Sonstige/linearregression.png){width="50%"}
+:::
+
+## You can't beat 🤖
+
+<br>
+
+::: center
+🥇 4698,928 🥇
+:::
+
+$$Verbrauch = 8.120,60 - 18,44 \cdot Temperatur$$
+
+## Regression motivieren
+
+-   Stellen Sie sich eine Regressionsanalyse wie eine Radiostation vor, die ein Programm sendet.
+
+-   Man empfängt dieses *Signal* nur weit entfernt -- mit *Rauschen*. Das, was man empfängt, setzt sich also aus *Signal* und *Rauschen* zusammen.
+
+-   Es gibt diverse Techniken, um aus dem Empfangenen möglichst das gesendete Signal zu extrahieren und gleichzeitig das Rauschen zu reduzieren.
+
+^Anregung: [Tay (2022)](https://doi.org/10.1080/26939169.2021.2024777)^
+
+-   Regression funktioniert genau so: Es lagen (fiktive) Daten von Temperatur und Vebrauch vor und es soll der Zusammenhang zwischen diesen Variablen analysiert werden.
+-   Das gefundene Modell wird aufgrund des Rauschens nicht perfekt sein.
+
+## Inferenz in der Regression
+
+::: center
+$$\hat{\beta} = \beta + \text{(Verzerrung)} + \text{Rauschen}$$
+
+![Quelle: [David Hood](https://twitter.com/Thoughtfulnz/status/1446972794135216131)](img/Memes/modelmeme.jpeg){fig-align="center" width="40%"}
+:::
+
+## Fallstudie 💻
+
+::::::: columns
+:::: {.column width="50%"}
+-   posit Cloud: In **Ihr** Projekt einloggen.
+
+::: center
+![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
+:::
+::::
+
+:::: {.column width="50%"}
+-   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
+
+::: center
+![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
+:::
+::::
+:::::::
+
+Öffnen Sie die Datei `Immobilien.qmd` im Ordner `fallstudien`.
