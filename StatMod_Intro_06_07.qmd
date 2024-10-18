@@ -1,0 +1,114 @@
+---
+subtitle: "Sechster und siebter Termin"
+---
+
+# Einstieg
+
+## Zur Erinnerung
+
+-   :computer: Arbeiten Sie aktiv mit.
+
+-   :raising_hand: Stellen Sie Fragen.
+
+-   :muscle: <https://tweedback.de/xxx/>
+
+::: center
+{{< qrcode https://tweedback.de/xxx/quiz width=400 height=400 >}}
+:::
+
+## Tipps für den Vorlesungserfolg
+
+-   Kommen Sie zur Vorlesung!
+
+-   Vermeiden Sie Ablenkung.
+
+-   Arbeiten Sie die Vorlesung von Anfang an **vor** und nach. Nutzen Sie dafür das Dokument *Quantitative Datenanalyse -- Umsetzung mit R*.
+
+-   Stellen Sie Fragen.
+
+-   Unterstützen Sie sich gegenseitig.
+
+# Rückblick
+
+## Was beim letzten Mal geschah ...
+
+- Sie haben univariate und multivarite Regressionsmodelle aufgestellt.
+
+- Sie haben die Steigung $\hat\beta_1$ und den $y$-Achsenabschnitt $\hat\beta_0$ interpretiert.
+
+- Sie wissen, was das Bestimmtheitsmaß $R^2$ ist.
+
+- Sie haben die Regressionskoeffizienten zu unterschiedlich skalierten unabhängigen Variablen interpretiert.
+
+- Sie haben die Inferenz in der Regressionanalyse kennengelernt.
+
+- Sie können zwischen verschiedenen Modellen unterscheiden und geeignete Modelle auswählen.
+
+## Heutiges Thema 🏫
+
+-   Kausale Inferenz
+
+::: center
+![](img/Memes/RedBlue-Causal.jpg){width="60%"}
+:::
+
+## Was Sie lernen 👩‍🏫
+
+-   Was ein potenzielles Ergebnis (Potential Outcome) ist; was ein Counterfactual ist; wie kausale Effekte definiert werden können und warum die Bestimmung von kausalen Effekten so herausfordernd ist.
+
+-   Die Grundlagen von kausalen Graphen: Was ein Pfeil aussagt; was unter einem Kausalen Modell verstanden werden kann; den Unterschied zwischen Beobachten und Handeln im Kontext kausaler Inferenz.
+
+-   Zwischen Beschreibung, Vorhersage und Kausaler Inferenz zu unterscheiden; warum diese Unterscheidung wichtig ist und was die Kausale Leiter ist.
+
+## Kausale Leiter
+
+-   **Assoziation**: $Pr(y|x)$ – Beobachtung: *Was ist*?\
+    Wie wahrscheinlich ist $Y=y$, wenn ich $X=x$ beobachte?
+
+-   **Intervention**: $Pr(y|do(x))$ – Tun: *Was wäre*?\
+    Wie wahrscheinlich ist $Y=y$, wenn ich $X=x$ setze, d.h. manipuliere?
+
+-   **Counterfactuals**: $Pr(y_x|x',y')$ – Vorstellung: *Was wäre gewesen*?\
+    Wir haben $X=x'$ und als Folge $Y=y'$ beobachtet. Wie wahrscheinlich ist dann $Y=y$,\
+    wenn ich $X=x$ gesetzt hätte?
+
+## Vorgehen
+
+Vor der Fallstudie bearbeiten wir einige interaktive Tutorials des Kurses
+
+> *WWWEKI* -- Was, wie, warum? Einstiegskurs Kausale Inferenz
+
+-   Das erste Tutorial führen wir gemeinsam durch: <https://fomshinyapps.shinyapps.io/WWWEKI_Modul_01/>
+
+-   Die Tutorien <https://fomshinyapps.shinyapps.io/WWWEKI_Modul_02/> und <https://fomshinyapps.shinyapps.io/WWWEKI_Modul_03/> werden jeweils in Gruppen bearbeitet.
+
+-   Anschließend bearbeiten wir <https://fomshinyapps.shinyapps.io/WWWEKI_Modul_07/> wieder gemeinsam.
+
+## Ressourcen
+
+-   Alle Tutorien: <https://github.com/luebby/WWWEKI>
+
+-   Begleitende Videos: <https://wwweki.gitlab.io/interviews/>
+
+
+## Fallstudie 💻
+
+::::::: columns
+:::: {.column width="50%"}
+-   posit Cloud: In **Ihr** Projekt einloggen.
+
+::: center
+![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
+:::
+::::
+
+:::: {.column width="50%"}
+-   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
+
+::: center
+![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
+:::
+::::
+:::::::
+
+Öffnen Sie die Datei `KausaleModellierung.qmd` im Ordner `fallstudien`.
