@@ -1,0 +1,197 @@
+---
+subtitle: "Neunter Termin"
+---
+
+# Einstieg
+
+## Zur Erinnerung
+
+-   :computer: Arbeiten Sie aktiv mit.
+
+-   :raising_hand: Stellen Sie Fragen.
+
+-   :muscle: <https://tweedback.de/xxx/>
+
+::: center
+{{< qrcode https://tweedback.de/xxx/quiz width=400 height=400 >}}
+:::
+
+## Tipps für den Vorlesungserfolg
+
+-   Kommen Sie zur Vorlesung!
+
+-   Vermeiden Sie Ablenkung.
+
+-   Arbeiten Sie die Vorlesung von Anfang an **vor** und nach. Nutzen Sie dafür das Dokument *Quantitative Datenanalyse -- Umsetzung mit R*.
+
+-   Stellen Sie Fragen.
+
+-   Unterstützen Sie sich gegenseitig.
+
+# Rückblick
+
+## Was beim letzten Mal geschah ...
+
+-   [Rückblick auf Random Forrest]{.red}
+
+## Heutige Themen -- Unsupervised Learning 🏫
+
+**Unüberwachtes Lernen** (engl.: unsupervised learning): Es gibt *keine* bekannte abhängige Variable $y$, die modelliert werden soll. Methoden (u. a.):
+
+-   Clusteranalyse
+
+-   Hauptkomponentenanalyse
+
+::: center
+![](img/Memes/Meme_PCA-CA.jpg){width="30%"}
+:::
+
+# Hauptkomponentenanalyse (PCA)
+
+## Was Sie lernen 👩‍🏫
+
+-   Sie wissen, wann eine Dimensionsreduktion von Daten sinnvoll sein kann.
+
+-   Sie können die Voraussetzungen für eine Hauptkomponentenanalyse überprüfen\
+    und die Analyse durchführen.
+
+-   Sie wissen, warum eine Rotation zum Einsatz kommen kann.
+
+-   Sie können die Ergebnisse einer Hauptkomponentenanalyse interpretieren.
+
+## Was ist das
+
+Die Hauptkomponentenanalyse (engl.: Principal Component Analysis) erzielt eine Dimensionsreduktion über die Zusammenfassung von Variablen zu (wenigen) Hauptkomponenten. Dazu werden Linearkombinationen der Variablen gebildet.
+
+## Fallstudie 💻
+
+::::::: columns
+:::: {.column width="50%"}
+-   posit Cloud: In **Ihr** Projekt einloggen.
+
+::: center
+![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
+:::
+::::
+
+:::: {.column width="50%"}
+-   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
+
+::: center
+![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
+:::
+::::
+:::::::
+
+Öffnen Sie die Datei `HKA.qmd` im Ordner `fallstudien`.
+
+# Clusteranalyse
+
+## Was Sie lernen 👩‍🏫
+
+-   Sie können das Ziel einer Clusteranalyse erläutern.
+
+-   Sie kennen das Konzept der euklidischen Distanz.
+
+-   Sie können eine k-Means-Clusteranalyse durchführen und die Ergebnisse interpretieren.
+
+## Finden von homogenen Gruppen
+
+Das Ziel der Clusteranalyse (engl.: Cluster Analysis) ist es, Gruppen (Cluster) von Beobachtungen zu bilden, die innerhalb der Cluster homogen und zwischen den Clustern heterogen sind. Einsatzbeispiel sind:
+
+-   Analysieren, inwieweit es unterschiedliche Gruppen von Unternehmen am Markt gibt.
+
+-   Finden von Kundensegmenten auf Basis von Kundendaten.
+
+-   Identifizieren von Clustern (Typen) verschiedener Führungspersönlichkeiten.
+
+-   Auch die Gesichtserkennung auf Fotos oder Videos basiert auf dem Ansatz der Clusteranalyse.
+
+## Methoden der Clusteranalyse und Distanzmaß
+
+-   Hierarchische Verfahren: bottom-up (agglomerativ: Start mit sovielen Clustern, wie es Beobachtungen gibt) oder top-down (divisiv: Start mit einem Cluster)
+
+-   Partionierende Verfahren: Vorgabe der Anzahl von Clustern, dann bestmögliche Zuordnung der Beobachtungen über mehrere Schritte zu den Clustern (z. B. k-Means-Clustering)
+
+-   Verwendung von Distanzmaßen zur Bestimmung der Ähnlichkeit (Unähnlichkeit) innerhalb der Cluster. Für metrische Variablen z. B. Euklidische Distanz
+
+$$
+d(x,y) = \sqrt{\sum_j(x_j - y_j)^2}
+$$
+
+::: footnote
+Eine Übersicht über die Methoden, um $k$ (oft: $k \in \{2, 3, . . . , 10\}$, aber üblicherweise ist die Anzahl $k$ unbekannt!) Cluster zu finden, zeigen z. B. Charrad M., Ghazzali N., Boiteau V. and Niknafs, A. (2014). NbClust: An R Package for Determining the Relevant Number of Clusters in a Data Set. Journal of Statistical Software, 61(6), 1-36. <http://dx.doi.org/10.18637/jss.v061.i06>
+:::
+
+
+## $k$ unterschiedliche Cluster
+
+```{r}
+# | echo: false
+
+library(mosaic)
+data("iris")
+iris.s <- iris[,3:4] |>
+  scale() |>
+  data.frame()
+
+set.seed(1896)
+cluster.iris2 <- kmeans(iris.s, centers=2)
+cluster.iris3 <- kmeans(iris.s, centers=3)
+cluster.iris4 <- kmeans(iris.s, centers=4)
+cluster.iris5 <- kmeans(iris.s, centers=5)
+
+p2 <- gf_point(Petal.Width ~ Petal.Length, color = ~ cluster.iris2$cluster, show.legend = FALSE, data=iris.s)|>
+  gf_labs(x = "x", 
+          y = "y",
+          title = "k=2")|>
+  gf_theme(theme_classic())|>
+    gf_refine(scale_color_gradientn(colours = rainbow(3)))
+
+p3 <- gf_point(Petal.Width ~ Petal.Length, color = ~ cluster.iris3$cluster, show.legend = FALSE, data=iris.s)|>
+  gf_labs(x = "x", 
+          y = "y",
+          title = "k=3")|>
+  gf_theme(theme_classic())|>
+    gf_refine(scale_color_gradientn(colours = rainbow(3)))
+
+p4 <- gf_point(Petal.Width ~ Petal.Length, color = ~ cluster.iris4$cluster, show.legend = FALSE, data=iris.s)|>
+  gf_labs(x = "x", 
+          y = "y",
+          title = "k=4")|>
+  gf_theme(theme_classic())|>
+    gf_refine(scale_color_gradientn(colours = rainbow(3)))
+
+p5 <- gf_point(Petal.Width ~ Petal.Length, color = ~ cluster.iris5$cluster, show.legend = FALSE, data=iris.s)|>
+  gf_labs(x = "x", 
+          y = "y",
+          title = "k=5") |>
+  gf_theme(theme_classic()) |>
+    gf_refine(scale_color_gradientn(colours = rainbow(3)))
+  
+
+gridExtra::grid.arrange(p2,p3,p4,p5, ncol=2)
+```
+
+
+## Fallstudie 💻
+
+::::::: columns
+:::: {.column width="50%"}
+-   posit Cloud: In **Ihr** Projekt einloggen.
+
+::: center
+![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
+:::
+::::
+
+:::: {.column width="50%"}
+-   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
+
+::: center
+![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
+:::
+::::
+:::::::
+
+Öffnen Sie die Datei `Clusteranalyse_PENGUINS.qmd` im Ordner `fallstudien`.
