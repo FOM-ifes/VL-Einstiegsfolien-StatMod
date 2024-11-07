@@ -30,9 +30,15 @@ subtitle: "Neunter Termin"
 
 # Rückblick
 
-## Was beim letzten Mal geschah ...
+## Beim letzten Mal haben Sie gelernt, dass ...
 
--   [Rückblick auf Random Forrest]{.red}
+-   Random Forest eine Ensemble-Methode ist, die mehrere Entscheidungsbäume zu einem Vorhersagemodell aggregiert.
+-   Random Forest sowohl für Klassifikations- als auch Regressionsprobleme verwendet werden kann.
+-   Random Forest "Bagging" verwendet, um die einzelnen Entscheidungsbäume zu diversifizieren und somit die Varianz des Vorhersagemodells zu reduzieren.
+-   zum Trainieren und Testen des Algorithmus der ursprüngliche Datensatz in Trainings- und Testdatensatz aufgeteilt werden muss.
+-   beim Trainieren des Algorithmus Hyperparameter eingestellt werden können, wie z.B. "ntree" oder "mtry".
+-   die Performance des Algorithmus mithilfe von Modellgütekriterien überprüft werden kann.
+-   nachvollzogen werden kann, welchen Einfluss die verschiedenen Variablen auf die Vorhersage haben.
 
 ## Heutige Themen -- Unsupervised Learning 🏫
 
@@ -59,29 +65,29 @@ subtitle: "Neunter Termin"
 
 -   Sie können die Ergebnisse einer Hauptkomponentenanalyse interpretieren.
 
-## Was ist das
+## Was ist eine Hauptkomponentenanalyse?
 
-Die Hauptkomponentenanalyse (engl.: Principal Component Analysis) erzielt eine Dimensionsreduktion über die Zusammenfassung von Variablen zu (wenigen) Hauptkomponenten. Dazu werden Linearkombinationen der Variablen gebildet.
+Die Hauptkomponentenanalyse (engl.: Principal Component Analysis) ist eine statistische Methode zur Dimensionsreduktion über die Zusammenfassung von Variablen zu (wenigen) Hauptkomponenten. Dazu werden Linearkombinationen der Variablen gebildet.
 
 ## Fallstudie 💻
 
-::::::: columns
-:::: {.column width="50%"}
+::: columns
+::: {.column width="50%"}
 -   posit Cloud: In **Ihr** Projekt einloggen.
 
 ::: center
 ![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
 :::
-::::
+:::
 
-:::: {.column width="50%"}
+::: {.column width="50%"}
 -   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
 
 ::: center
 ![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
 :::
-::::
-:::::::
+:::
+:::
 
 Öffnen Sie die Datei `HKA.qmd` im Ordner `fallstudien`.
 
@@ -95,7 +101,7 @@ Die Hauptkomponentenanalyse (engl.: Principal Component Analysis) erzielt eine D
 
 -   Sie können eine k-Means-Clusteranalyse durchführen und die Ergebnisse interpretieren.
 
-## Finden von homogenen Gruppen
+## Was ist eine Clusteranalyse?
 
 Das Ziel der Clusteranalyse (engl.: Cluster Analysis) ist es, Gruppen (Cluster) von Beobachtungen zu bilden, die innerhalb der Cluster homogen und zwischen den Clustern heterogen sind. Einsatzbeispiel sind:
 
@@ -122,7 +128,6 @@ $$
 ::: footnote
 Eine Übersicht über die Methoden, um $k$ (oft: $k \in \{2, 3, . . . , 10\}$, aber üblicherweise ist die Anzahl $k$ unbekannt!) Cluster zu finden, zeigen z. B. Charrad M., Ghazzali N., Boiteau V. and Niknafs, A. (2014). NbClust: An R Package for Determining the Relevant Number of Clusters in a Data Set. Journal of Statistical Software, 61(6), 1-36. <http://dx.doi.org/10.18637/jss.v061.i06>
 :::
-
 
 ## $k$ unterschiedliche Cluster
 
@@ -173,25 +178,24 @@ p5 <- gf_point(Petal.Width ~ Petal.Length, color = ~ cluster.iris5$cluster, show
 gridExtra::grid.arrange(p2,p3,p4,p5, ncol=2)
 ```
 
-
 ## Fallstudie 💻
 
-::::::: columns
-:::: {.column width="50%"}
+::: columns
+::: {.column width="50%"}
 -   posit Cloud: In **Ihr** Projekt einloggen.
 
 ::: center
 ![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
 :::
-::::
+:::
 
-:::: {.column width="50%"}
+::: {.column width="50%"}
 -   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
 
 ::: center
 ![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
 :::
-::::
-:::::::
+:::
+:::
 
 Öffnen Sie die Datei `Clusteranalyse_PENGUINS.qmd` im Ordner `fallstudien`.
