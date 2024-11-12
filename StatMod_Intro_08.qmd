@@ -1,0 +1,85 @@
+---
+subtitle: "Achter Termin"
+---
+
+# Einstieg
+
+## Zur Erinnerung
+
+-   :computer: Arbeiten Sie aktiv mit.
+
+-   :raising_hand: Stellen Sie Fragen.
+
+-   :muscle: <https://tweedback.de/xxx/>
+
+::: center
+{{< qrcode https://tweedback.de/xxx/quiz width=400 height=400 >}}
+:::
+
+## Tipps für den Vorlesungserfolg
+
+-   Kommen Sie zur Vorlesung!
+
+-   Vermeiden Sie Ablenkung.
+
+-   Arbeiten Sie die Vorlesung von Anfang an **vor** und nach. Nutzen Sie dafür das Dokument *Quantitative Datenanalyse -- Umsetzung mit R*.
+
+-   Stellen Sie Fragen.
+
+-   Unterstützen Sie sich gegenseitig.
+
+# Rückblick
+
+## Was beim letzten Mal geschah ...
+
+-   Kausale Inferenz
+
+## Heutiges Thema 🏫
+
+-   Random Forest
+
+::: center
+![](img/Memes/Random_Forest_Meme.gif){width="60%"}
+:::
+
+## Was Sie lernen 👩‍🏫
+
+-   Sie lernen, was ein Entscheidungsbaum ist, wie er funktioniert und für welche Datentypen dieser verwendet werden kann.
+
+-   Sie lernen, was der Random-Forest-Algorithmus ist, was dieser mit Entscheidungsbäumen zu tun hat und wie der Algorithmus funktioniert.
+
+-   Sie lernen, wie der Random-Forest-Algorithmus trainiert, optimiert und getestet wird.
+
+-   Sie lernen, für welche Probleme die Verwendung von Random Forest sinnvoll ist und sind in der Lage die Ergebnisse zu interpretieren.
+
+## Entscheidungsbäume und Random Forest
+
+-   **Entscheidungsbaum:** Ein grafisches Modell, das Entscheidungen und deren mögliche Konsequenzen in Form von verzweigten Pfaden darstellt, wobei jeder Knoten eine Entscheidungsregel und jedes Blatt ein Ergebnis repräsentiert.
+
+-   **Random Forest:** Ein Machine-Learning-Algorithmus, der eine Vielzahl von Entscheidungsbäumen kombiniert, um durch Mehrheitsvotings oder Mittelung stabilere und bessere Vorhersagen zu treffen.
+
+::: center
+![](img/Sonstige/DecisionTree_RandomForest.webp){width="40%"}
+:::
+
+## Fallstudie 💻
+
+::: columns
+::: {.column width="50%"}
+-   posit Cloud: In **Ihr** Projekt einloggen.
+
+::: center
+![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
+:::
+:::
+
+::: {.column width="50%"}
+-   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
+
+::: center
+![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
+:::
+:::
+:::
+
+Öffnen Sie die Datei `Random-Forest.qmd` im Ordner `fallstudien`.
