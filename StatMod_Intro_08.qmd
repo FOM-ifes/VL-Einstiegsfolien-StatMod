@@ -30,13 +30,24 @@ subtitle: "Achter Termin"
 
 # Rückblick
 
-## Was beim letzten Mal geschah ...
+## Beim letzen Mal haben Sie gelernt, dass...
 
--   Kausale Inferenz
+-   kausale Beziehungen mit drei Variablen (X, Y und C) als **Chain**, **Fork** und **Inverted Fork** dargestellt werden können.
+
+```{=html}
+<!-- -->
+```
+-   das C in der **Chain** auch **Mediator** genannt werden kann und erklärt, warum ein Effekt zwischen X und Y eintritt.
+
+-   das C in der **Fork** ein sogenannter **Confounder** ist und einen Einfluss auf sowohl X als auch Y hat.
+
+-   das C in der **Inverted Fork** ein **Collider** ist und von X und Y beeinflusst wird.
+
+-   ein **Bias** eine systematische Verzerrung in den Daten / im Modell beschreibt und dass es unterschiedliche Arten dieser Verzerrungen gibt (Omitted-Variable-Bias, Collider-Bias, Sample-Selection-Bias, etc.).
 
 ## Heutiges Thema 🏫
 
--   Random Forest
+-   **Random Forest**
 
 ::: center
 ![](img/Memes/Random_Forest_Meme.gif){width="60%"}
