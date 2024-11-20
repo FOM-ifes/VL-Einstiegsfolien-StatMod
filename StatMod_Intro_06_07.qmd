@@ -32,7 +32,7 @@ subtitle: "Sechster und siebter Termin"
 
 ## Was beim letzten Mal geschah ...
 
-- Sie haben univariate und multivarite Regressionsmodelle aufgestellt.
+- Sie haben univariate und multivariate Regressionsmodelle aufgestellt.
 
 - Sie haben die Steigung $\hat\beta_1$ und den $y$-Achsenabschnitt $\hat\beta_0$ interpretiert.
 
@@ -62,13 +62,13 @@ subtitle: "Sechster und siebter Termin"
 
 ## Kausale Leiter
 
--   **Assoziation**: $Pr(y|x)$ – Beobachtung: *Was ist*?\
+-   **Assoziation**: $Pr(y|x)$ -- Beobachtung: *Was ist*?\
     Wie wahrscheinlich ist $Y=y$, wenn ich $X=x$ beobachte?
 
--   **Intervention**: $Pr(y|do(x))$ – Tun: *Was wäre*?\
+-   **Intervention**: $Pr(y|do(x))$ -- Tun: *Was wäre*?\
     Wie wahrscheinlich ist $Y=y$, wenn ich $X=x$ setze, d.h. manipuliere?
 
--   **Counterfactuals**: $Pr(y_x|x',y')$ – Vorstellung: *Was wäre gewesen*?\
+-   **Counterfactuals**: $Pr(y_x|x',y')$ -- Vorstellung: *Was wäre gewesen*?\
     Wir haben $X=x'$ und als Folge $Y=y'$ beobachtet. Wie wahrscheinlich ist dann $Y=y$,\
     wenn ich $X=x$ gesetzt hätte?
 

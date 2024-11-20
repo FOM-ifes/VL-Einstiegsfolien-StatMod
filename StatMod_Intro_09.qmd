@@ -36,13 +36,15 @@ subtitle: "Neunter Termin"
 -   Random Forest sowohl für Klassifikations- als auch Regressionsprobleme verwendet werden kann.
 -   Random Forest "Bagging" verwendet, um die einzelnen Entscheidungsbäume zu diversifizieren und somit die Varianz des Vorhersagemodells zu reduzieren.
 -   zum Trainieren und Testen des Algorithmus der ursprüngliche Datensatz in Trainings- und Testdatensatz aufgeteilt werden muss.
--   beim Trainieren des Algorithmus Hyperparameter eingestellt werden können, wie z.B. "ntree" oder "mtry".
+-   beim Trainieren des Algorithmus Hyperparameter eingestellt werden können, wie z. B. `ntree` oder `mtry`.
 -   die Performance des Algorithmus mithilfe von Modellgütekriterien überprüft werden kann.
 -   nachvollzogen werden kann, welchen Einfluss die verschiedenen Variablen auf die Vorhersage haben.
 
 ## Heutige Themen -- Unsupervised Learning 🏫
 
-**Unüberwachtes Lernen** (engl.: unsupervised learning): Es gibt *keine* bekannte abhängige Variable $y$, die modelliert werden soll. Methoden (u. a.):
+**Unüberwachtes Lernen** (engl.: unsupervised learning): Es gibt *keine* bekannte abhängige Variable $y$, die modelliert werden soll. 
+
+Methoden (u. a.):
 
 -   Clusteranalyse
 
@@ -117,16 +119,16 @@ Das Ziel der Clusteranalyse (engl.: Cluster Analysis) ist es, Gruppen (Cluster) 
 
 -   Hierarchische Verfahren: bottom-up (agglomerativ: Start mit sovielen Clustern, wie es Beobachtungen gibt) oder top-down (divisiv: Start mit einem Cluster)
 
--   Partionierende Verfahren: Vorgabe der Anzahl von Clustern, dann bestmögliche Zuordnung der Beobachtungen über mehrere Schritte zu den Clustern (z. B. k-Means-Clustering)
+-   Partionierende Verfahren: Vorgabe der Anzahl von Clustern, dann bestmögliche Zuordnung der Beobachtungen über mehrere Schritte zu den Clustern (z. B. k-Means-Clustering)
 
--   Verwendung von Distanzmaßen zur Bestimmung der Ähnlichkeit (Unähnlichkeit) innerhalb der Cluster. Für metrische Variablen z. B. Euklidische Distanz
+-   Verwendung von Distanzmaßen zur Bestimmung der Ähnlichkeit (Unähnlichkeit) innerhalb der Cluster. Für metrische Variablen z. B. euklidische Distanz
 
 $$
 d(x,y) = \sqrt{\sum_j(x_j - y_j)^2}
 $$
 
 ::: footnote
-Eine Übersicht über die Methoden, um $k$ (oft: $k \in \{2, 3, . . . , 10\}$, aber üblicherweise ist die Anzahl $k$ unbekannt!) Cluster zu finden, zeigen z. B. Charrad M., Ghazzali N., Boiteau V. and Niknafs, A. (2014). NbClust: An R Package for Determining the Relevant Number of Clusters in a Data Set. Journal of Statistical Software, 61(6), 1-36. <http://dx.doi.org/10.18637/jss.v061.i06>
+Eine Übersicht über die Methoden, um $k$ (oft: $k \in \{2, 3, . . . , 10\}$, aber üblicherweise ist die Anzahl $k$ unbekannt!) Cluster zu finden, zeigen z. B. Charrad M., Ghazzali N., Boiteau V. and Niknafs, A. (2014). NbClust: An R Package for Determining the Relevant Number of Clusters in a Data Set. Journal of Statistical Software, 61(6), 1-36. <http://dx.doi.org/10.18637/jss.v061.i06>
 :::
 
 ## $k$ unterschiedliche Cluster
