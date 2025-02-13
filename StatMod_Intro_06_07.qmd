@@ -32,17 +32,17 @@ subtitle: "Sechster und siebter Termin"
 
 ## Was beim letzten Mal geschah ...
 
-- Sie haben univariate und multivariate Regressionsmodelle aufgestellt.
+-   Sie haben univariate und multivariate Regressionsmodelle aufgestellt.
 
-- Sie haben die Steigung $\hat\beta_1$ und den $y$-Achsenabschnitt $\hat\beta_0$ interpretiert.
+-   Sie haben die Steigung $\hat\beta_1$ und den $y$-Achsenabschnitt $\hat\beta_0$ interpretiert.
 
-- Sie wissen, was das Bestimmtheitsmaß $R^2$ ist.
+-   Sie wissen, was das Bestimmtheitsmaß $R^2$ ist.
 
-- Sie haben die Regressionskoeffizienten zu unterschiedlich skalierten unabhängigen Variablen interpretiert.
+-   Sie haben die Regressionskoeffizienten zu unterschiedlich skalierten unabhängigen Variablen interpretiert.
 
-- Sie haben die Inferenz in der Regressionanalyse kennengelernt.
+-   Sie haben die Inferenz in der Regressionanalyse kennengelernt.
 
-- Sie können zwischen verschiedenen Modellen unterscheiden und geeignete Modelle auswählen.
+-   Sie können zwischen verschiedenen Modellen unterscheiden und geeignete Modelle auswählen.
 
 ## Heutiges Thema 🏫
 
@@ -60,7 +60,18 @@ subtitle: "Sechster und siebter Termin"
 
 -   Zwischen Beschreibung, Vorhersage und Kausaler Inferenz zu unterscheiden; warum diese Unterscheidung wichtig ist und was die Kausale Leiter ist.
 
+## Qualitative Annahmen
+
+-   Daten sind nicht einfach nur da, sie haben eine Entstehungsgeschichte: einen **datengenerierenden Prozess**.
+-   Im Rahmen der Kausalen Modellierung werden *qualitative*, kausale Modellannahmen mathematisch / graphisch dargestellt.
+-   Anhand der *angenommenen* Modelle
+    -   kann entschieden werden, ob kausale Effekte bestimmbar sind;
+    -   können überprüfbare Implikationen entwickelt werden.
+-   Scherpunkt dieser Einheit: Erkennen und Vermeiden von Verzerrungen im *quantitativen* statistischen Modell.
+
 ## Kausale Leiter
+
+<br> Pearl (2018) unterscheidet 3 Stufen der kausalen Modellierung:
 
 -   **Assoziation**: $Pr(y|x)$ -- Beobachtung: *Was ist*?\
     Wie wahrscheinlich ist $Y=y$, wenn ich $X=x$ beobachte?
@@ -71,6 +82,68 @@ subtitle: "Sechster und siebter Termin"
 -   **Counterfactuals**: $Pr(y_x|x',y')$ -- Vorstellung: *Was wäre gewesen*?\
     Wir haben $X=x'$ und als Folge $Y=y'$ beobachtet. Wie wahrscheinlich ist dann $Y=y$,\
     wenn ich $X=x$ gesetzt hätte?
+    
+## $X \rightarrow Y$
+
+<br>
+
+Kausalität
+
+$$X \rightarrow Y$$
+
+Intuitiv:
+
+- Wird $X$ geändert, ändert sich $Y$ &ndash; umgekehrt *nicht*. Z.B. ändert sich mein Gewicht ($Y$), wenn ich größer werde ($X$), leider wachse ich nicht mit meinem Gewicht.
+- Ändert sich $P(X)$, so ändert sich $P(Y|X) nicht.
+
+
+## Strucutral Causal Model
+
+::::: columns
+::: {.column width="50%"}
+- Ein **Structural Causal Model** (SCM) besteht aus zwei Variablentypen: dem endogenen Variablenset $V$ (innerhalb des Modells) und dem exogenen Variablenset $U$ (außerhalb des Modells). Außerdem aus Funktionen $f()$, die den Variablen $V$ einen Wert auf Basis der anderen Variablen im Modell zuweisen.
+:::
+
+::: {.column width="50%"}
+::: center
+![](img/Sonstige/SCM.png){width="60%"}
+:::
+:::
+:::::
+
+- Beispiel: $X \rightarrow Y$ 
+  + $X = U_X$: $X$ hängt von keiner Variable im Modell ab, nur von $U_X$.
+  + $Y = f_{Y}(X, U_{Y})$: $Y$ hängt von $X$ ab (und von $U_Y$).
+  + Die exogenen Variablen (*Fehler*) von $X$ und $Y$ sind unabhängig. 
+
+
+## Grundelemente der DAGs (I/II)
+
+In DAGs werden kausale Beziehungen durch einen Pfeil ausgedrückt:
+
+-   $X \rightarrow Y$
+
+$X$ kann kausal auf $Y$ wirken, aber $Y$ nicht auf $X$. $X$ ist ein Elternteil (*parent*) von $Y$, $Y$ ein Kind (*child*) von $X$.
+
+<br> 
+Aus drei Variablen können folgende Grundelemente der DAGs gebildet werden:
+
+-   Chain (Kette): $X \rightarrow C \rightarrow Y$
+-   Fork (Gabel): $X \leftarrow C \rightarrow Y$
+-   Inverted Fork (umgedrehte Gabel): $X \rightarrow C \leftarrow Y$
+
+In der Chain ist $X$ jetzt ein Vorfahre (*ancestor*) von $Y$ und $Y$ ein Nachfahre (*descendant*) von $X$.
+
+## Grundelemente der DAGs (II/II)
+
+<br>
+
+| Pfad | $X \rightarrow C \rightarrow Y$ | $X \leftarrow C \rightarrow Y$ | $X \rightarrow C \leftarrow Y$ |
+|------------------|------------------|------------------|------------------|
+| Name | Chain (Kette) | Fork (Gabel) | Inverted Fork (umgedrehte Gabel) |
+| Bezeichnung $C$ | Mediator | Confounder | Collider |
+| Zusammenhang $X$ und $Y$ | Kausal | Nicht-kausal | Kein Zusammenhang |
+| Adjustierung $C$ | Blockiert kausalen Pfad | Blockiert nicht-kausalen Pfad | Öffnet nicht- kausalen Pfad |
 
 ## Vorgehen
 
@@ -89,7 +162,6 @@ Vor der Fallstudie bearbeiten wir einige interaktive Tutorials des Kurses
 -   Alle Tutorien: <https://github.com/luebby/WWWEKI>
 
 -   Begleitende Videos: <https://wwweki.gitlab.io/interviews/>
-
 
 ## Fallstudie 💻
 

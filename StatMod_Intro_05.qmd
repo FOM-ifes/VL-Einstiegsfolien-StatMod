@@ -105,13 +105,151 @@ $$Verbrauch = 8.120,60 - 18,44 \cdot Temperatur$$
 -   Regression funktioniert genau so: Es lagen (fiktive) Daten von Temperatur und Vebrauch vor und es soll der Zusammenhang zwischen diesen Variablen analysiert werden.
 -   Das gefundene Modell wird aufgrund des Rauschens nicht perfekt sein.
 
+
+## Einfaches lineares Modell
+
+Modelliere den Wert einer [abhängigen]{.olive} metrischen Variable als **lineare** Funktion einer [unabhängigen]{.purple} Variable, $\color{olive} {y} = f(\color{purple} {x}) + \color{orange} {\epsilon}$:
+
+$$\color{olive} {y_i} = \color{violet} {\beta_0} + \color{blue} {\beta_1} \cdot \color{purple} {x_i} + \color{orange} {\epsilon_i} $$
+
+Mit: 
+
+- $\color{violet} {\beta_0}$: $y$-Achsenabschnitt im theoretischen Modell der Population,
+- $\color{blue} {\beta_1}$: Steigung im theoretischen Modell der Population,
+- $\color{orange} \epsilon$: Fehlerterm (*Rest*).
+
+Im Modell der Stichprobe beschreiben $\color{violet} {b_0}, \color{blue} {b_1}$ den linearen Zusammenhang:
+$$\color{olive} {y_i} = \color{violet} {b_0} + \color{blue} {b_1} \cdot \color{purple} {x_i} + \color{orange} {e_i} $$
+
+## Kleinste Quadrate Methode
+
+::::: columns
+::: {.column width="50%"}
+
+<br>
+
+Ziel der KQ-Methode ist es die Quadratsumme der Residuen  $\color{orange} {e_i}=\color{olive} {y_i}- \color{olive} {\hat{y}_i}$zu minimieren: $$\min\sum_i{\color{orange} {e_i}^2}$$
+
+D.h., dass der **modellierte** Wert $\color{olive} {\hat{y}_i}$ der abhängigen Variable über alle Beobachtungen $i$ möglichst nah am **beobachteten** Wert $\color{olive} {y_i}$ liegen soll.
+:::
+
+::: {.column width="50%"}
+
+::: center
+![](img/Sonstige/RegressionRSS.gif){width="90%"}
+:::
+
+:::
+:::::
+
+
+## Bestimmtheitsmaß
+
+Das Bestimmtheitsmaß $R^2$ gibt den Anteil der im Modell erkläreten Variation von $y$ an:
+
+$$R^2 = \frac{\sum_{i=1}^n (\hat{y}_i-\bar{y})^2}{\sum_{i=1}^n (y_i-\bar{y})^2} = 1-\frac{\sum_{i=1}^n (y_i-\hat{y}_i)^2}{\sum_{i=1}^n (y_i-\bar{y})^2}$$
+
+-   *Einfachstes Modell*: Prognose durch Mittelwert: $\hat{y}_i = \bar{y} : R^2 = 0$
+-   *Bestes Modell*: Prognose ist Beobachtung: $\hat{y}_i = \bar{y} : R^2 = 1$
+
+::: center
+![](img/Sonstige/R-Quadrat.png){width="42%"}
+:::
+
+
 ## Inferenz in der Regression
 
 ::: center
 $$\hat{\beta} = \beta + \text{(Verzerrung)} + \text{Rauschen}$$
 
-![Quelle: [David Hood](https://twitter.com/Thoughtfulnz/status/1446972794135216131)](img/Memes/modelmeme.jpeg){fig-align="center" width="40%"}
+![Quelle: [David Hood](https://twitter.com/Thoughtfulnz/status/1446972794135216131)](img/Memes/modelmeme.jpeg){fig-align="center" width="60%"}
 :::
+
+##Schätzunsicherheit
+
+::::: columns
+::: {.column width="48%"}
+**Resampling**:
+
+- Unterscheiden sich die Stichproben, können sich auch die Ergebnisse (leicht) unterscheiden.
+- Diese Unsicherheit durch die Variation der Stichprobe können wir simulieren, indem wir aus unserer Stichprobe eine neue ziehen.
+- Durch **Ziehen mit Zurücklegen (resampling)** kann eine neue, zufällige Stichprobe aus den vorhandenen Daten gewonnen werden.
+
+:::
+
+::: {.column width="50%"}
+**Bootstrapping**:
+
+- Den wiederholten Vorgang des Resamplings nennt man Bootstrapping.
+- Voraussetzungen für das Bootstrapping sind:
+  + Zufällige Stichprobe oder zufällige Zuordnung
+  + Nicht zu kleine Stichprobe ($n \geq 35$)
+
+:::
+:::::
+
+## Standardfehler
+
+Der Standardfehler (engl.: "**standard error**" oder **se**) ist ein Maß dafür, wie stark eine Zusammenfassung der Stichprobe &ndash; ein Schätzwert &ndash; (z.B. der Mittelwert) vom wahren, unbekannten Wert der Population abweicht. Je größer die Stichprobe ($n$), desto kleiner der Standardfehler:
+
+$$ se = \frac{sd}{\sqrt{n}} $$
+
+<br>
+
+[Nicht]{.red} zu verwechseln mit: **Standardabweichung**
+
+- Die **Standardabweichung** ist ein Maß für die Streuung der Beobachtungen, das heißt wie gleich oder verschiedenarting die Beobachtungen in der Stichprobe sind.
+
+
+## Konfidenzintervall
+
+Ein **Konfidenzintervall** gibt einen Bereich an, der den wahren, unbekannten Wert der Population mit einer gegebenen Sicherheit ($1 - Irrtumswahrscheinlichkeit \ (\alpha)$) überdeckt, d.h., den Anteil der so konstruierten Konfidenzintervalle, die den Wert enthalten. Für den Stichprobenmittelwert ergeben sich folgende Grenzen:
+
+$$ KI = \bar{x} \pm z_{(1 - \frac{\alpha}{2})} \cdot se = \bar{x} \pm z_{(1 - \frac{\alpha}{2})} \frac{sd}{\sqrt{n}}$$
+
+- wobei $z_{(1 - \frac{\alpha}{2})}$ nach der 68-95-99.7%-Regel bestimmt werden kann (z.B. bei 95% ist $z_{(1 - \frac{0,5}{2})} \approx 2$)
+
+- Je größer der Stichprobenumfang, desto schmaler das Konfidenzintervall (unter sonst gleichen Umständen): Der Standardfehler $se$ fällt mit steigenden $n$.
+
+- Je größer die Sicherheit(z.B. 99% statt 95%), desto breiter das Intervall.
+
+
+## p-Wert
+
+Der **p-Wert** gibt den Anteil der Stichproben an, die ein midenstens genau so extremes Ergebnis wie die beobachtete Sichprobe haben, unter der Annhame, dass die $H_0$ gilt.
+
+- Anders gesagt: Der p-Wert berechnet sich als die Wahrscheinlichkeit eines solchen oder extremeren Wertes der Teststatistik unter den Annahmen von $H_0$.
+
+[Achtung:]{.red} Der p-Wert sagt nicht aus, wie wahrscheinlich die $H_0$ bei den vorliegenden Daten (Teststatistik) ist!
+
+<br>
+**Testentscheidung**: <br>
+(**Keine** Entscheidung sollte rein auf Basis den p-Wertes getroffen werden, *vor* der Testentscheidung **immer** eine explorative Datenanalyse durchführen.)
+
+- Ist der p-Wert $< \alpha$, so wird $H_{0}$ verworfen, ansonsten nicht.
+- Wird die $H_{0}$ verworfen, so nennt man das Ergebnis (statistisch) signifikant zum Niveau $\alpha$.
+
+
+## Multiple Regression
+
+<br>
+Modellgleichung:
+
+$${y_i} = {\beta_0} + {\beta_1} \cdot {x_i1} + {\beta_2} \cdot {x_i2} + ... + {\beta_p} \cdot {x_ip} + {\epsilon_i} $$
+Interpretation der Koeffizienten (Schätzwerte, p-Werte) unter Annhame sonst gleicher Umstände, d.h., die anderen Variablen im Modell bleiben konstant / unverändert (ceteris paribus, c.p.): marginaler Effekt.
+
+<br>
+[Wichtig:]{.red} Der Regressionskoeffizient ($\beta$) eines Prädiktors hängt davon ab, welche anderen Prädiktoren in der multiplen Regression betrachtet werden. Häufig hängen die Prädiktoren untereinander zusammen und klären teilweise die gleichen Varianzanteile des Kriteriums auf.
+
+
+## Interaktionseffekte
+
+<br>
+Modellbeispiel:
+
+$${y_i} = {\beta_0} + {\beta_1} \cdot {x_i1} + {\beta_1} \cdot {x_i1} + {\beta_3} \cdot ({x_i1} \cdot {x_i2}) + {\epsilon_i} $$
+Hierbei ist $\beta_3$ der Koeffizient des Interaktionsterms $X_1 \cdot X_2$, der die zusätzlich Wirkung beschreibt, die nicht durch die einzelnen Effekte von $X_1$ und $X_2$ erklärt wird.
+
 
 ## Fallstudie 💻
 
