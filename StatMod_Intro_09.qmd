@@ -42,17 +42,23 @@ subtitle: "Neunter Termin"
 
 ## Heutige Themen -- Unsupervised Learning 🏫
 
-**Unüberwachtes Lernen** (engl.: unsupervised learning): Es gibt *keine* bekannte abhängige Variable $y$, die modelliert werden soll. 
+**Unüberwachtes Lernen** (engl.: unsupervised learning): Es gibt *keine* bekannte abhängige Variable $y$, die modelliert werden soll.
 
+:::::: columns
+::: {.column width="50%"}
 Methoden (u. a.):
 
 -   Clusteranalyse
 
 -   Hauptkomponentenanalyse
-
-::: center
-![](img/Memes/Meme_PCA-CA.jpg){width="30%"}
 :::
+
+:::: {.column width="50%"}
+::: center
+![](img/Memes/Meme_PCA-CA.jpg){width="80%"}
+:::
+::::
+::::::
 
 # Hauptkomponentenanalyse (PCA)
 
@@ -67,29 +73,393 @@ Methoden (u. a.):
 
 -   Sie können die Ergebnisse einer Hauptkomponentenanalyse interpretieren.
 
-## Was ist eine Hauptkomponentenanalyse?
+## Steckbrief Hauptkomponentenanalyse
 
-Die Hauptkomponentenanalyse (engl.: Principal Component Analysis) ist eine statistische Methode zur Dimensionsreduktion über die Zusammenfassung von Variablen zu (wenigen) Hauptkomponenten. Dazu werden Linearkombinationen der Variablen gebildet.
+-   Die Hauptkomponentenanalyse (Principal Component Analysis – PCA) ist eine statistische Methode zur Dimensionsreduktion.
 
+-   **Idee**: Fasse korrelierte Variablen (linear) zusammen. Die resultierenden Komponenten sind unkorreliert und beinhalten einen möglichst großen Anteil der (multivariaten) Gesamtvariation.
+
+-   **Frage**: Können multidimensionale metrische Daten auf wenige wichtige Hauptkomponenten (Faktoren) verdichtet werden?
+
+-   Das **Ziel** der Analyse bestehet darin, aus einer Vielzahl empirisch beobachteter, korrelierter Variablen (z. B. Fragebogenitems) auf wenige voneinander unabhängige Variablen (Hauptkomponenten) zu schließen (Dimensionsreduktion).
+
+## Einstiegsbeispiel Hauptkomponentenanalyse
+
+Im Rahmen einer Studie zu Marktreaktionsfunktionen wurde - neben vielen anderen Variablen - der Erfolg eines Unternehmens über folgende Items erhoben:
+
+::: center
+![Fragebogen-Auszug](img/Sonstige/Unternehmenserfolg-FB.png){width="50%"}
+:::
+
+Frage: Gibt es (weniger als 6) Hauptkomponenten, die den Erfolg des Unternehmens erklären?
+
+::: footnote
+[Gansser, O.A. & Krol, B. (2015)](https://link.springer.com/chapter/10.1007/978-3-658-04492-3_8): Ein Modell zur Erklärung und Prognose des Werbeplanungserfolgs.
+:::
+
+## Ausgangsbasis: Korrelationsmatrix
+
+Darstellung der bivariaten Korrelation der sechs metrischen Variablen:
+
+<br>
+
+```{r}
+#| label: Korrelationsmatrix
+
+# Paket laden
+library(psych)
+
+# Daten einlesen
+Erfolg <- read.csv2("https://raw.githubusercontent.com/FOM-ifes/variousdata/refs/heads/main/Erfolg.csv")
+
+# Korrelationsmatrix
+cormatrix <- round(cor(Erfolg),3)
+
+library(knitr)
+library(kableExtra)
+kable(cormatrix, format = "html") |>
+  kable_styling(font_size = 36)
+
+```
+
+## Corrplot
+
+Um einen besseren Überblick über die Korrelationen zu bekommen, kann eine grafische Analyse mittels `corrplot` durchgeführt werden:
+
+```{r}
+#| label: Corrplot
+#| fig-height: 3.5
+
+# Paket laden
+library(corrplot)
+
+# Corrplot
+corrplot(cor(Erfolg))
+```
+
+## Vier Schritte der PCA
+
+1.  Voraussetzungen, d. h. Eignung der Korrelationsmatrix prüfen
+
+2.  Anzahl der Hauptkomponenten bestimmen
+
+3.  Ursprüngliche Variablen den Hauptkomponenten zuordnen
+
+4.  ggf. Reliabilitätsanalyse durchführen
+
+## Voraussetzungen der PCA
+
+[Korrelationsanalyse]{.green}
+
+::: {style="font-size: 97%;"}
+-   zeigt die paarweisen Korrelationen der Variablen an
+-   gibt erste Hinweis auf Zusammenhänge, ist aber als Prüfung der Voraussetzungen nicht ausreichend
+:::
+
+[Kaiser-Mayer-Olkin-Kriterium (KMO)]{.green}
+
+::: {style="font-size: 97%;"}
+-   zeigt an, inwieweit die Ausgangsdaten miteinander im Zusammenhang stehen.
+-   KMO \< 0,5 ist nicht akzeptabel, wünschenswert ist KMO \> 0,8.
+:::
+
+[Bartlett-Test]{.green}
+
+::: {style="font-size: 80%;"}
+-   prüft mittels $\chi^2$-Test, ob die Korrelationsmatrix sich von der Einheitsmatrix unterscheidet:
+
+    + Nullhypothese ($H_0$): Korrelationsmatrix entspricht der Einheitsmatrix.
+    + Alternativhypothese ($H_1$): Korrelationsmatrix ist ungleich der Einheitsmatrix.
+
+:::
+
+## Anzahl der Hauptkomponenten: Vorgehen
+
+Wie erhält man die Hauptkomponenten und wie viele sind sinnvoll?
+
+-   Zunächst gibt es so viele Hauptkomponenten wie Variablen
+
+-   Ziel: Dimensionsreduktion durch max. Erfassung der Variation und [sinnvoll interpretierbare]{.green} Hauptkomponenten
+
+-   Schritt 1: Suche die größte Gruppe von Items, die hoch korreliert sind (1. Hauptkomponente)
+
+-   Schritt 2: Suche die zweitgrößte Gruppe von Items, die hoch korreliert sind (2. Hauptkomponente)
+
+-   Wiederholung der Schritte 1 und 2, bis die Anzahl der Hauptkomponenten der Anzahl von Items entspricht
+
+-   Beachtung von „Stopp-Regeln“, um wichtige von unwichtigen Hauptkomponenten zu trennen (s. n. S.)
+
+## Anzahl der Hauptkomponenten: Stopp-Kriterien
+
+::: {style="font-size: 90%;"}
+[Eigenwert als Ausgangsbasis]{.green}
+:::
+
+::: {style="font-size: 87%;"}
+-   Der Eigenwert einer Hauptkomponente entspricht der von ihr bei allen Variablen gemeinsam erklärten Streuung.
+-   Konstruktionsbedingt ist dabei der Eigenwert der ersten HKA der höchste, der Eigenwert der zweiten HKA der zweithöchste usw.
+:::
+
+::: {style="font-size: 90%;"}
+[Kaiser-Kriterium]{.green}
+:::
+
+::: {style="font-size: 87%;"}
+-   Berücksichtigung der Hauptkomponenten mit einem Eigenwert \> 1
+-   Grund: Hauptkomponenten mit einem Eigenwert \<1 haben weniger Erklärungswert als ursprüngliche Variablen
+:::
+
+::: {style="font-size: 90%;"}
+[Scree-Plot-Kriterium]{.green} (Ellenbogenkriterium)
+:::
+
+::: {style="font-size: 87%;"}
+-   Graphisches Verfahren zur Bestimmung der optimalen Faktorenzahl: Berücksichtigung aller Hauptkomponenten, die im Scree-Plot links der Knickstelle (des Ellenbogens) liegen.
+-   Gibt es mehrere Knicke, dann wählt man jene Hauptkomponente, die links vor dem rechtesten Knick liegen.
+:::
+
+
+## Scree-Plot
+
+::: center
+```{r}
+#| label: screeplot
+#| fig-width: 15
+#| fig-height: 8
+
+scree(Erfolg, factors = FALSE)
+```
+:::
+
+## Durchführung der PCA: Extraktion der Komponenten
+
+```{r}
+#| label: PCA
+
+Erfolg.pca <- principal(Erfolg, nfactors = 2, rotate = "none")
+
+```
+
+![](img/Sonstige/Print-Erfolg-PCA.png){fig-align="center" height="22cm"}
+
+
+## Durchführung der PCA: Zuordnung der Variablen zu den Komponenten
+
+-   Die [Faktorladung]{.green} (factor loading) bezeichnet die Korrelation einer Variablen mit einer Hauptkomponente.\
+    Ist die Faktorladung [hoch]{.green}, dann beschreibt die Hauptkomponente die Variable [gut]{.green}, andernfalls nicht. Dementsprechend wird eine Variable einer Hauptkomponente zugeordnet, wenn die Faktorladung wenigstens 0,4 beträgt.
+
+-   Die [durchschnittlich erfasste Varianz]{.green} gibt an, wie viel Prozent der Ursprungsvarianz (Ursprungsinformation) der Ausgangsvariablen durch die Gesamtzahl aller Hauptkomponenten erfasst wird. Sie sollte mindestens $50\,\%$ betragen.
+
+## Durchführung der PCA: Komponentenladungen
+
+-   Hauptkomponenten (Spalten) sind Linearkombinationen der Items (Zeilen)
+
+-   Die Korrelation zwischen Item und Hauptkomponente wird als Komponentenladung (kurz: Ladung) bezeichnet.
+
+-   Items, die hohe Ladungen zu einer Komponente aufweisen, werden zu dieser [verdichtet]{.green} und man versucht, einen [Namen]{.green} für die gemeinsamen Eigenschaften dieser Items zu finden.
+
+::::: columns
+::: {.column width="50%"}
+Ergebnis des Beispiels *ohne Rotation*:
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: PCA-loadings
+
+pcaloadings <- round(Erfolg.pca$loadings[,], 2)
+
+kable(pcaloadings, format = "html") |>
+  kable_styling(font_size = 36)
+
+```
+:::
+:::::
+
+::: footnote
+Variablen: 1: Cash Flow, 2: Umsatz-Rentabilität, 3: Absatzwachstum, 4: Marktanteile,5: Kundenzufriedenheit, 6: Kundenbindung 
+::: 
+
+
+## Durchführung der PCA: Rotation (I / II)
+
+unrotierte Komponentenladungen
+
+```{r}
+#| label: Plot-unrotiert
+#| fig-height: 4
+
+# Pakete laden
+library(mosaic)
+library(ggplot2)
+library(ggformula)
+library(ggrepel)  # Falls du überlappende Labels vermeiden willst
+
+df_loadings <- as.data.frame(Erfolg.pca$loadings[, 1:2]) %>%
+  mutate(Variable = rownames(Erfolg.pca$loadings)) %>%
+  mutate(Variable = gsub("q_012_SQ00", "", Variable))  # Ersetze Muster durch Kürzel
+
+ggplot(df_loadings, aes(x = PC1, y = PC2, label = Variable)) +
+  geom_point(size=3.5) +
+  geom_text_repel(size = 4) +  # Verhindert Überlappungen der Bezeichnungen
+ geom_hline(yintercept = 0, color = "black", arrow = arrow(length = unit(1, "cm"))) +  # Horizontale Achse
+ geom_vline(xintercept = 0, color = "black", arrow = arrow(length = unit(0.15, "cm"))) +  # Vertikale Achse
+  xlim(-1, 1.15) +  # Setzt die x-Achsen-Grenzen
+  ylim(-1, 1) +  # Setzt die y-Achsen-Grenzen
+  xlab("Hauptkomponente 1 (PC1)") +
+  ylab("Hauptkomponente 2 (PC2)") +
+  ggtitle("PCA Ladungen") +
+  theme_minimal() +
+  coord_fixed() +  # Gleiche Skalierung der Achsen
+  theme(axis.text = element_text(size = 12),
+        axis.title = element_text(size = 14, face = "bold"),
+        plot.title = element_text(size = 16, face = "bold"))
+```
+
+## Durchführung der PCA: Rotation (II / II)
+
+::::: columns
+::: {.column width="50%"}
+```{r}
+#| label: Plot-vor-Rotation
+#| fig-height: 10
+
+ggplot(df_loadings, aes(x = PC1, y = PC2, label = Variable)) +
+  geom_point(size=3.5) +
+  geom_text_repel(size = 6) +  # Verhindert Überlappungen der Bezeichnungen
+  geom_hline(yintercept = 0, color = "black") +  # Horizontale Achse
+  geom_vline(xintercept = 0, color = "black") +  # Vertikale Achse
+  xlim(-1, 1.15) +  # Setzt die x-Achsen-Grenzen
+  ylim(-1, 1) +  # Setzt die y-Achsen-Grenzen
+# 45-Grad- und -45-Grad-Achsen
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "red") +  # 45°
+  geom_abline(slope = -1, intercept = 0, linetype = "dashed", color = "blue") + # -45°
+# Pfeile zur Illustration der Rotation
+  geom_curve(aes(x = 0.0, y = 0.6, xend = 0.4, yend = 0.4), 
+             arrow = arrow(length = unit(0.15, "inches")), curvature = -0.3, color = "red") + # Pfeil zur neuen Achse
+  geom_curve(aes(x = 0.6, y = 0.0, xend = 0.4, yend = -0.4), 
+             arrow = arrow(length = unit(0.15, "inches")), curvature = -0.3, color = "blue") + # Pfeil zur neuen Achse
+  xlab("Hauptkomponente 1 (PC1)") +
+  ylab("Hauptkomponente 2 (PC2)") +
+  ggtitle("unrotierte Achsen") +
+  theme_minimal() +
+  coord_fixed() +  # Gleiche Skalierung der Achsen
+  theme(axis.text = element_text(size = 16),
+        axis.title = element_text(size = 20, face = "bold"),
+        plot.title = element_text(size = 28, face = "bold"))
+```
+:::
+
+::: {.column width="50%"}
+```{r}
+#| label: Plot--nach-Rotation
+#| fig-height: 10
+
+# PCA rotiert
+Erfolg.pcarot <- principal(Erfolg, nfactors = 2)
+
+# Visualisierung
+
+df_loadingsrot <- as.data.frame(Erfolg.pcarot$loadings[, 1:2]) %>%
+  mutate(Variable = rownames(Erfolg.pcarot$loadings)) %>%
+  mutate(Variable = gsub("q_012_SQ00", "", Variable))  # Ersetze Muster durch Kürzel
+
+ggplot(df_loadingsrot, aes(x = RC2, y = RC1, label = Variable)) +
+  geom_point(size=3.5) +
+  geom_text_repel(size = 6) +  # Verhindert Überlappungen der Bezeichnungen
+  geom_hline(yintercept = 0,  color = "blue") +  # Horizontale Achse RC1
+  geom_vline(xintercept = 0, color = "red") +  # Vertikale Achse RC2
+  xlim(-1, 1.15) +  # Setzt die x-Achsen-Grenzen
+  ylim(-1, 1) +  # Setzt die y-Achsen-Grenzen
+  xlab("rotierte Hauptkomponente 2") +
+  ylab("rotierte Hauptkomponente 1 ") +
+  ggtitle("rotierte Achsen") +
+  theme_minimal() +
+  coord_fixed() +  # Gleiche Skalierung der Achsen
+  theme(axis.text = element_text(size = 16),
+        axis.title = element_text(size = 20, face = "bold"),
+        plot.title = element_text(size = 28, face = "bold"))	
+
+```
+:::
+:::::
+
+## Rotationsverfahren
+
+Die Rotation soll die Hauptkomponenten inhaltlich besser interpretierbar machen. Zur Verfügung stehen verschiedene Verfahren, darunter:
+
+-   [orthogonale]{.green} Verfahren: die rotierten Faktoren sind unkorreliert (z. B. [Varimax]{.green})
+
+-   [schiefwinklige]{.green} Verfahren: die rotierten Faktoren sind korreliert (z. B. [Promax]{.green})
+
+
+## Durchführung der PCA mit Varimax-Rotation
+
+![](img/Sonstige/Print-Erfolg-PCArot.png){fig-align="center" height="22cm"}
+
+
+## Grafische Darstellung
+
+:::: {.columns}
+
+::: {.column width="50%"}
+
+```{r}
+#| label: fa.diagram
+#| echo: true
+#| eval: false
+
+fa.diagram(Erfolg.pcarot)
+```
+
+![](img/Sonstige/fa-diagram.png){fig-align="center" height="15cm"}
+
+:::
+
+:::{.column width="50%"}
+
+Antwort auf die auf S. 11 gestellte Frage:
+
+> Der mehrdimensional gemessene Unternehmenserfolg kann durch zwei Hauptkomponenten repräsentiert werden (kumulierte Varianz = 0,78).\
+> \
+> Die erste Hauptkomponente umfasst den ökonomischen Erfolg, die zweite Hauptkomponente den vorökonomische Erfolg.
+
+:::
+
+::::
+
+## Verwendung der Ergebnisse für weitere Analysen
+
+-  Das mittels Hauptkomponentenanalyse (ggf.) aufgedeckte Reduktionspotenzial in den Daten kann in weiter Analysen einfließen.
+
+-  Um mit den Hauptkomponenten als neue Variablen weiter arbeiten zu können, müssen diese berechnet werden.
+
+-  Dazu stehen verschiedene Methoden zur Verfügung, u. a.
+
+    - Mittelwertindex aus den zu einer Hauptkomponente verdichteten Items
+    
+    - Verwendung der Ladungen
+    
+    
 ## Fallstudie 💻
 
-::: columns
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="50%"}
 -   posit Cloud: In **Ihr** Projekt einloggen.
 
 ::: center
 ![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 -   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
 
 ::: center
 ![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
 :::
-:::
-:::
+::::
+:::::::
 
 Öffnen Sie die Datei `HKA.qmd` im Ordner `fallstudien`.
 
@@ -182,22 +552,22 @@ gridExtra::grid.arrange(p2,p3,p4,p5, ncol=2)
 
 ## Fallstudie 💻
 
-::: columns
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="50%"}
 -   posit Cloud: In **Ihr** Projekt einloggen.
 
 ::: center
 ![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 -   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
 
 ::: center
 ![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
 :::
-:::
-:::
+::::
+:::::::
 
 Öffnen Sie die Datei `Clusteranalyse_PENGUINS.qmd` im Ordner `fallstudien`.
