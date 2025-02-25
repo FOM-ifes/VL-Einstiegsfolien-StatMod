@@ -1,0 +1,41 @@
+---
+subtitle: "Foliensatz"
+---
+
+## Inhalt
+
+[**1**$\quad$Einstieg, Wiederholung Explorative Datenanalyse ](#Einstieg-EDA)
+
+[**2**$\quad$Wiederholung Inferenzstatistik: Statistisches Schätzen und Testen](#Inferenzstatistik)
+
+[**3**$\quad$Einstieg Bayes'sche Statistik](#Bayes)
+
+[**4/5**$\quad$Wiederholung Lineare Regression](#LineareRegression)
+
+[**6/7**$\quad$Kausale Inferenz](#Kausal)
+
+[**8**$\quad$Random Forest](#RandomForest)
+
+[**9**$\quad$Hauptkomponenten- und Clusteranalyse](#HKA-CA)
+
+# 1. Termin: Einstieg ins Modul, Explorative Datenanalyse {#Einstieg-EDA}
+{{< include StatMod_Intro_01.qmd >}}
+
+# 2. Termin: Inferenzstatistik -- Schätzen und Testen {#Inferenzstatistik}
+{{< include StatMod_Intro_02.qmd >}}
+
+# 3. Termin: Bayes'sche Statistik {#Bayes}
+{{< include StatMod_Intro_03.qmd >}}
+
+# 4. und 5. Termin: Lineare Regression {#LineareRegression}
+{{< include StatMod_Intro_05.qmd >}}
+
+# 6. und 7. Termin: Kausale Inferenz {#Kausal}
+{{< include StatMod_Intro_06_07.qmd >}}
+
+# 8. Termin: Supervised Learning -- Random Forest {#RandomForest}
+{{< include StatMod_Intro_08.qmd >}}
+
+# 9. Termin: Unsupervised Learning -- Hauptkomponentenanalyse, Clusteranalyse {#HKA-CA}
+{{< include StatMod_Intro_09.qmd >}}
+
