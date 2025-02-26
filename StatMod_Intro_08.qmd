@@ -34,9 +34,8 @@ subtitle: "Achter Termin"
 
 -   kausale Beziehungen mit drei Variablen (X, Y und C) als **Chain**, **Fork** und **Inverted Fork** dargestellt werden können.
 
-```{=html}
 <!-- -->
-```
+
 -   das C in der **Chain** auch **Mediator** genannt werden kann und erklärt, warum ein Effekt zwischen X und Y eintritt.
 
 -   das C in der **Fork** ein sogenannter **Confounder** ist und einen Einfluss auf sowohl X als auch Y hat.
@@ -63,7 +62,85 @@ subtitle: "Achter Termin"
 
 -   Sie lernen, für welche Probleme die Verwendung von Random Forest sinnvoll ist und sind in der Lage die Ergebnisse zu interpretieren.
 
-## Entscheidungsbäume und Random Forest
+## Entscheidungsbaum
+:::center
+Ein Entscheidungsbaum basiert auf der Idee komplexe Beziehungen, mithilfe von Daten, in einfache "ja/nein"-Fragen aufzubrechen.
+:::
+
+<br>
+
+::::: columns
+:::{.column width="50%"}
+Die Struktur eines Entscheidungsbaumes ergibt sich dabei wie folgt:
+
+An jedem Knotenpunkt (Node), beginnend mit der Wurzel des Baumes (Root Node), splittet der Entscheidungsbaum die Beobachtungen der Zielvariable (abhängige Variable) anhand der Prädiktorvariablen (unabhängige Variablen) in jeweils zwei Submengen. Dieser Vorgang wiederholt sich so lange, bis ein zuvor definiertes Abbruchkriterium erreicht wird. 
+:::
+
+:::{.column width="50%"}
+:::center
+![https://medium.com/analytics-vidhya/decision-trees-on-mark-need-why-when-quick-hands-on-conclude-ce10dac51e3](img/Sonstige/Decision_Tree.webp){width="70%"}
+:::
+:::
+:::::
+
+## CART-Algorithmus
+
+Es können zwei Arten von Entscheidungsbäumen unterschieden werden, Klassifikations- und Regressionsbäume (**C**lassification- **a**nd **R**egression **T**rees - CART).
+
+- **Klassifikationsbäume** werden zur Vorhersage einer kategorialen Zielvariablen verwendet, 
+
+\ \ \ \ während<br>
+
+- **Regressionsbäume** zur Vorhersage einer metrischen Zielvariablen eingesetzt werden.  
+
+Der CART-Algorithmus ist nur eine von vielen Methoden, um Entscheidungsbäume zu erzeugen, sie ist aber die Grundlage für viele baumbasierte Machine-Learning-Algorithmen wie Random Forest.
+
+
+## Entscheidungsbaum &ndash; Beispiel
+
+![Quelle: eigene Darstellung](img/Sonstige/Beispiel-Klassifikationsbaum.png)
+
+##
+
+:::center
+![](img/Memes/Decision_Tree_Random_Forrest_Meme.jpg){width="40%"}
+:::
+
+## Random Forest (I/II)
+
+Random Forest ([Breiman, 2001](https://link.springer.com/article/10.1023/A:1010933404324)) ist ein Machine-Learning-Algorithmus, der die Ergebnisse vieler verschiedener Entscheidungsbäume kombiniert, um bestmögliche Vorhersagen zu treffen.
+
+- Dazu wird ein Datensatz in Test- und Trainingsdatensatz geteilt.
+- Die einzelnen Entscheidungsbäume werden jeweils auf leicht verschiedenen Subdatensätzen des Trainingsdatensatzes trainiert.
+- Diese verschiedenen Subdatensätze werden mithilfe von *Bootstrap Sampling* erstellt. <br>
+\ \ \ \ \ **&rarr;** Bootstrap Sampling funktioniert indem eine festgelegte Menge von Bootstrap-Stichproben <br> 
+\ \ \ \ \ \ \ (d.h. Stichproben der gleichen Größe) durch zufälliges Ziehen von Beobachtungen mit <br>
+\ \ \ \ \ \ \ Zurücklegen aus dem Trainigsdatensatz generiert werden.
+
+- Damit die Entscheidungsbäume noch verschiedener zueinander werden, verwendet der Algorithmus für jeden einzelnen Split des Bäume eine zufällige Teilmenge der Variablen des Subdatensatzes.  
+
+## Random Forest (II/II)
+
+<br>
+Zusammenfassend lässt sich sagten, dass die einzelnen Entscheidungsbäume auf zufällig zusammengesetzten Subdatensätzen, die bei jedem Split eine neue, zufällige Zusammensetzung von Variablen besitzen, erstellt werden.
+
+<br> 
+
+- Die einzelnen Entscheidungsbäume werden am Ende des Algorithmus zusammengefasst (*Aggregation*) und geben ein Modell zurück, mit dem neue Werte vorhergesagt werden können. <br>
+\ \ \ \ \ **&rarr;** Je nach Zielvariable (Regression oder Klassifikation) wird entweder der Durchschnitt oder die
+\ \ \ \ \ \ \ Mehrheit der Vorhersagen verwendet, um genauere Vorhersagen zu treffen.
+
+
+## RF-Algorithmus
+
+:::center
+![](img/Sonstige/RF-Algorithmus.png){width="71%"}
+:::
+:::footnote
+Quelle: eigene Darstellung
+:::
+
+## Zusammenfassung
 
 -   **Entscheidungsbaum:** Ein grafisches Modell, das Entscheidungen und deren mögliche Konsequenzen in Form von verzweigten Pfaden darstellt, wobei jeder Knoten eine Entscheidungsregel und jedes Blatt ein Ergebnis repräsentiert.
 
@@ -75,22 +152,22 @@ subtitle: "Achter Termin"
 
 ## Fallstudie 💻
 
-::: columns
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="50%"}
 -   posit Cloud: In **Ihr** Projekt einloggen.
 
 ::: center
 ![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 -   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
 
 ::: center
 ![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
 :::
-:::
-:::
+::::
+:::::::
 
 Öffnen Sie die Datei `Random-Forest.qmd` im Ordner `fallstudien`.
