@@ -150,6 +150,258 @@ Quelle: eigene Darstellung
 ![](img/Sonstige/DecisionTree_RandomForest.webp){width="40%"}
 :::
 
+## Beispiel
+
+```{r}
+costumer <- read.csv2("internaldata/RF_CostumerSegmentation.csv")
+costumer$Segmentation <- as.factor(costumer$Segmentation)
+
+
+library(mosaic)
+library(randomForest)
+library(caret)
+library(tidyverse)
+```
+
+::::: columns
+:::{.column width="70%"}
+
+Ein Automobilunternehmen plant, mit bestehenden Produkten (P1, P2, P3, P4 und P5) in neue Märkte einzutreten. 
+
+In ihrem aktuellen Markt hat das Vertriebsteam alle Kunden in vier Segmente (A, B, C, D) eingeteilt und für jedes Kundensegment gezielte Ansprache- und Kommunikationsstrategien entwickelt. Diese Strategie hat sich als äußerst erfolgreich erwiesen.
+:::
+
+:::{.column width="30%"}
+::: center
+![](img/Sonstige/Costumer.png){width="80%"}
+:::
+:::
+:::::
+
+Nun plant das Unternehmen, dieselbe Strategie für neue Märkte anzuwenden. Nach intensiver Marktforschung haben sie festgestellt, dass das Verhalten neuer Märkte dem ihres bestehenden Marktes ähnelt. Wie gut eignet sich Random Forest um die Kunden des neuen Marktes in die vier Segmente einzuteilen?
+
+```{webr-r}
+#| autorun: true
+costumer <- read.csv2("https://raw.githubusercontent.com/FOM-ifes/variousdata/refs/heads/main/RF_CostumerSegmentation.csv")
+
+# Abhängige Variable zu Faktor kodieren, damit randomForest() mit der Variable umgehen kann
+costumer$Segmentation <- as.factor(costumer$Segmentation)
+```
+
+:::footnote
+Die Daten stammen von [Kaggle](https://www.kaggle.com/datasets/kaushiksuresh147/customer-segmentation). Im Vorhinein wurden alle Zeilen mit fehlenden Werten entfernt und der Trainings- und Testdatensatz zusammengefasst.
+:::
+
+## Split in Trainings- und Testdatensatz
+
+Die Teilung der Daten erlaubt es, die Leistung des Random-Forest-Algorithmus zu bewerten, indem der Algorithmus nach dem Training auf unbekannte Daten zur Evaluation der Generalisierbarkeit des Modells angewendet wird.
+
+
+```{webr-r}
+dim(costumer)
+```
+
+Hier werden zufällig 80% der Beobachtungen des ursprünglichen Datensatzes in den Trainigsdatensatz gezogen und die restlichen 20% bilden den Testdatensatz:
+
+
+```{webr-r}
+#| label: trainings-test-data
+#| autorun: true
+#| output: false
+library(caret)
+
+# Datenaufteilung in Trainings- und Testdaten
+set.seed(42)
+trainIndex <- createDataPartition(costumer$Segmentation, p = 0.8, list = FALSE)
+trainData <- costumer[trainIndex, ]
+testData <- costumer[-trainIndex, ]
+```
+
+```{r}
+set.seed(42)
+trainIndex <- createDataPartition(costumer$Segmentation, p = 0.8, list = FALSE)
+trainData <- costumer[trainIndex, ]
+testData <- costumer[-trainIndex, ]
+```
+
+::::: columns
+::: {.column width="50%"}
+
+```{webr-r}
+# Überblick über Trainingsdaten:
+dim(trainData)
+```
+
+:::
+
+:::: {.column width="50%"}
+
+```{webr-r}
+# Überblick über Testdaten:
+dim(testData)
+```
+
+:::
+:::::
+
+## Trainieren des RF-Modells
+
+Das Trainieren des Modells ermöglicht dem Random-Forest-Algorithmus Muster in den Daten zu erkennen:
+
+```{webr-r}
+#| label: train-the-model
+library(randomForest)
+
+# Training des Random Forest Modells
+set.seed(42)
+rf_model1 <- randomForest(Segmentation ~ ., data = trainData, 
+                          importance = TRUE)
+```
+
+```{r}
+set.seed(42)
+rf_model1 <- randomForest(Segmentation ~ ., data = trainData, 
+                          importance = TRUE)
+```
+
+```{webr-r}
+# Überblick über das Modell
+rf_model1
+```
+
+
+## Testen des RF-Modells
+
+Im vorherigen Schritt hatte das Modell die Möglichkeit anhand des Trainingsdatensatzes Muster und Zusammenhänge in den Daten zu erkennen und zu lernen. Wie gut das dem Modell gelungen ist, kann überprüft werden, indem das Modell auf unbekannte Daten (Testdaten) zur Vorhersage angewendet wird:
+
+```{r}
+observed <- testData$Segmentation
+predicted <- predict(rf_model1, testData)
+```
+
+```{webr-r}
+# Definition der Beobachteten Werte
+observed <- testData$Segmentation
+
+# Vorhersage auf den Testdaten
+predicted <- predict(rf_model1, testData)
+head(predicted)
+```
+
+```{webr-r}
+# Wahre Werte aud den Testdaten
+head(testData$Segmentation)
+```
+
+
+## Tuning des Modells (I/II)
+
+Anhand der Ergebnisse unseres Modells erkennen wir, dass die Vorhersagen nicht in allen Fällen korrekt waren. Eine vollständige Übereinstimmung mit den tatsächlichen Werten ist zwar unwahrscheinlich, jedoch können sog. Hyperparameter des RF-Algorithmus optimiert werden, um die Vorhersagegenauigkeit zu verbessern.
+
+Zu diesen Hyperparametern zählen unter anderem:
+
+- `ntree:` gibt die Anzahl der Entscheigungsbäume im RF an.
+Die Voreinstellung (default) ist 500.
+- `mtry:` gibt die Anzahl der zufällig ausgewählten Prädiktorvariablen an jedem Split an.
+
+Standardmäßig ist `mtry` auf $\sqrt{p}$ bei der Klassifikation und auf $\frac{p}{3}$ bei der Regression gesetzt -- $p$ ist hier die Anzahl der Prädiktorvariablen.
+
+Die Voreistellung für die Anzahl der Entscheidungsbäume im Modell liegt bei `ntree = 500`.
+
+<br>
+
+:::footnote
+*Hinweis: Für beide Hyperparameter gilt, wenn das Modell mit den Standardeinstellungen trainiert werden soll, dann müssen die Parameter in der randomForest()-Funktion nicht näher spezifiziert werden.*
+:::
+
+## Tuning des Modells (II/II)
+
+Bei der Rastersuche oder Grid-Search werden alle möglichen Kombinationen der angegebenen Hyperparameterwerte ausprobiert, um das beste Modell zu finden.
+Das beste Modell findet der RF-Algorithmus mit Hilfe der Kreuzvalidierung (`method = "cv"`):
+
+```{r}
+# control <- trainControl(method = "cv", number = 5)
+# tuneGrid <- expand.grid(.mtry = c(2, 4, 6, 8, 10))
+# 
+# set.seed(42)
+# rf_tuned <- train(Segmentation ~ ., data = trainData, method = "rf", 
+#                   trControl = control, tuneGrid = tuneGrid)
+
+load("internaldata/RF_tuned.RData")
+
+```
+
+:::footnote
+Der Code zum Tuning des Modells ist schon durchgelaufen und muss nicht nochmal ausgeführt werden!
+:::
+```{webr-r}
+#| autorun: true
+#| output: false
+library(randomForest)
+
+control <- trainControl(method = "cv", number = 5)
+tuneGrid <- expand.grid(.mtry = c(2, 4, 6, 8, 10))
+
+set.seed(42)
+rf_tuned <- train(Segmentation ~ ., data = trainData, method = "rf", 
+                  trControl = control, tuneGrid = tuneGrid)
+```
+
+```{webr-r}
+best_mtry <- rf_tuned$bestTune$mtry
+best_mtry
+```
+
+```{webr-r}
+predicted_tuned <- predict(rf_tuned, testData)
+head(predicted_tuned)
+```
+
+
+## Verglech der Modellgüte (I/II)
+
+Häufig verwendete Modellgütekriterien für die Klassifikantion sind:
+
+**Accuracy**: Ist das Verhältnis von korrekt vorhergesagten Werten zur Gesamtzahl aller Vorhersagen.
+
+$$ Accuracy = \frac{korrekte \ Vorhersagen}{Gesamtzahl \ der \ Vorhersagen}$$
+
+**Cohen's Kappa**: Funktioniert ähnlich zur Accuracy, berücksichtigt jedoch, wie viele korrekte Vorhersagen auch zufällig entstehen könnten.
+
+$$ Kappa = \frac{p_o - p_e}{1 - p_e}$$
+wobei:
+
+::: {style="font-size: 90%;"}
+
+- $p_o$: Beobachtete Übereinstimmung (Anteil der Fälle, bei denen das Modell die richtige Klasse vorhergesagt hat)
+- $p_e$: Erwartete Übereinstimmung (Zufallsübereinstimmung basierend auf den Randhäufigkeiten der Klassen)
+
+:::
+
+
+## Verglech der Modellgüte (II/II)
+
+Zum Abschluss kann mithilfe verschiedener Modellgütekriterien verglichen werden, welches der beiden Modelle (Ursprungsmodell und getuntes Modell) besser performt hat.
+
+<br>
+
+::::: columns
+::: {.column width="50%"}
+```{webr-r}
+# Ursprungsmodell
+postResample(pred = predicted, obs = observed)
+```
+:::
+
+::: {.column width="50%"}
+```{webr-r}
+# Getuntes Modell
+postResample(pred = predicted_tuned, obs = observed)
+```
+:::
+:::::
+
+
 ## Fallstudie 💻
 
 ::::::: columns
