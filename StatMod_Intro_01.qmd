@@ -15,9 +15,13 @@ Aus der [Data-Literacy-Charta](https://www.stifterverband.org/charta-data-litera
 Gehen wir es an ...
 
 <!-- Wichtig!!! Einmalig im Verzeichnis vorher im Terminal laufen lassen! -->
+
 <!-- Dazu ins Verzeichnis der Intro-Folien wechseln! -->
+
 <!-- quarto install extension quarto-ext/fontawesome -->
+
 <!-- quarto install extension jmbuhr/quarto-qrcode -->
+
 <!-- quarto add coatless/quarto-webr  -->
 
 ## Vorstellung Prof. Dr. N.N.
@@ -60,14 +64,15 @@ Meine Wünsche für diese Veranstaltung :pray:
 
 Lernen ist kein Zuschauersport!
 
-::: center
+:::: center
 <iframe src="https://giphy.com/embed/3o6Zt90p6NgiyoN4Mo" width="1060" height="607" frameBorder="0" class="giphy-embed" allowFullScreen>
+
 </iframe>
 
 ::: footnote
 [via GIPHY](https://media.giphy.com/media/3o6Zt90p6NgiyoN4Mo/giphy.gif)
 :::
-:::
+::::
 
 ## Tipps für den Vorlesungserfolg
 
@@ -75,7 +80,7 @@ Lernen ist kein Zuschauersport!
 
 -   Vermeiden Sie Ablenkung.
 
--   Arbeiten Sie die Vorlesung von Anfang an **vor** und nach. Nutzen Sie dafür das Dokument *Quantitative Datenanalyse -- Umsetzung mit R*. 
+-   Arbeiten Sie die Vorlesung von Anfang an **vor** und nach. Nutzen Sie dafür das Dokument *Quantitative Datenanalyse -- Umsetzung mit R*.
 
 -   Stellen Sie Fragen.
 
@@ -145,7 +150,6 @@ Beachten Sie die im OC hinterlegten Fristen!
 
 -   Sie können den Zusammenhang zwischen zwei kategorialen Merkmalen analysieren und interpretieren.
 
-
 ## Was Sie lernen (II/II) 👩‍🏫
 
 -   Sie kennen zentrale Statistiken (Lage- und Streumaße) und Visualisierungen für metrische Variablen und können diese anwenden.
@@ -168,26 +172,25 @@ Beachten Sie die im OC hinterlegten Fristen!
 
 ## Fallstudie 💻
 
-::: columns
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="50%"}
 -   posit Cloud: In **Ihr** Projekt einloggen.
 
 ::: center
 ![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 -   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
 
 ::: center
 ![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
 :::
-:::
-:::
+::::
+:::::::
 
 Öffnen Sie die Datei `Gemeinden.qmd` im Ordner `fallstudien`.
-
 
 ## Arbeiten in R Studio / posit
 
@@ -277,7 +280,7 @@ Wir sind es dem datenbasierten Entscheiden schuldig!
 
 ## Skalenniveaus
 
-::: center
+:::: center
 <iframe src="https://www.causeweb.org/cause/resources/fun/songs/levels-measurement" title width="100%" height="900" style="border:none;">
 
 </iframe>
@@ -285,7 +288,7 @@ Wir sind es dem datenbasierten Entscheiden schuldig!
 ::: footnote
 Quelle: <https://www.causeweb.org/cause/resources/fun/songs/levels-measurement>
 :::
-:::
+::::
 
 ## Eine wichtige Gleichung
 
@@ -403,6 +406,31 @@ Der Zufall [eliminert]{.red} die Abhängigkeit von [Verzerrungen]{.purple} des Z
 
 # EDA: Kategoriale Daten
 
+## Übersicht
+
+::::: columns
+::: {.column width="50%"}
+**Grafiken**
+
+-   *Säulendiagramm / Balkendiagramm*: Häufigkeit von Merkmalsausprägungen (nominal, ordinal, metrisch diskret)
+    -   vertikale Ausrichtung: Säulendiagramm
+    -   horizontale Ausrichtung: Balkendiagramm
+-   *Mosaikplot*: Darstellung der Merkmalsausprägungen zweier nominaler Merkmale
+-   ~~Kreisdiagramm~~^1^
+:::
+
+::: {.column width="50%"}
+**Häufigkeiten**
+
+-   *Anteile*: Relative Anzahl der verschiedenen Merkmalsausprägungen kategorialer Merkmale (nominal, ordinal)
+-   *Kreuztabelle*: Tabelle der verschiedenen Merkmalsausprägungen kategorialer Merkmale (nominal, ordinal), entweder in absoluten oder relativen Häufigkeiten
+:::
+:::::
+
+::: footnote
+^1^siehe z.B. Regel 20 von <https://robjhyndman.com/hyndsight/graphics/>
+:::
+
 ## Datentabelle
 
 ::: center
@@ -431,67 +459,174 @@ Was ist bei einer Datentabelle der Klausurergebnisse eine Beobachtung (engl.: ob
 
 ## Fallstudie 💻
 
-::: columns
-::: {.column width="50%"}
+::::::: columns
+:::: {.column width="50%"}
 -   posit Cloud: In **Ihr** Projekt einloggen.
 
 ::: center
 ![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
 :::
-:::
+::::
 
-::: {.column width="50%"}
+:::: {.column width="50%"}
 -   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
 
 ::: center
 ![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
 :::
-:::
-:::
+::::
+:::::::
 
 Öffnen Sie die Datei `Schlaganfallrisiko.qmd` im Ordner `fallstudien`.
 
 # EDA: Metrische Daten
 
-## Exploring Histograms
+## Übersicht (I/II)
 
-::: {.center}
-<iframe src="http://tinlizzie.org/histograms/" width="1400" height="700"></iframe>
-:::: footnote
-[http://tinlizzie.org/histograms/](http://tinlizzie.org/histograms/)
-::::
+**Grafiken**
+
+-   *Säulendiagramm / Balkendiagramm*: Häufigkeiten von Merkmalsausprägungen (nominal, ordinal, metrisch diskret)
+-   *Histogramm*: Häufigkeit von gruppierten Merkmalsausprägungen (metrisch)
+-   *Boxplot*: Visualisierung von Median, oberem und unterem Quartil^2^, Minimum und Maximum, Ausreißern (metrisch)
+-   *Streudiagramm / Scatterplot*: Darstellung der Merkmalsausprägungen von zwei i.d.R. metrichen Merkmalen^3^ als Punkte
+-   *Liniendiagramm*: Verlauf der Merkmalsausprägung eines Merkmals
+
+<br>
+
+::: footnote
+^2^Lagemaße: Erläuterung folgt. <br> ^3^bei kategorialen oder metrisch diskreten Merkmalen ggfs. \*verwackeln (engl.: jitter)
 :::
 
+## Übersicht (II/II)
 
-## Verteilungsformen
+**Kennzahlen**
 
-::: center
-<iframe width="1000" height="700" src="https://www.youtube-nocookie.com/embed/2eFFzErlU4c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-:::: footnote
-[https://youtu.be/2eFFzErlU4c](https://youtu.be/2eFFzErlU4c)
+-   *Lagemaß*: beschreibt u.a. die zentrale Tendenz der Verteilung
+-   *Streuungsmaß*: beschreibt die Verteilung der Daten (häufig um das Lagemaß)
+-   *Schiefe*: beschreibt die Form der Verteilung
+
+## Exploring Histograms
+
+:::: center
+<iframe src="http://tinlizzie.org/histograms/" width="1400" height="700">
+
+</iframe>
+
+::: footnote
+<http://tinlizzie.org/histograms/>
+:::
 ::::
+
+## Verteilungsformen (I/II)
+
+Die Verteilung gibt an, wie häufig bzw. wahrscheinlich bestimmte Werte oder Wertebereiche sind.
+
+Für numerische Variablen:
+
+-   Schiefe: Bei **rechtsschiefen** (linkssteilen) Verteilungen sind mehr Beobachtungen im unteren Wertebereich, bei **linksschiefen** (rechtssteilen) im oberen.
+
+-   Bei **symmetrischen** Verteilungen verteilen sich die Daten symmetrisch um eine zentrale Lage (unimodal).
+
+-   Bei **mehrgipfligen** Verteilungen gibt es mehr als nur ein Zentrum, um das die Werte streuen.
+
+## Verteilungsformen (II/II)
+
+:::: center
+<iframe width="1000" height="700" src="https://www.youtube-nocookie.com/embed/2eFFzErlU4c" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+
+</iframe>
+
+::: footnote
+<https://youtu.be/2eFFzErlU4c>
+:::
+::::
+
+## Lagemaße
+
+Lagemaße sollen u.a. die zentrale Tendenz der Daten beschreiben:
+
+-   **Minimum** bzw. **Maximum**: kleinste bzw. größte Merkmalsausprägung
+-   **Modus** / Modalwert: häufigste Merkmalsausprägung
+-   **Median** / Zentralwert: Merkmlasausprägung, die bei (aufsteigend) sortierten Beobachtungen in der Mitte liegt
+-   **Arithmetischer Mittelwert** (engl.: mean)^4^: Summe aller Beobachtungen $x_i$ geteilt durch die Anzahl aller Beobachtungen n: $\bar{x} = \frac{1}{n} \sum_{i=1}^{n} x_i$
+-   **Quantil**: Das p-Quantil ist der Wert, für den gilt, dass er von p Prozent der Beobachtungen nicht überschritten wird.
+-   **Quartile**: Q1 = 25%-Quantil, Q2 = 50%-Quantil, Q3 = 75%-Quantil
+
+::: footnote
+^4^Darüber hinaus gibt es noch den geometrischen und den harmonischen Mittelwert.
+:::
+
+## Streuungsmaße
+
+Streuungsmaße sollen die Streuung / Variation der Daten beschreiben:
+
+-   **Varianz**: Maß für die durschschnittliche quadratische Abweichung zum Mittelwert: $s^2 = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})^2$. Diese hat aber eine andere Einheit als die Daten, z.B. Daten in €, Varian $€^2$. Durch das Quadrieren werden Abweichungen zum Mittelwert nach oben oder unten gleich behandelt und größere Abweichungen stärker gewichtet.^5^
+-   **Standardabweichung** (engl.: standard deviation): Quadratwurzel der Varianz: $sd = s = \sqrt{s^2}$
+-   **Interquartilsabstand** (engl.: interquartile range, IQR): oberes Quartil (75%-Quantil, Q3) - unteres Quartil (25%-Quantil, Q1)
+-   **Spannweite** (engl.: range): Maximum - Minimum
+
+<br>
+
+<br>
+
+::: footnote
+^5^ $\frac{1}{n}$ ist nicht falsch; $\frac{1}{n-1}$ ist aus Gründen, die außerhalb der Vorlesung liegen, besser, wenn von einer Stischprobe auf die Varianz der Population ($\sigma^2$) verallgemeinert werden soll. Der Unterschied ist bei großem $n$ klein.
+:::
+
+## Kovariation
+
+-   **Kovarianz** beschreibt den linearen Zusammenhang zweier metrischer Merkmale: <br> $s_{xy} = \frac{1}{n-1} \sum_{i=1}^{n} (x_i - \bar{x})(y_i - \bar{y})$: Die Werte beider Variablen einer Beobachtung werden mit dem jeweiligen Mittelwert der Variable verglichen. Vom Produkt der gemeinsamen Abweichungen wird $\approx$ Mittelwert berechnet.
+-   Der **Korrelationskoeffizent** nach Pearson^6^ $r = \frac{s_{xy}}{sd_x \cdot sd_y}$ normiert die Kovarianz auf den Wertebereich -1 bis +1 durch Division der Kovarinaz durch das Produkt der Standardabweichungen.^7^
+-   Korrelationskoeffizenten $r>0$ zeigen einen positiven linearen Zusammenhang an, $r<0$ einen negativen. Je größer $|r|$, desto größer ist der leineare Zusammenhang.
+-   [**Achtung**: Korrelation heißt nicht zwangsläufig Kausalität, keine Korrelation heißt nicht zwangsläufig kein Zusammenhang oder keine Kausalität.^8^]{.red}
+
+::: footnote
+<br>
+
+^6^Alternative: Spearman <br> ^7^Der Korrelationskoeffizient ist ein mathematischer Verwandter des Kosinus (zwischen den beiden Datenreihen aufgefasst als n-dimensionale Vektoren). <br> ^8^Scheinkorrelation, siehe z.B. <https://tylervigen.com/spurious-correlations>
 :::
 
 ## Fallstudie 💻
 
-::: {.columns}
+::::::: columns
 :::: {.column width="50%"}
+-   posit Cloud: In **Ihr** Projekt einloggen.
 
-- posit Cloud: In **Ihr** Projekt einloggen.
-
-::::: center
+::: center
 ![](img/Software/posit_Project_StatistischeModellierung.png){width="80%"}
-:::::
-::::
-:::: {.column width="50%"}
-
-- Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
-
-::::: center
-![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
-:::::
-::::
 :::
+::::
+
+:::: {.column width="50%"}
+-   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
+
+::: center
+![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
+:::
+::::
+:::::::
 
 Öffnen Sie die Datei `Körperfettanteil.qmd` im Ordner `fallstudien`.
 
+## Grafische Verfahren der Datenanalyse
+
+-   *Säulendiagramm / Balkendiagramm*: Häufigkeit con Merkmalsausprägungen (nominal, ordinal, metrisch diskret) -- `gf_bar()`
+- *Histogramm*: Häufigkeit von gruppierten Merkmalsausprägungen (metrisch) -- `gf_histogram()`
+- *Boxplot*: Visualisierung von Median, oberem und unteren Quartil, Minimum und Maximum, Ausreißern (metrisch) -- `gf_boxplot()`
+- *Violinplot*: Visualisierung der Dichtefunktion (und ggf. des Mittelwerts) der Verteilung (metrisch) -- `gf_violin()`
+- *Streudiagramm / Scatterplot*: Darstellung der Merkmalsausprägungen von zwei i.d.R. metrischen Merkmalen als Punkte -- `gf_point()`
+- *Mosaikplot*: Darstellung der Merkmalsausprägungen zweier nominaler Merkmale -- `mosaicplot()`
+- *Liniendiagramm*: Verlauf der Merkmalsausprägung eines Merkmals - `gf_line()`
+
+
+## Übersicht deskriptiver Kennzahlen 
+
+- `favstats()`: Zusammenfassung Kennzahlen numerischer Variablen
+- Einzeln, z.B. mit:
+  + `mean()`: Mittelwert (metrisch)
+  + `median()`: Median (ordinal, metrisch)
+  + `iqr()`: Interquartilsabstand ((ordinal), metrisch)
+  + `sd()`: Standardabweichung (metrisch)
+- `cor()`: Korrelationskoeffizient (zwei metrische Merkmale. Für ordinale Merkmale: Rangkorrelation `method = "spearman")
+- `prop()`: Anteile (nominal, ordinal, metrisch diskret -- relative Häufigkeiten einer Ausprägung)
+- `tally()`: (Kreuz)-tabellierung (nominal, ordinal, metrisch diskret -- absolute oder relative Häufigkeiten aller Ausprägungen).
