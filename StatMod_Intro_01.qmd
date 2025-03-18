@@ -570,7 +570,7 @@ Streuungsmaße sollen die Streuung / Variation der Daten beschreiben:
 <br>
 
 ::: footnote
-^5^ $\frac{1}{n}$ ist nicht falsch; $\frac{1}{n-1}$ ist aus Gründen, die außerhalb der Vorlesung liegen, besser, wenn von einer Stischprobe auf die Varianz der Population ($\sigma^2$) verallgemeinert werden soll. Der Unterschied ist bei großem $n$ klein.
+^5^ $\frac{1}{n}$ ist nicht falsch; $\frac{1}{n-1}$ ist aus Gründen, die außerhalb der Vorlesung liegen, besser, wenn von einer Stichprobe auf die Varianz der Population ($\sigma^2$) verallgemeinert werden soll. Der Unterschied ist bei großem $n$ klein.
 :::
 
 ## Kovariation
@@ -627,6 +627,6 @@ Streuungsmaße sollen die Streuung / Variation der Daten beschreiben:
   + `median()`: Median (ordinal, metrisch)
   + `iqr()`: Interquartilsabstand ((ordinal), metrisch)
   + `sd()`: Standardabweichung (metrisch)
-- `cor()`: Korrelationskoeffizient (zwei metrische Merkmale. Für ordinale Merkmale: Rangkorrelation `method = "spearman")
+- `cor()`: Korrelationskoeffizient (zwei metrische Merkmale. Für ordinale Merkmale: Rangkorrelation `method = "spearman"`)
 - `prop()`: Anteile (nominal, ordinal, metrisch diskret -- relative Häufigkeiten einer Ausprägung)
 - `tally()`: (Kreuz)-tabellierung (nominal, ordinal, metrisch diskret -- absolute oder relative Häufigkeiten aller Ausprägungen).
