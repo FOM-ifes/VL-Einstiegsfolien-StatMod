@@ -188,6 +188,28 @@ $$\hat{\beta} = \beta + \text{(Verzerrung)} + \text{Rauschen}$$
 :::
 :::::
 
+## Schema: Bootstrapping
+
+:::center
+![](img/Sonstige/Schema_Bootstrap.png){width="80%"}
+:::
+
+:::footnote
+Quelle:
+:::
+
+
+## Schema der simulationsbasierten Inferenz
+
+:::center
+![](img/Sonstige/Schema_Simulation.png){width="80%"}
+:::
+
+:::footnote
+Quelle: [Blogbeitrag Allen Downey](http://allendowney.blogspot.de/2016/06/there-is-still-only-one-test.html)
+:::
+
+
 ## Standardfehler
 
 Der Standardfehler (engl.: "**standard error**" oder **se**) ist ein Maß dafür, wie stark eine Zusammenfassung der Stichprobe &ndash; ein Schätzwert &ndash; (z.B. der Mittelwert) vom wahren, unbekannten Wert der Population abweicht. Je größer die Stichprobe ($n$), desto kleiner der Standardfehler:
