@@ -322,7 +322,7 @@ ggplot(df_loadings, aes(x = PC1, y = PC2, label = Variable)) +
 ::: {.column width="50%"}
 ```{r}
 #| label: Plot-vor-Rotation
-#| fig-height: 10
+#| fig-height: 9.5
 
 ggplot(df_loadings, aes(x = PC1, y = PC2, label = Variable)) +
   geom_point(size=3.5) +
@@ -353,7 +353,7 @@ ggplot(df_loadings, aes(x = PC1, y = PC2, label = Variable)) +
 ::: {.column width="50%"}
 ```{r}
 #| label: Plot--nach-Rotation
-#| fig-height: 10
+#| fig-height: 9.5
 
 # PCA rotiert
 Erfolg.pcarot <- principal(Erfolg, nfactors = 2)
@@ -475,7 +475,9 @@ Antwort auf die auf S. 11 gestellte Frage:
 
 ## Was ist eine Clusteranalyse?
 
-Das Ziel der Clusteranalyse (engl.: Cluster Analysis) ist es, Gruppen (Cluster) von Beobachtungen zu bilden, die innerhalb der Cluster homogen und zwischen den Clustern heterogen sind. Einsatzbeispiel sind:
+Das Ziel der Clusteranalyse (engl.: Cluster Analysis) ist es, Gruppen (Cluster) von Beobachtungen zu bilden, die innerhalb der Cluster homogen und zwischen den Clustern heterogen sind. 
+
+Einsatzbeispiel sind:
 
 -   Analysieren, inwieweit es unterschiedliche Gruppen von Unternehmen am Markt gibt.
 
@@ -485,70 +487,494 @@ Das Ziel der Clusteranalyse (engl.: Cluster Analysis) ist es, Gruppen (Cluster) 
 
 -   Auch die Gesichtserkennung auf Fotos oder Videos basiert auf dem Ansatz der Clusteranalyse.
 
-## Methoden der Clusteranalyse und Distanzmaß
+## Methoden der Clusteranalyse
 
--   Hierarchische Verfahren: bottom-up (agglomerativ: Start mit sovielen Clustern, wie es Beobachtungen gibt) oder top-down (divisiv: Start mit einem Cluster)
+**Hierarchische Verfahren**: sukzessive Zusammenfassung der Beobachtungen
 
--   Partionierende Verfahren: Vorgabe der Anzahl von Clustern, dann bestmögliche Zuordnung der Beobachtungen über mehrere Schritte zu den Clustern (z. B. k-Means-Clustering)
+- bottom-up (agglomerativ: Start mit sovielen Clustern, wie es Beobachtungen gibt) oder
 
--   Verwendung von Distanzmaßen zur Bestimmung der Ähnlichkeit (Unähnlichkeit) innerhalb der Cluster. Für metrische Variablen z. B. euklidische Distanz
+- top-down (divisiv: Start mit einem Cluster)
+
+
+**Partionierende Verfahren** (Clusterzentralanalyse): Vorgabe der Anzahl von Clustern, dann bestmögliche Zuordnung der Beobachtungen über mehrere Schritte zu den Clustern (z. B. k-Means-Clustering)
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+<br>
+
+:::footnote
+Eine Übersicht über die Methoden, um $k$ (oft: $k \in \{2, 3, . . . , 10\}$, aber üblicherweise ist die Anzahl $k$ unbekannt!) Cluster zu finden, zeigen z. B. Charrad M., Ghazzali N., Boiteau V. and Niknafs, A. (2014). NbClust: An R Package for Determining the Relevant Number of Clusters in a Data Set. Journal of Statistical Software, 61(6), 1-36. <http://dx.doi.org/10.18637/jss.v061.i06>
+:::
+
+
+## Hierarchische Clusteranalyse
+
+**Grundidee**:
+
+- *Schritt 1*: jede Beobachtung ist ein Cluster, Berechnung Diatanzen zwischen den einzelnen Clustern 
+  + Auswahl der [Distanzfunktion]{.green}
+  
+- *Schritt 2*: Verschmelzung jener zwei Cluster, die sich am nächsten sind
+
+- *Schritt3*: Berechnung der Distanzen von neu gebildeten Cluster zu den anderen Clustern
+  + verschiedene [Clustermethoden]{.green}
+  
+- Wiederhole die Schritte 2 und 3 so lange, bis nur noch ein Cluster, in dem alle Beobachtungen enthalten sind, vorhanden ist.
+
+
+## Distanzmaß
+
+Verwendung von Distanzmaßen zur Bestimmung der Ähnlichkeit (Unähnlichkeit) innerhalb der Cluster. Für metrische Variablen z. B. euklidische Distanz:
+
+::::: columns
+::: {.column width="50%"}
+
+<br>
 
 $$
 d(x,y) = \sqrt{\sum_j(x_j - y_j)^2}
 $$
-
-::: footnote
-Eine Übersicht über die Methoden, um $k$ (oft: $k \in \{2, 3, . . . , 10\}$, aber üblicherweise ist die Anzahl $k$ unbekannt!) Cluster zu finden, zeigen z. B. Charrad M., Ghazzali N., Boiteau V. and Niknafs, A. (2014). NbClust: An R Package for Determining the Relevant Number of Clusters in a Data Set. Journal of Statistical Software, 61(6), 1-36. <http://dx.doi.org/10.18637/jss.v061.i06>
 :::
 
-## $k$ unterschiedliche Cluster
 
-```{r}
-# | echo: false
+::: {.column width="50%"}
+:::center
+![](img/Clusteranalyse/EukDistanz.png){width="75%"}
+:::
+:::
+:::::
 
-library(mosaic)
-data("iris")
-iris.s <- iris[,3:4] |>
-  scale() |>
-  data.frame()
 
-set.seed(1896)
-cluster.iris2 <- kmeans(iris.s, centers=2)
-cluster.iris3 <- kmeans(iris.s, centers=3)
-cluster.iris4 <- kmeans(iris.s, centers=4)
-cluster.iris5 <- kmeans(iris.s, centers=5)
 
-p2 <- gf_point(Petal.Width ~ Petal.Length, color = ~ cluster.iris2$cluster, show.legend = FALSE, data=iris.s)|>
-  gf_labs(x = "x", 
-          y = "y",
-          title = "k=2")|>
-  gf_theme(theme_classic())|>
-    gf_refine(scale_color_gradientn(colours = rainbow(3)))
+## Clustermethoden (I/II)
 
-p3 <- gf_point(Petal.Width ~ Petal.Length, color = ~ cluster.iris3$cluster, show.legend = FALSE, data=iris.s)|>
-  gf_labs(x = "x", 
-          y = "y",
-          title = "k=3")|>
-  gf_theme(theme_classic())|>
-    gf_refine(scale_color_gradientn(colours = rainbow(3)))
+:::center
+![](img/Clusteranalyse/Clustermethoden1.png){width="45%"}
+:::
 
-p4 <- gf_point(Petal.Width ~ Petal.Length, color = ~ cluster.iris4$cluster, show.legend = FALSE, data=iris.s)|>
-  gf_labs(x = "x", 
-          y = "y",
-          title = "k=4")|>
-  gf_theme(theme_classic())|>
-    gf_refine(scale_color_gradientn(colours = rainbow(3)))
+## Clustermethoden (II/II)
 
-p5 <- gf_point(Petal.Width ~ Petal.Length, color = ~ cluster.iris5$cluster, show.legend = FALSE, data=iris.s)|>
-  gf_labs(x = "x", 
-          y = "y",
-          title = "k=5") |>
-  gf_theme(theme_classic()) |>
-    gf_refine(scale_color_gradientn(colours = rainbow(3)))
-  
+<br>
 
-gridExtra::grid.arrange(p2,p3,p4,p5, ncol=2)
-```
+:::center
+![](img/Clusteranalyse/Clustermethoden2.png){width="45%"}
+:::
+
+
+
+## Partionierende Clusteranalyse
+
+**k-Means Schema**:
+
+- [*Schritt 1*]{.green}: Zufällige Auswahl von $k$ Clusterzentren aus den $n$ Beobachtungen
+- [*Schritt 2*]{.green}: Zuordnung der Beobachtungen zum nächsten Cluster
+- [*Schritt 3*]{.green}: Neuberechnung der Clusterzentren als Mittelwert der dem Cluster zugeordneten Beobachtungen
+
+<br>
+
+- Wiederhole ie Schritte 2 und 3 so lange bis sich keine Änderung der Zuordnung mehr ergibt -- oder eine maximale Anzahl der Iterationen erreicht ist.
+
+<br>
+
+[Nachfolgende Animation einer Clusterzentrenanalyse mit 6 Clustern stammt aus dem Vortrag zur Diplomarbeit von Dipl.-Stat. Nils Raabe.]{.green}
+
+## Clusteranalyse
+
+:::::{.columns}
+:::{.column width="40%"}
+
+<br>
+
+> 1 - Auswahl von c Clusterseeds\
+> \
+> \
+> 2 - Zuordnung aller Objekte\
+> \
+> \
+> 3 - Ersetzen der Seeds\
+> \
+> \
+> 4 - Abschließende Zuornung aller\
+> Objekte
+
+:::
+
+:::{.column width="60%"}
+
+:::center
+![](img/Clusteranalyse/Animation1.png){width="60%"}
+:::
+:::
+:::::
+
+
+## Clusteranalyse
+
+:::::{.columns}
+:::{.column width="40%"}
+
+<br>
+
+> **1 - Auswahl von c Clusterseeds**\
+> \
+> \
+> 2 - Zuordnung aller Objekte\
+> \
+> \
+> 3 - Ersetzen der Seeds\
+> \
+> \
+> 4 - Abschließende Zuornung aller\
+> Objekte
+
+:::
+
+:::{.column width="60%"}
+
+:::center
+![](img/Clusteranalyse/Animation2.png){width="60%"}
+:::
+:::
+:::::
+
+
+
+## Clusteranalyse
+
+:::::{.columns}
+:::{.column width="40%"}
+
+<br>
+
+> 1 - Auswahl von c Clusterseeds\
+> \
+> \
+> **2 - Zuordnung aller Objekte**\
+> \
+> \
+> 3 - Ersetzen der Seeds\
+> \
+> \
+> 4 - Abschließende Zuornung aller\
+> Objekte
+
+:::
+
+:::{.column width="60%"}
+
+:::center
+![](img/Clusteranalyse/Animation3.png){width="60%"}
+:::
+:::
+:::::
+
+
+## Clusteranalyse
+
+:::::{.columns}
+:::{.column width="40%"}
+
+<br>
+
+> 1 - Auswahl von c Clusterseeds\
+> \
+> \
+> 2 - Zuordnung aller Objekte\
+> \
+> \
+> **3 - Ersetzen der Seeds**\
+> \
+> \
+> 4 - Abschließende Zuornung aller\
+> Objekte
+
+:::
+
+:::{.column width="60%"}
+
+:::center
+![](img/Clusteranalyse/Animation4.png){width="60%"}
+:::
+:::
+:::::
+
+
+## Clusteranalyse
+
+:::::{.columns}
+:::{.column width="40%"}
+
+<br>
+
+> 1 - Auswahl von c Clusterseeds\
+> \
+> \
+> **2 - Zuordnung aller Objekte**\
+> \
+> \
+> 3 - Ersetzen der Seeds\
+> \
+> \
+> 4 - Abschließende Zuornung aller\
+> Objekte
+
+:::
+
+:::{.column width="60%"}
+
+:::center
+![](img/Clusteranalyse/Animation5.png){width="60%"}
+:::
+:::
+:::::
+
+
+## Clusteranalyse
+
+:::::{.columns}
+:::{.column width="40%"}
+
+<br>
+
+> 1 - Auswahl von c Clusterseeds\
+> \
+> \
+> 2 - Zuordnung aller Objekte\
+> \
+> \
+> **3 - Ersetzen der Seeds**\
+> \
+> \
+> 4 - Abschließende Zuornung aller\
+> Objekte
+
+:::
+
+:::{.column width="60%"}
+
+:::center
+![](img/Clusteranalyse/Animation6.png){width="60%"}
+:::
+:::
+:::::
+
+
+## Clusteranalyse
+
+:::::{.columns}
+:::{.column width="40%"}
+
+<br>
+
+> 1 - Auswahl von c Clusterseeds\
+> \
+> \
+> **2 - Zuordnung aller Objekte**\
+> \
+> \
+> 3 - Ersetzen der Seeds\
+> \
+> \
+> 4 - Abschließende Zuornung aller\
+> Objekte
+
+:::
+
+:::{.column width="60%"}
+
+:::center
+![](img/Clusteranalyse/Animation7.png){width="60%"}
+:::
+:::
+:::::
+
+
+## Clusteranalyse
+
+:::::{.columns}
+:::{.column width="40%"}
+
+<br>
+
+> 1 - Auswahl von c Clusterseeds\
+> \
+> \
+> 2 - Zuordnung aller Objekte\
+> \
+> \
+> **3 - Ersetzen der Seeds**\
+> \
+> \
+> 4 - Abschließende Zuornung aller\
+> Objekte
+
+:::
+
+:::{.column width="60%"}
+
+:::center
+![](img/Clusteranalyse/Animation8.png){width="60%"}
+:::
+:::
+:::::
+
+
+## Clusteranalyse
+
+:::::{.columns}
+:::{.column width="40%"}
+
+<br>
+
+> 1 - Auswahl von c Clusterseeds\
+> \
+> \
+> **2 - Zuordnung aller Objekte**\
+> \
+> \
+> 3 - Ersetzen der Seeds\
+> \
+> \
+> 4 - Abschließende Zuornung aller\
+> Objekte
+
+:::
+
+:::{.column width="60%"}
+
+:::center
+![](img/Clusteranalyse/Animation9.png){width="60%"}
+:::
+:::
+:::::
+
+
+## Clusteranalyse
+
+:::::{.columns}
+:::{.column width="40%"}
+
+<br>
+
+> 1 - Auswahl von c Clusterseeds\
+> \
+> \
+> 2 - Zuordnung aller Objekte\
+> \
+> \
+> **3 - Ersetzen der Seeds**\
+> \
+> \
+> 4 - Abschließende Zuornung aller\
+> Objekte
+
+:::
+
+:::{.column width="60%"}
+
+:::center
+![](img/Clusteranalyse/Animation10.png){width="60%"}
+:::
+:::
+:::::
+
+
+## Clusteranalyse
+
+:::::{.columns}
+:::{.column width="40%"}
+
+<br>
+
+> 1 - Auswahl von c Clusterseeds\
+> \
+> \
+> **2 - Zuordnung aller Objekte**\
+> \
+> \
+> 3 - Ersetzen der Seeds\
+> \
+> \
+> 4 - Abschließende Zuornung aller\
+> Objekte
+
+:::
+
+:::{.column width="60%"}
+
+:::center
+![](img/Clusteranalyse/Animation11.png){width="60%"}
+:::
+:::
+:::::
+
+
+## Clusteranalyse
+
+:::::{.columns}
+:::{.column width="40%"}
+
+<br>
+
+> 1 - Auswahl von c Clusterseeds\
+> \
+> \
+> 2 - Zuordnung aller Objekte\
+> \
+> \
+> **3 - Ersetzen der Seeds**\
+> \
+> \
+> 4 - Abschließende Zuornung aller\
+> Objekte
+
+:::
+
+:::{.column width="60%"}
+
+:::center
+![](img/Clusteranalyse/Animation12.png){width="60%"}
+:::
+:::
+:::::
+
+
+## Clusteranalyse
+
+:::::{.columns}
+:::{.column width="40%"}
+
+<br>
+
+> 1 - Auswahl von c Clusterseeds\
+> \
+> \
+> 2 - Zuordnung aller Objekte\
+> \
+> \
+> 3 - Ersetzen der Seeds\
+> \
+> \
+> **4 - Abschließende Zuornung aller**\
+> **Objekte**
+
+:::
+
+:::{.column width="60%"}
+
+:::center
+![](img/Clusteranalyse/Animation13.png){width="60%"}
+:::
+:::
+:::::
+
+
 
 ## Fallstudie 💻
 
