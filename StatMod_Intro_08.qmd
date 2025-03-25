@@ -112,23 +112,19 @@ Random Forest ([Breiman, 2001](https://link.springer.com/article/10.1023/A:10109
 
 - Dazu wird ein Datensatz in Test- und Trainingsdatensatz geteilt.
 - Die einzelnen Entscheidungsbäume werden jeweils auf leicht verschiedenen Subdatensätzen des Trainingsdatensatzes trainiert.
-- Diese verschiedenen Subdatensätze werden mithilfe von *Bootstrap Sampling* erstellt. <br>
-\ \ \ \ \ **&rarr;** Bootstrap Sampling funktioniert indem eine festgelegte Menge von Bootstrap-Stichproben <br> 
-\ \ \ \ \ \ \ (d.h. Stichproben der gleichen Größe) durch zufälliges Ziehen von Beobachtungen mit <br>
-\ \ \ \ \ \ \ Zurücklegen aus dem Trainigsdatensatz generiert werden.
+- Diese verschiedenen Subdatensätze werden mithilfe von *Bootstrap Sampling* erstellt.
+    -   Bootstrap Sampling funktioniert, indem eine festgelegte Menge von Bootstrap-Stichproben 
+(d. h. Stichproben der gleichen Größe) durch zufälliges Ziehen von Beobachtungen mit Zurücklegen aus dem Trainigsdatensatz generiert werden.
 
-- Damit die Entscheidungsbäume noch verschiedener zueinander werden, verwendet der Algorithmus für jeden einzelnen Split des Bäume eine zufällige Teilmenge der Variablen des Subdatensatzes.  
+- Damit die Entscheidungsbäume noch verschiedener zueinander werden, verwendet der Algorithmus für jeden einzelnen Split der Bäume eine zufällige Teilmenge der Variablen des Subdatensatzes.  
 
 ## Random Forest (II/II)
 
-<br>
-Zusammenfassend lässt sich sagten, dass die einzelnen Entscheidungsbäume auf zufällig zusammengesetzten Subdatensätzen, die bei jedem Split eine neue, zufällige Zusammensetzung von Variablen besitzen, erstellt werden.
+-   Zusammenfassend lässt sich sagen, dass die einzelnen Entscheidungsbäume auf zufällig zusammengesetzten Subdatensätzen, die bei jedem Split eine neue, zufällige Zusammensetzung von Variablen besitzen, erstellt werden.
 
-<br> 
+- Die einzelnen Entscheidungsbäume werden am Ende des Algorithmus zusammengefasst (*Aggregation*) und geben ein Modell zurück, mit dem neue Werte vorhergesagt werden können. 
 
-- Die einzelnen Entscheidungsbäume werden am Ende des Algorithmus zusammengefasst (*Aggregation*) und geben ein Modell zurück, mit dem neue Werte vorhergesagt werden können. <br>
-\ \ \ \ \ **&rarr;** Je nach Zielvariable (Regression oder Klassifikation) wird entweder der Durchschnitt oder die
-\ \ \ \ \ \ \ Mehrheit der Vorhersagen verwendet, um genauere Vorhersagen zu treffen.
+-   Je nach Zielvariable (Regression oder Klassifikation) wird entweder der Durchschnitt oder die Mehrheit der Vorhersagen verwendet, um genauere Vorhersagen zu treffen.
 
 
 ## RF-Algorithmus
@@ -155,7 +151,6 @@ Quelle: eigene Darstellung
 ```{r}
 costumer <- read.csv2("internaldata/RF_CostumerSegmentation.csv")
 costumer$Segmentation <- as.factor(costumer$Segmentation)
-
 
 library(mosaic)
 library(randomForest)
@@ -201,7 +196,7 @@ Die Teilung der Daten erlaubt es, die Leistung des Random-Forest-Algorithmus zu 
 dim(costumer)
 ```
 
-Hier werden zufällig 80% der Beobachtungen des ursprünglichen Datensatzes in den Trainigsdatensatz gezogen und die restlichen 20% bilden den Testdatensatz:
+Hier werden zufällig 80 % der Beobachtungen des ursprünglichen Datensatzes in den Trainigsdatensatz gezogen und die restlichen 20 % bilden den Testdatensatz:
 
 
 ```{webr-r}
@@ -272,7 +267,7 @@ rf_model1
 
 ## Testen des RF-Modells
 
-Im vorherigen Schritt hatte das Modell die Möglichkeit anhand des Trainingsdatensatzes Muster und Zusammenhänge in den Daten zu erkennen und zu lernen. Wie gut das dem Modell gelungen ist, kann überprüft werden, indem das Modell auf unbekannte Daten (Testdaten) zur Vorhersage angewendet wird:
+Im vorherigen Schritt hatte das Modell die Möglichkeit, anhand des Trainingsdatensatzes Muster und Zusammenhänge in den Daten zu erkennen und zu lernen. Wie gut das dem Modell gelungen ist, kann überprüft werden, indem das Modell auf unbekannte Daten (Testdaten) zur Vorhersage angewendet wird:
 
 ```{r}
 observed <- testData$Segmentation
@@ -280,7 +275,7 @@ predicted <- predict(rf_model1, testData)
 ```
 
 ```{webr-r}
-# Definition der Beobachteten Werte
+# Definition der beobachteten Werte
 observed <- testData$Segmentation
 
 # Vorhersage auf den Testdaten
@@ -289,14 +284,14 @@ head(predicted)
 ```
 
 ```{webr-r}
-# Wahre Werte aud den Testdaten
+# Wahre Werte auf den Testdaten
 head(testData$Segmentation)
 ```
 
 
 ## Tuning des Modells (I/II)
 
-Anhand der Ergebnisse unseres Modells erkennen wir, dass die Vorhersagen nicht in allen Fällen korrekt waren. Eine vollständige Übereinstimmung mit den tatsächlichen Werten ist zwar unwahrscheinlich, jedoch können sog. Hyperparameter des RF-Algorithmus optimiert werden, um die Vorhersagegenauigkeit zu verbessern.
+Anhand der Ergebnisse des Modells erkennt man, dass die Vorhersagen nicht in allen Fällen korrekt waren. Eine vollständige Übereinstimmung mit den tatsächlichen Werten ist zwar unwahrscheinlich, jedoch können sog. Hyperparameter des RF-Algorithmus optimiert werden, um die Vorhersagegenauigkeit zu verbessern.
 
 Zu diesen Hyperparametern zählen unter anderem:
 
@@ -306,7 +301,7 @@ Die Voreinstellung (default) ist 500.
 
 Standardmäßig ist `mtry` auf $\sqrt{p}$ bei der Klassifikation und auf $\frac{p}{3}$ bei der Regression gesetzt -- $p$ ist hier die Anzahl der Prädiktorvariablen.
 
-Die Voreistellung für die Anzahl der Entscheidungsbäume im Modell liegt bei `ntree = 500`.
+Die Voreinstellung für die Anzahl der Entscheidungsbäume im Modell liegt bei `ntree = 500`.
 
 <br>
 
@@ -316,7 +311,7 @@ Die Voreistellung für die Anzahl der Entscheidungsbäume im Modell liegt bei `n
 
 ## Tuning des Modells (II/II)
 
-Bei der Rastersuche oder Grid-Search werden alle möglichen Kombinationen der angegebenen Hyperparameterwerte ausprobiert, um das beste Modell zu finden.
+Bei der Rastersuche (grid search) werden alle möglichen Kombinationen der angegebenen Hyperparameterwerte ausprobiert, um das beste Modell zu finden.
 Das beste Modell findet der RF-Algorithmus mit Hilfe der Kreuzvalidierung (`method = "cv"`):
 
 ```{r}
@@ -358,11 +353,11 @@ head(predicted_tuned)
 ```
 
 
-## Verglech der Modellgüte (I/II)
+## Vergleich der Modellgüte (I/II)
 
-Häufig verwendete Modellgütekriterien für die Klassifikantion sind:
+Häufig verwendete Modellgütekriterien für die Klassifikation sind:
 
-**Accuracy**: Ist das Verhältnis von korrekt vorhergesagten Werten zur Gesamtzahl aller Vorhersagen.
+**Accuracy**: Verhältnis von korrekt vorhergesagten Werten zur Gesamtzahl aller Vorhersagen
 
 $$ Accuracy = \frac{korrekte \ Vorhersagen}{Gesamtzahl \ der \ Vorhersagen}$$
 
@@ -373,13 +368,13 @@ wobei:
 
 ::: {style="font-size: 90%;"}
 
-- $p_o$: Beobachtete Übereinstimmung (Anteil der Fälle, bei denen das Modell die richtige Klasse vorhergesagt hat)
-- $p_e$: Erwartete Übereinstimmung (Zufallsübereinstimmung basierend auf den Randhäufigkeiten der Klassen)
+- $p_o$: beobachtete Übereinstimmung (Anteil der Fälle, bei denen das Modell die richtige Klasse vorhergesagt hat)
+- $p_e$: erwartete Übereinstimmung (Zufallsübereinstimmung basierend auf den Randhäufigkeiten der Klassen)
 
 :::
 
 
-## Verglech der Modellgüte (II/II)
+## Vergleich der Modellgüte (II/II)
 
 Zum Abschluss kann mithilfe verschiedener Modellgütekriterien verglichen werden, welches der beiden Modelle (Ursprungsmodell und getuntes Modell) besser performt hat.
 
