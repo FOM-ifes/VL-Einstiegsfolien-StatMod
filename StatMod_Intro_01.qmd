@@ -608,25 +608,25 @@ Streuungsmaße sollen die Streuung / Variation der Daten beschreiben:
 
 Öffnen Sie die Datei `Körperfettanteil.qmd` im Ordner `fallstudien`.
 
-## Grafische Verfahren der Datenanalyse
+## Übersicht grafische Verfahren der Datenanalyse
 
--   *Säulendiagramm / Balkendiagramm*: Häufigkeit con Merkmalsausprägungen (nominal, ordinal, metrisch diskret) -- `gf_bar()`
+-   *Säulendiagramm / Balkendiagramm*: Häufigkeit von Merkmalsausprägungen (nominal, ordinal, metrisch diskret) -- `gf_bar()`
 - *Histogramm*: Häufigkeit von gruppierten Merkmalsausprägungen (metrisch) -- `gf_histogram()`
 - *Boxplot*: Visualisierung von Median, oberem und unteren Quartil, Minimum und Maximum, Ausreißern (metrisch) -- `gf_boxplot()`
 - *Violinplot*: Visualisierung der Dichtefunktion (und ggf. des Mittelwerts) der Verteilung (metrisch) -- `gf_violin()`
-- *Streudiagramm / Scatterplot*: Darstellung der Merkmalsausprägungen von zwei i.d.R. metrischen Merkmalen als Punkte -- `gf_point()`
+- *Streudiagramm / Scatterplot*: Darstellung der Merkmalsausprägungen von zwei i. d. R. metrischen Merkmalen als Punkte -- `gf_point()`
 - *Mosaikplot*: Darstellung der Merkmalsausprägungen zweier nominaler Merkmale -- `mosaicplot()`
 - *Liniendiagramm*: Verlauf der Merkmalsausprägung eines Merkmals - `gf_line()`
 
 
-## Übersicht deskriptiver Kennzahlen 
+## Übersicht deskriptive Kennzahlen 
 
 - `favstats()`: Zusammenfassung Kennzahlen numerischer Variablen
-- Einzeln, z.B. mit:
+- Einzeln, z. B. mit:
   + `mean()`: Mittelwert (metrisch)
   + `median()`: Median (ordinal, metrisch)
   + `iqr()`: Interquartilsabstand ((ordinal), metrisch)
   + `sd()`: Standardabweichung (metrisch)
-- `cor()`: Korrelationskoeffizient (zwei metrische Merkmale. Für ordinale Merkmale: Rangkorrelation `method = "spearman"`)
+- `cor()`: Korrelationskoeffizient (zwei metrische Merkmale; für ordinale Merkmale: Rangkorrelation `method = "spearman"`)
 - `prop()`: Anteile (nominal, ordinal, metrisch diskret -- relative Häufigkeiten einer Ausprägung)
-- `tally()`: (Kreuz)-tabellierung (nominal, ordinal, metrisch diskret -- absolute oder relative Häufigkeiten aller Ausprägungen).
+- `tally()`: (Kreuz)-Tabellierung (nominal, ordinal, metrisch diskret -- absolute oder relative Häufigkeiten aller Ausprägungen)
