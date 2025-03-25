@@ -578,7 +578,7 @@ $$
 
 <br>
 
-- Wiederhole ie Schritte 2 und 3 so lange bis sich keine Änderung der Zuordnung mehr ergibt -- oder eine maximale Anzahl der Iterationen erreicht ist.
+- Wiederhole die Schritte 2 und 3 so lange bis sich keine Änderung der Zuordnung mehr ergibt -- oder eine maximale Anzahl der Iterationen erreicht ist.
 
 <br>
 
@@ -600,7 +600,7 @@ $$
 > 3 - Ersetzen der Seeds\
 > \
 > \
-> 4 - Abschließende Zuornung aller\
+> 4 - Abschließende Zuordnung aller\
 > Objekte
 
 :::
@@ -630,7 +630,7 @@ $$
 > 3 - Ersetzen der Seeds\
 > \
 > \
-> 4 - Abschließende Zuornung aller\
+> 4 - Abschließende Zuordnung aller\
 > Objekte
 
 :::
@@ -661,7 +661,7 @@ $$
 > 3 - Ersetzen der Seeds\
 > \
 > \
-> 4 - Abschließende Zuornung aller\
+> 4 - Abschließende Zuordnung aller\
 > Objekte
 
 :::
@@ -691,7 +691,7 @@ $$
 > **3 - Ersetzen der Seeds**\
 > \
 > \
-> 4 - Abschließende Zuornung aller\
+> 4 - Abschließende Zuordnung aller\
 > Objekte
 
 :::
@@ -721,7 +721,7 @@ $$
 > 3 - Ersetzen der Seeds\
 > \
 > \
-> 4 - Abschließende Zuornung aller\
+> 4 - Abschließende Zuordnung aller\
 > Objekte
 
 :::
@@ -751,7 +751,7 @@ $$
 > **3 - Ersetzen der Seeds**\
 > \
 > \
-> 4 - Abschließende Zuornung aller\
+> 4 - Abschließende Zuordnung aller\
 > Objekte
 
 :::
@@ -781,7 +781,7 @@ $$
 > 3 - Ersetzen der Seeds\
 > \
 > \
-> 4 - Abschließende Zuornung aller\
+> 4 - Abschließende Zuordnung aller\
 > Objekte
 
 :::
@@ -811,7 +811,7 @@ $$
 > **3 - Ersetzen der Seeds**\
 > \
 > \
-> 4 - Abschließende Zuornung aller\
+> 4 - Abschließende Zuordnung aller\
 > Objekte
 
 :::
@@ -841,7 +841,7 @@ $$
 > 3 - Ersetzen der Seeds\
 > \
 > \
-> 4 - Abschließende Zuornung aller\
+> 4 - Abschließende Zuordnung aller\
 > Objekte
 
 :::
@@ -871,7 +871,7 @@ $$
 > **3 - Ersetzen der Seeds**\
 > \
 > \
-> 4 - Abschließende Zuornung aller\
+> 4 - Abschließende Zuordnung aller\
 > Objekte
 
 :::
@@ -901,7 +901,7 @@ $$
 > 3 - Ersetzen der Seeds\
 > \
 > \
-> 4 - Abschließende Zuornung aller\
+> 4 - Abschließende Zuordnung aller\
 > Objekte
 
 :::
@@ -931,7 +931,7 @@ $$
 > **3 - Ersetzen der Seeds**\
 > \
 > \
-> 4 - Abschließende Zuornung aller\
+> 4 - Abschließende Zuordnung aller\
 > Objekte
 
 :::
@@ -961,7 +961,7 @@ $$
 > 3 - Ersetzen der Seeds\
 > \
 > \
-> **4 - Abschließende Zuornung aller**\
+> **4 - Abschließende Zuordnung aller**\
 > **Objekte**
 
 :::
