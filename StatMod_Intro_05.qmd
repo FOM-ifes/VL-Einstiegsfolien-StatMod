@@ -212,41 +212,43 @@ Quelle: [Blogbeitrag Allen Downey](http://allendowney.blogspot.de/2016/06/there-
 
 ## Standardfehler
 
-Der Standardfehler (engl.: "**standard error**" oder **se**) ist ein Maß dafür, wie stark eine Zusammenfassung der Stichprobe &ndash; ein Schätzwert &ndash; (z.B. der Mittelwert) vom wahren, unbekannten Wert der Population abweicht. Je größer die Stichprobe ($n$), desto kleiner der Standardfehler:
+Der Standardfehler (engl.: "**standard error**" oder **se**) ist ein Maß dafür, wie stark eine Zusammenfassung der Stichprobe &ndash; ein Schätzwert &ndash; (z. B. der Mittelwert oder Anteilswert) vom wahren, unbekannten Wert der Population abweicht. Je größer die Stichprobe ($n$), desto kleiner der Standardfehler:
 
+::: {layout-ncol=2}
 $$ se = \frac{sd}{\sqrt{n}} $$
+
+$$se_p=\sqrt{\frac{\pi\cdot(1-\pi)}{n}}$$
+:::
 
 <br>
 
-[Nicht]{.red} zu verwechseln mit: **Standardabweichung**
-
-- Die **Standardabweichung** ist ein Maß für die Streuung der Beobachtungen, das heißt wie gleich oder verschiedenarting die Beobachtungen in der Stichprobe sind.
+[Nicht]{.red} zu verwechseln mit der **Standardabweichung**: Die **Standardabweichung** ist ein Maß für die Streuung der Beobachtungen, das heißt wie gleich oder verschiedenartig die Beobachtungen in der Stichprobe sind.
 
 
 ## Konfidenzintervall
 
-Ein **Konfidenzintervall** gibt einen Bereich an, der den wahren, unbekannten Wert der Population mit einer gegebenen Sicherheit ($1 - Irrtumswahrscheinlichkeit \ (\alpha)$) überdeckt, d.h., den Anteil der so konstruierten Konfidenzintervalle, die den Wert enthalten. Für den Stichprobenmittelwert ergeben sich folgende Grenzen:
+Ein **Konfidenzintervall** gibt einen Bereich an, der den wahren, unbekannten Wert der Population mit einer gegebenen Sicherheit ($1 - Irrtumswahrscheinlichkeit \ (\alpha)$) überdeckt, d. h., den Anteil der so konstruierten Konfidenzintervalle, die den Wert enthalten. Für den Stichprobenmittelwert ergeben sich folgende Grenzen (Bsp. Mittelwert):
 
 $$ KI = \bar{x} \pm z_{(1 - \frac{\alpha}{2})} \cdot se = \bar{x} \pm z_{(1 - \frac{\alpha}{2})} \frac{sd}{\sqrt{n}}$$
 
-- wobei $z_{(1 - \frac{\alpha}{2})}$ nach der 68-95-99.7%-Regel bestimmt werden kann (z.B. bei 95% ist $z_{(1 - \frac{0,5}{2})} \approx 2$)
+- wobei $z_{(1 - \frac{\alpha}{2})}$ nach der 68-95-99.7%-Regel bestimmt werden kann (z. B. bei 95% ist $z_{(1 - \frac{0,5}{2})} \approx 2$)
 
-- Je größer der Stichprobenumfang, desto schmaler das Konfidenzintervall (unter sonst gleichen Umständen): Der Standardfehler $se$ fällt mit steigenden $n$.
+- Je größer der Stichprobenumfang, desto schmaler das Konfidenzintervall (unter sonst gleichen Umständen): Der Standardfehler $se$ fällt mit steigendem $n$.
 
-- Je größer die Sicherheit(z.B. 99% statt 95%), desto breiter das Intervall.
+- Je größer die Sicherheit(z. B. 99% statt 95%), desto breiter das Intervall.
 
 
 ## p-Wert
 
-Der **p-Wert** gibt den Anteil der Stichproben an, die ein midenstens genau so extremes Ergebnis wie die beobachtete Sichprobe haben, unter der Annhame, dass die $H_0$ gilt.
+Der **p-Wert** gibt den Anteil der Stichproben an, die ein mindestens genau so extremes Ergebnis wie die beobachtete Sichprobe aufweisen, unter der Annahme, dass die $H_0$ gilt.
 
-- Anders gesagt: Der p-Wert berechnet sich als die Wahrscheinlichkeit eines solchen oder extremeren Wertes der Teststatistik unter den Annahmen von $H_0$.
+Anders gesagt: Der p-Wert berechnet sich als die Wahrscheinlichkeit eines solchen oder extremeren Wertes der Teststatistik unter den Annahmen von $H_0$.
 
 [Achtung:]{.red} Der p-Wert sagt nicht aus, wie wahrscheinlich die $H_0$ bei den vorliegenden Daten (Teststatistik) ist!
 
 <br>
 **Testentscheidung**: <br>
-(**Keine** Entscheidung sollte rein auf Basis den p-Wertes getroffen werden, *vor* der Testentscheidung **immer** eine explorative Datenanalyse durchführen.)
+**Keine** Entscheidung sollte rein auf Basis den p-Wertes getroffen werden, *vor* der Testentscheidung ist **immer** eine explorative Datenanalyse durchzuführen.
 
 - Ist der p-Wert $< \alpha$, so wird $H_{0}$ verworfen, ansonsten nicht.
 - Wird die $H_{0}$ verworfen, so nennt man das Ergebnis (statistisch) signifikant zum Niveau $\alpha$.
@@ -257,8 +259,8 @@ Der **p-Wert** gibt den Anteil der Stichproben an, die ein midenstens genau so e
 <br>
 Modellgleichung:
 
-$${y_i} = {\beta_0} + {\beta_1} \cdot {x_i1} + {\beta_2} \cdot {x_i2} + ... + {\beta_p} \cdot {x_ip} + {\epsilon_i} $$
-Interpretation der Koeffizienten (Schätzwerte, p-Werte) unter Annhame sonst gleicher Umstände, d.h., die anderen Variablen im Modell bleiben konstant / unverändert (ceteris paribus, c.p.): marginaler Effekt.
+$${y_i} = {\beta_0} + {\beta_1} \cdot {x_{i1}} + {\beta_2} \cdot {x_{i2}} + ... + {\beta_p} \cdot {x_{ip}} + {\epsilon_i} $$
+Interpretation der Koeffizienten (Schätzwerte, p-Werte) unter Annhame sonst gleicher Umstände, d. h., die anderen Variablen im Modell bleiben konstant / unverändert (ceteris paribus, c. p.): marginaler Effekt.
 
 <br>
 [Wichtig:]{.red} Der Regressionskoeffizient ($\beta$) eines Prädiktors hängt davon ab, welche anderen Prädiktoren in der multiplen Regression betrachtet werden. Häufig hängen die Prädiktoren untereinander zusammen und klären teilweise die gleichen Varianzanteile des Kriteriums auf.
@@ -269,7 +271,7 @@ Interpretation der Koeffizienten (Schätzwerte, p-Werte) unter Annhame sonst gle
 <br>
 Modellbeispiel:
 
-$${y_i} = {\beta_0} + {\beta_1} \cdot {x_i1} + {\beta_1} \cdot {x_i1} + {\beta_3} \cdot ({x_i1} \cdot {x_i2}) + {\epsilon_i} $$
+$${y_i} = {\beta_0} + {\beta_1} \cdot {x_{i1}} + {\beta_1} \cdot {x_{i1}} + {\beta_3} \cdot ({x_{i1}} \cdot {x_{i2}}) + {\epsilon_i} $$
 Hierbei ist $\beta_3$ der Koeffizient des Interaktionsterms $X_1 \cdot X_2$, der die zusätzlich Wirkung beschreibt, die nicht durch die einzelnen Effekte von $X_1$ und $X_2$ erklärt wird.
 
 
