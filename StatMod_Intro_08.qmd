@@ -78,7 +78,7 @@ An jedem Knotenpunkt (Node), beginnend mit der Wurzel des Baumes (Root Node), sp
 
 :::{.column width="50%"}
 :::center
-![https://medium.com/analytics-vidhya/decision-trees-on-mark-need-why-when-quick-hands-on-conclude-ce10dac51e3](img/Sonstige/Decision_Tree.webp){width="70%"}
+![Quelle: https://medium.com/analytics-vidhya/decision-trees-on-mark-need-why-when-quick-hands-on-conclude-ce10dac51e3](img/Sonstige/Decision_Tree.webp){width="70%"}
 :::
 :::
 :::::
@@ -146,6 +146,9 @@ Quelle: eigene Darstellung
 ![](img/Sonstige/DecisionTree_RandomForest.webp){width="40%"}
 :::
 
+:::footnote
+Quelle: [https://blog.dailydoseofds.com/p/your-random-forest-is-underperforming](https://blog.dailydoseofds.com/p/your-random-forest-is-underperforming)
+:::
 ## Beispiel
 
 ```{r}
@@ -184,7 +187,7 @@ costumer$Segmentation <- as.factor(costumer$Segmentation)
 ```
 
 :::footnote
-Die Daten stammen von [Kaggle](https://www.kaggle.com/datasets/kaushiksuresh147/customer-segmentation). Im Vorhinein wurden alle Zeilen mit fehlenden Werten entfernt und der Trainings- und Testdatensatz zusammengefasst.
+Die Daten und das Bild stammen von [Kaggle](https://www.kaggle.com/datasets/kaushiksuresh147/customer-segmentation). Im Vorhinein wurden alle Zeilen mit fehlenden Werten entfernt und der Trainings- und Testdatensatz zusammengefasst.
 :::
 
 ## Split in Trainings- und Testdatensatz
