@@ -182,7 +182,7 @@ Beachten Sie die im OC hinterlegten Fristen!
 ::::
 
 :::: {.column width="50%"}
--   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
+-   Lokal: RStudio durch Klick auf `StatMod_WiSe25.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
 
 ::: center
 ![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
@@ -469,7 +469,7 @@ Was ist bei einer Datentabelle der Klausurergebnisse eine Beobachtung (engl.: ob
 ::::
 
 :::: {.column width="50%"}
--   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
+-   Lokal: RStudio durch Klick auf `StatMod_WiSe25.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
 
 ::: center
 ![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
@@ -598,7 +598,7 @@ Streuungsmaße sollen die Streuung / Variation der Daten beschreiben:
 ::::
 
 :::: {.column width="50%"}
--   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
+-   Lokal: RStudio durch Klick auf `StatMod_WiSe25.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
 
 ::: center
 ![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}

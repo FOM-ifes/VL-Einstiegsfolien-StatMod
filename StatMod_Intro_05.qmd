@@ -287,7 +287,7 @@ Hierbei ist $\beta_3$ der Koeffizient des Interaktionsterms $X_1 \cdot X_2$, der
 ::::
 
 :::: {.column width="50%"}
--   Lokal: RStudio durch Klick auf `StatMod_WiSe24.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
+-   Lokal: RStudio durch Klick auf `StatMod_WiSe25.Rproj` starten oder RStudio aufrufen, das letzte Projekt müsste automatisch geladen werden.
 
 ::: center
 ![](img/Software/RStudio_Project_StatistischeModellierung.png){width="60%"}
